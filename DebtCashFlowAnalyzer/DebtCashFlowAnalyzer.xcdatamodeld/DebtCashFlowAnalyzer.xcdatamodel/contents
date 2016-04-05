@@ -1,4 +1,106 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Account" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bank" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bank" inverseName="accounts" inverseEntity="Bank" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="fundsSource" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Annually" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="Bank" syncable="YES">
+        <attribute name="lateFee" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minimumPaymentAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minimumPaymentPct" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Account" inverseName="bank" inverseEntity="Account" syncable="YES"/>
+    </entity>
+    <entity name="BiMonthly" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="BiWeekly" parentEntity="SpecificWeekdays" syncable="YES"/>
+    <entity name="BudgetedSpending" parentEntity="PlannedSpending" syncable="YES">
+        <attribute name="scheduledAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="CashFlowModel" syncable="YES">
+        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
+        <relationship name="banks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bank" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="Category" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="subCategories" inverseEntity="Category" syncable="YES"/>
+        <relationship name="subCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Daily" parentEntity="SpecificWeekdays" syncable="YES"/>
+    <entity name="DebtAccount" parentEntity="Account" syncable="YES"/>
+    <entity name="DebtServicing" parentEntity="PlannedSpending" syncable="YES">
+        <relationship name="debtAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="FirstAndMiddle" parentEntity="SemiMonthly" syncable="YES"/>
+    <entity name="GoalSaving" parentEntity="PlannedSpending" syncable="YES">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="saveAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="saveInto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" syncable="YES"/>
+    </entity>
+    <entity name="MiddleAndEnd" parentEntity="SemiMonthly" syncable="YES"/>
+    <entity name="MonthDayIndex" syncable="YES">
+        <attribute name="dayOfMonth" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="monthOfYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Monthly" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="PlannedSpending" syncable="YES">
+        <attribute name="firstDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" syncable="YES"/>
+        <relationship name="fundsSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
+    </entity>
+    <entity name="Quarterly" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="Reoccurrance" syncable="YES"/>
+    <entity name="SemiAnnually" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="SemiMonthly" parentEntity="SpecificMonthDays" syncable="YES"/>
+    <entity name="SourceAccount" parentEntity="Account" syncable="YES"/>
+    <entity name="SpecificMonthDays" parentEntity="Reoccurrance" syncable="YES">
+        <relationship name="monthDays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MonthDayIndex" syncable="YES"/>
+    </entity>
+    <entity name="SpecificWeekdays" parentEntity="Reoccurrance" syncable="YES">
+        <relationship name="daysOfWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeekdayIndex" syncable="YES"/>
+    </entity>
+    <entity name="Transaction" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="netAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category" syncable="YES"/>
+        <relationship name="fundsSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="transactions" inverseEntity="Account" syncable="YES"/>
+    </entity>
+    <entity name="WeekdayIndex" syncable="YES">
+        <attribute name="dayOfWeek" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Weekly" parentEntity="SpecificWeekdays" syncable="YES"/>
+    <elements>
+        <element name="Account" positionX="378" positionY="1134" width="128" height="88"/>
+        <element name="Transaction" positionX="351" positionY="936" width="128" height="118"/>
+        <element name="Category" positionX="-153" positionY="1031" width="128" height="103"/>
+        <element name="CashFlowModel" positionX="-180" positionY="846" width="128" height="88"/>
+        <element name="Bank" positionX="7" positionY="972" width="128" height="118"/>
+        <element name="PlannedSpending" positionX="25" positionY="1229" width="128" height="103"/>
+        <element name="BudgetedSpending" positionX="-72" positionY="1485" width="128" height="58"/>
+        <element name="GoalSaving" positionX="196" positionY="1466" width="128" height="88"/>
+        <element name="DebtServicing" positionX="61" positionY="1526" width="128" height="58"/>
+        <element name="DebtAccount" positionX="412" positionY="1343" width="128" height="43"/>
+        <element name="SourceAccount" positionX="243" positionY="1343" width="128" height="43"/>
+        <element name="Reoccurrance" positionX="-414" positionY="1053" width="128" height="43"/>
+        <element name="SpecificWeekdays" positionX="-506" positionY="1179" width="128" height="58"/>
+        <element name="SpecificMonthDays" positionX="-369" positionY="1179" width="128" height="58"/>
+        <element name="WeekdayIndex" positionX="-684" positionY="1148" width="128" height="58"/>
+        <element name="MonthDayIndex" positionX="-216" positionY="1170" width="128" height="73"/>
+        <element name="Weekly" positionX="-666" positionY="1287" width="128" height="43"/>
+        <element name="BiWeekly" positionX="-666" positionY="1332" width="128" height="43"/>
+        <element name="Daily" positionX="-666" positionY="1377" width="128" height="43"/>
+        <element name="Monthly" positionX="-495" positionY="1332" width="128" height="43"/>
+        <element name="SemiMonthly" positionX="-398" positionY="1422" width="128" height="43"/>
+        <element name="Quarterly" positionX="-452" positionY="1377" width="128" height="43"/>
+        <element name="Annually" positionX="-191" positionY="1334" width="128" height="43"/>
+        <element name="SemiAnnually" positionX="-225" positionY="1379" width="128" height="43"/>
+        <element name="BiMonthly" positionX="-261" positionY="1422" width="128" height="43"/>
+        <element name="FirstAndMiddle" positionX="-504" positionY="1485" width="128" height="43"/>
+        <element name="MiddleAndEnd" positionX="-333" positionY="1485" width="128" height="43"/>
+    </elements>
 </model>
