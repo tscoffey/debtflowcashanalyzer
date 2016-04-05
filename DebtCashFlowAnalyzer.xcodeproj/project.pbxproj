@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2254FD1B1CB3554400E87A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD1A1CB3554400E87A8A /* AppDelegate.swift */; };
+		2254FD1D1CB3554400E87A8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD1C1CB3554400E87A8A /* ViewController.swift */; };
+		2254FD201CB3554400E87A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2254FD1E1CB3554400E87A8A /* Main.storyboard */; };
+		2254FD231CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD211CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld */; };
+		2254FD251CB3554400E87A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2254FD241CB3554400E87A8A /* Assets.xcassets */; };
+		2254FD281CB3554400E87A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2254FD261CB3554400E87A8A /* LaunchScreen.storyboard */; };
+		2254FD331CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD321CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift */; };
+		2254FD3E1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD3D1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2254FD2F1CB3554500E87A8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2254FD0F1CB3554400E87A8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2254FD161CB3554400E87A8A;
+			remoteInfo = DebtCashFlowAnalyzer;
+		};
+		2254FD3A1CB3554500E87A8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2254FD0F1CB3554400E87A8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2254FD161CB3554400E87A8A;
+			remoteInfo = DebtCashFlowAnalyzer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2254FD171CB3554400E87A8A /* DebtCashFlowAnalyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCashFlowAnalyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2254FD1A1CB3554400E87A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2254FD1C1CB3554400E87A8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2254FD1F1CB3554400E87A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2254FD221CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DebtCashFlowAnalyzer.xcdatamodel; sourceTree = "<group>"; };
+		2254FD241CB3554400E87A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2254FD271CB3554400E87A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2254FD291CB3554400E87A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2254FD2E1CB3554500E87A8A /* DebtCashFlowAnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebtCashFlowAnalyzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2254FD321CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCashFlowAnalyzerTests.swift; sourceTree = "<group>"; };
+		2254FD341CB3554500E87A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2254FD391CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebtCashFlowAnalyzerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2254FD3D1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCashFlowAnalyzerUITests.swift; sourceTree = "<group>"; };
+		2254FD3F1CB3554500E87A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2254FD141CB3554400E87A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD2B1CB3554500E87A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD361CB3554500E87A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2254FD0E1CB3554400E87A8A = {
+			isa = PBXGroup;
+			children = (
+				2254FD191CB3554400E87A8A /* DebtCashFlowAnalyzer */,
+				2254FD311CB3554500E87A8A /* DebtCashFlowAnalyzerTests */,
+				2254FD3C1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests */,
+				2254FD181CB3554400E87A8A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2254FD181CB3554400E87A8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2254FD171CB3554400E87A8A /* DebtCashFlowAnalyzer.app */,
+				2254FD2E1CB3554500E87A8A /* DebtCashFlowAnalyzerTests.xctest */,
+				2254FD391CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2254FD191CB3554400E87A8A /* DebtCashFlowAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				2254FD1A1CB3554400E87A8A /* AppDelegate.swift */,
+				2254FD1C1CB3554400E87A8A /* ViewController.swift */,
+				2254FD1E1CB3554400E87A8A /* Main.storyboard */,
+				2254FD241CB3554400E87A8A /* Assets.xcassets */,
+				2254FD261CB3554400E87A8A /* LaunchScreen.storyboard */,
+				2254FD291CB3554400E87A8A /* Info.plist */,
+				2254FD211CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld */,
+			);
+			path = DebtCashFlowAnalyzer;
+			sourceTree = "<group>";
+		};
+		2254FD311CB3554500E87A8A /* DebtCashFlowAnalyzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2254FD321CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift */,
+				2254FD341CB3554500E87A8A /* Info.plist */,
+			);
+			path = DebtCashFlowAnalyzerTests;
+			sourceTree = "<group>";
+		};
+		2254FD3C1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2254FD3D1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift */,
+				2254FD3F1CB3554500E87A8A /* Info.plist */,
+			);
+			path = DebtCashFlowAnalyzerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2254FD161CB3554400E87A8A /* DebtCashFlowAnalyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2254FD421CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzer" */;
+			buildPhases = (
+				2254FD131CB3554400E87A8A /* Sources */,
+				2254FD141CB3554400E87A8A /* Frameworks */,
+				2254FD151CB3554400E87A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DebtCashFlowAnalyzer;
+			productName = DebtCashFlowAnalyzer;
+			productReference = 2254FD171CB3554400E87A8A /* DebtCashFlowAnalyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2254FD2D1CB3554500E87A8A /* DebtCashFlowAnalyzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2254FD451CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzerTests" */;
+			buildPhases = (
+				2254FD2A1CB3554500E87A8A /* Sources */,
+				2254FD2B1CB3554500E87A8A /* Frameworks */,
+				2254FD2C1CB3554500E87A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2254FD301CB3554500E87A8A /* PBXTargetDependency */,
+			);
+			name = DebtCashFlowAnalyzerTests;
+			productName = DebtCashFlowAnalyzerTests;
+			productReference = 2254FD2E1CB3554500E87A8A /* DebtCashFlowAnalyzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2254FD381CB3554500E87A8A /* DebtCashFlowAnalyzerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2254FD481CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzerUITests" */;
+			buildPhases = (
+				2254FD351CB3554500E87A8A /* Sources */,
+				2254FD361CB3554500E87A8A /* Frameworks */,
+				2254FD371CB3554500E87A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2254FD3B1CB3554500E87A8A /* PBXTargetDependency */,
+			);
+			name = DebtCashFlowAnalyzerUITests;
+			productName = DebtCashFlowAnalyzerUITests;
+			productReference = 2254FD391CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2254FD0F1CB3554400E87A8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Coffey;
+				TargetAttributes = {
+					2254FD161CB3554400E87A8A = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					2254FD2D1CB3554500E87A8A = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 2254FD161CB3554400E87A8A;
+					};
+					2254FD381CB3554500E87A8A = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 2254FD161CB3554400E87A8A;
+					};
+				};
+			};
+			buildConfigurationList = 2254FD121CB3554400E87A8A /* Build configuration list for PBXProject "DebtCashFlowAnalyzer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2254FD0E1CB3554400E87A8A;
+			productRefGroup = 2254FD181CB3554400E87A8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2254FD161CB3554400E87A8A /* DebtCashFlowAnalyzer */,
+				2254FD2D1CB3554500E87A8A /* DebtCashFlowAnalyzerTests */,
+				2254FD381CB3554500E87A8A /* DebtCashFlowAnalyzerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2254FD151CB3554400E87A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2254FD281CB3554400E87A8A /* LaunchScreen.storyboard in Resources */,
+				2254FD251CB3554400E87A8A /* Assets.xcassets in Resources */,
+				2254FD201CB3554400E87A8A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD2C1CB3554500E87A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD371CB3554500E87A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2254FD131CB3554400E87A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2254FD231CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld in Sources */,
+				2254FD1D1CB3554400E87A8A /* ViewController.swift in Sources */,
+				2254FD1B1CB3554400E87A8A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD2A1CB3554500E87A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2254FD331CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2254FD351CB3554500E87A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2254FD3E1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2254FD301CB3554500E87A8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2254FD161CB3554400E87A8A /* DebtCashFlowAnalyzer */;
+			targetProxy = 2254FD2F1CB3554500E87A8A /* PBXContainerItemProxy */;
+		};
+		2254FD3B1CB3554500E87A8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2254FD161CB3554400E87A8A /* DebtCashFlowAnalyzer */;
+			targetProxy = 2254FD3A1CB3554500E87A8A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2254FD1E1CB3554400E87A8A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2254FD1F1CB3554400E87A8A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2254FD261CB3554400E87A8A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2254FD271CB3554400E87A8A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2254FD401CB3554500E87A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2254FD411CB3554500E87A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2254FD431CB3554500E87A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DebtCashFlowAnalyzer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2254FD441CB3554500E87A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DebtCashFlowAnalyzer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2254FD461CB3554500E87A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DebtCashFlowAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DebtCashFlowAnalyzer.app/DebtCashFlowAnalyzer";
+			};
+			name = Debug;
+		};
+		2254FD471CB3554500E87A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DebtCashFlowAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DebtCashFlowAnalyzer.app/DebtCashFlowAnalyzer";
+			};
+			name = Release;
+		};
+		2254FD491CB3554500E87A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DebtCashFlowAnalyzerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DebtCashFlowAnalyzer;
+			};
+			name = Debug;
+		};
+		2254FD4A1CB3554500E87A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DebtCashFlowAnalyzerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DebtCashFlowAnalyzer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2254FD121CB3554400E87A8A /* Build configuration list for PBXProject "DebtCashFlowAnalyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2254FD401CB3554500E87A8A /* Debug */,
+				2254FD411CB3554500E87A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2254FD421CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2254FD431CB3554500E87A8A /* Debug */,
+				2254FD441CB3554500E87A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2254FD451CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2254FD461CB3554500E87A8A /* Debug */,
+				2254FD471CB3554500E87A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2254FD481CB3554500E87A8A /* Build configuration list for PBXNativeTarget "DebtCashFlowAnalyzerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2254FD491CB3554500E87A8A /* Debug */,
+				2254FD4A1CB3554500E87A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2254FD211CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2254FD221CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodel */,
+			);
+			currentVersion = 2254FD221CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodel */;
+			path = DebtCashFlowAnalyzer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2254FD0F1CB3554400E87A8A /* Project object */;
+}
