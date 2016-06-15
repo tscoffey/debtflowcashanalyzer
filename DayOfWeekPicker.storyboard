@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Day Of Week Picker View Controller-->
+        <scene sceneID="eJH-ff-zcN">
+            <objects>
+                <viewController storyboardIdentifier="NormalDayOfWeekPicker" id="1ZR-0I-8z6" customClass="DayOfWeekPickerViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iRB-ua-GY7"/>
+                        <viewControllerLayoutGuide type="bottom" id="LmF-Y4-S3i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VYj-Gf-P8G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Lk-w0-ayr">
+                                <rect key="frame" x="0.0" y="20" width="600" height="29"/>
+                                <segments>
+                                    <segment title="Sunday"/>
+                                    <segment title="Monday"/>
+                                    <segment title="Tuesday"/>
+                                    <segment title="Wednesday"/>
+                                    <segment title="Thursday"/>
+                                    <segment title="Friday"/>
+                                    <segment title="Saturday"/>
+                                </segments>
+                                <connections>
+                                    <action selector="dayOfWeekNormalChanged:" destination="1ZR-0I-8z6" eventType="valueChanged" id="mAN-m2-Qbs"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Lk-w0-ayr" secondAttribute="trailing" id="E80-gW-bk7"/>
+                            <constraint firstItem="4Lk-w0-ayr" firstAttribute="leading" secondItem="VYj-Gf-P8G" secondAttribute="leading" id="Q3X-dM-7Jv"/>
+                            <constraint firstItem="4Lk-w0-ayr" firstAttribute="top" secondItem="iRB-ua-GY7" secondAttribute="bottom" id="gRJ-Tm-eDC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dayOfWeekControlNormal" destination="4Lk-w0-ayr" id="zO8-Ll-gOb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgK-Ny-Ok7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="255" y="364"/>
+        </scene>
+        <!--Day Of Week Picker View Controller-->
+        <scene sceneID="2Ei-d6-kqR">
+            <objects>
+                <viewController storyboardIdentifier="CompactDayOfWeekPicker" id="Zq3-lY-x7B" customClass="DayOfWeekPickerViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N7x-kB-Pp7"/>
+                        <viewControllerLayoutGuide type="bottom" id="iKJ-70-F9D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qUQ-Ap-hcB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ssm-8a-W5V">
+                                <rect key="frame" x="0.0" y="20" width="600" height="29"/>
+                                <segments>
+                                    <segment title="Sun"/>
+                                    <segment title="Mon"/>
+                                    <segment title="Tue"/>
+                                    <segment title="Wed"/>
+                                    <segment title="Thu"/>
+                                    <segment title="Fri"/>
+                                    <segment title="Sat"/>
+                                </segments>
+                                <connections>
+                                    <action selector="dayOfWeekCompactChanged:" destination="Zq3-lY-x7B" eventType="valueChanged" id="MtK-YI-w6a"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ssm-8a-W5V" firstAttribute="top" secondItem="N7x-kB-Pp7" secondAttribute="bottom" id="6Qe-jf-klb"/>
+                            <constraint firstItem="Ssm-8a-W5V" firstAttribute="leading" secondItem="qUQ-Ap-hcB" secondAttribute="leading" id="HeR-t4-T1v"/>
+                            <constraint firstAttribute="trailing" secondItem="Ssm-8a-W5V" secondAttribute="trailing" id="IXA-dp-cFS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dayOfWeekControlCompact" destination="Ssm-8a-W5V" id="0Mt-re-SMq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEj-BT-ean" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="633" y="506"/>
+        </scene>
+    </scenes>
+</document>

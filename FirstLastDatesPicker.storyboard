@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--First Last Dates Picker View Controller-->
+        <scene sceneID="zoI-zI-CSV">
+            <objects>
+                <viewController storyboardIdentifier="FirstLastDatesPicker" id="jXF-ej-q0z" customClass="FirstLastDatesPickerViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a9N-po-VaO"/>
+                        <viewControllerLayoutGuide type="bottom" id="LEM-Gd-ZhE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N7v-tX-W0c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M0u-JB-t1u">
+                                <rect key="frame" x="240" y="20" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="jOQ-0K-aNT"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Last"/>
+                                </segments>
+                                <connections>
+                                    <action selector="firstLastChosen:" destination="jXF-ej-q0z" eventType="valueChanged" id="Ua2-RI-bZV"/>
+                                </connections>
+                            </segmentedControl>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6mA-hf-Sd9">
+                                <rect key="frame" x="0.0" y="65" width="600" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="485326692.41008401">
+                                    <!--2016-05-19 04:58:12 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="jXF-ej-q0z" eventType="valueChanged" id="2Xa-8C-2Te"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6mA-hf-Sd9" firstAttribute="centerX" secondItem="M0u-JB-t1u" secondAttribute="centerX" id="I6h-h4-QXt"/>
+                            <constraint firstItem="6mA-hf-Sd9" firstAttribute="leading" secondItem="N7v-tX-W0c" secondAttribute="leading" id="ITk-zt-MMa"/>
+                            <constraint firstItem="M0u-JB-t1u" firstAttribute="top" secondItem="a9N-po-VaO" secondAttribute="bottom" id="V7e-PG-3Zq"/>
+                            <constraint firstItem="M0u-JB-t1u" firstAttribute="centerX" secondItem="N7v-tX-W0c" secondAttribute="centerX" id="cjl-KA-4fx"/>
+                            <constraint firstItem="6mA-hf-Sd9" firstAttribute="top" secondItem="M0u-JB-t1u" secondAttribute="bottom" constant="17" id="u2v-sb-k04"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateChooser" destination="6mA-hf-Sd9" id="hGb-Wy-rUc"/>
+                        <outlet property="firstLastChooser" destination="M0u-JB-t1u" id="mSM-JC-Nhd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Alx-7p-phe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360" y="325"/>
+        </scene>
+    </scenes>
+</document>

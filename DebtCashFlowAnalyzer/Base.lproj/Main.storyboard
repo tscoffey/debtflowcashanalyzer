@@ -1,24 +1,185 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VVh-cA-CI7">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFB-c0-QXJ">
+                                <rect key="frame" x="199" y="86" width="203" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Test Clear Settings"/>
+                                <connections>
+                                    <segue destination="hTI-sw-HwJ" kind="show" identifier="toClearSettings" id="UsL-mA-RSJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR7-tb-M3T">
+                                <rect key="frame" x="233" y="118" width="135" height="30"/>
+                                <state key="normal" title="Test Account Editor"/>
+                                <connections>
+                                    <segue destination="8Am-HU-OEm" kind="show" identifier="toAccountListEditor" id="52M-gv-2gk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mk-2p-0EW">
+                                <rect key="frame" x="244" y="148" width="112" height="30"/>
+                                <state key="normal" title="Test Date Picker"/>
+                                <connections>
+                                    <segue destination="u5E-eU-Qhm" kind="show" identifier="toDatePicker" id="NBf-CH-FHY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0m9-ya-GF9">
+                                <rect key="frame" x="256" y="179" width="89" height="30"/>
+                                <state key="normal" title="Color display"/>
+                                <connections>
+                                    <segue destination="SXr-MD-77D" kind="show" identifier="toColorDisplay" id="6UW-iI-QSv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eA9-EF-XUw">
+                                <rect key="frame" x="212" y="217" width="176" height="30"/>
+                                <state key="normal" title="Test Day Of Week Normal"/>
+                                <connections>
+                                    <segue destination="1oG-Zr-z81" kind="show" identifier="toNormalDayOfWeekPicker" id="U4D-QF-aoV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ui5-tS-630">
+                                <rect key="frame" x="207" y="255" width="186" height="30"/>
+                                <state key="normal" title="Test Day of Week Compact"/>
+                                <connections>
+                                    <segue destination="4vS-4d-6Dr" kind="show" id="kk4-Oq-evC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoY-vl-dk2">
+                                <rect key="frame" x="214" y="293" width="172" height="30"/>
+                                <state key="normal" title="Test Day of Month Picker"/>
+                                <connections>
+                                    <segue destination="5St-Fu-uca" kind="show" identifier="toDayOfMonthPicker" id="Twt-sr-m0i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiO-tN-sxV">
+                                <rect key="frame" x="233" y="354" width="135" height="30"/>
+                                <state key="normal" title="Test Occurs Builder"/>
+                                <connections>
+                                    <segue destination="aZY-gx-3bx" kind="show" identifier="toOccursBuilder" id="uc2-8V-14B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Hjy-j7-Prs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="420"/>
+        </scene>
+        <!--DayOfMonthPicker-->
+        <scene sceneID="DFe-FS-FO0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DayOfMonthPicker" referencedIdentifier="DayOfMonthPicker" id="5St-Fu-uca" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdr-Zc-93i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053.5" y="766"/>
+        </scene>
+        <!--OccursVerticalEditor-->
+        <scene sceneID="iH4-lT-Ldu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReoccurranceBuilder" referencedIdentifier="OccursVerticalEditor" id="aZY-gx-3bx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHv-ob-eSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719.5" y="40"/>
+        </scene>
+        <!--FirstLastDatesPicker-->
+        <scene sceneID="HsS-DF-xXh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FirstLastDatesPicker" referencedIdentifier="FirstLastDatesPicker" id="u5E-eU-Qhm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIh-Gb-ypQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1673.5" y="84"/>
+        </scene>
+        <!--ItemsClearEditor-->
+        <scene sceneID="vWo-Gs-rUg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemsClearEditor" referencedIdentifier="ItemsClearEditor" id="hTI-sw-HwJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ad6-W0-RaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759.5" y="271"/>
+        </scene>
+        <!--NormalSourceAccountListAndEditor-->
+        <scene sceneID="dOf-Cg-n0D">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NormalSourceAccountList" referencedIdentifier="NormalSourceAccountListAndEditor" id="8Am-HU-OEm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0n-vV-trT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719.5" y="537"/>
+        </scene>
+        <!--CompactDayOfWeekPicker-->
+        <scene sceneID="TbH-yM-EvD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DayOfWeekPicker" referencedIdentifier="CompactDayOfWeekPicker" id="4vS-4d-6Dr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zx-Ph-nMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823.5" y="630"/>
+        </scene>
+        <!--ColorTupleDisplay-->
+        <scene sceneID="TPs-E0-ykP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CoorTupleDisplay" referencedIdentifier="ColorTupleDisplay" id="SXr-MD-77D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aw9-l5-lcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657.5" y="692"/>
+        </scene>
+        <!--NormalDayOfWeekPicker-->
+        <scene sceneID="ziX-Xi-8kJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DayOfWeekPicker" referencedIdentifier="NormalDayOfWeekPicker" id="1oG-Zr-z81" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBy-8k-71V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1750.5" y="769"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NLt-ef-qqp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VVh-cA-CI7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVZ-WF-4mY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SGX-U7-KXn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgY-a8-lhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="434" y="420"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="J65-bx-fN1">
+            <objects>
+                <viewController id="pDM-uy-1u6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="54Y-3G-xUk"/>
+                        <viewControllerLayoutGuide type="bottom" id="BIk-Ac-vvU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P2r-JX-Cop">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LWP-VD-EVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>

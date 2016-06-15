@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Items Clear Editor View Controller-->
+        <scene sceneID="IcG-P2-kIP">
+            <objects>
+                <viewController storyboardIdentifier="ItemsClearEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hUt-zs-xDU" customClass="ItemsClearEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yiR-SL-6vR"/>
+                        <viewControllerLayoutGuide type="bottom" id="wYP-dO-VYl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xp2-xQ-erm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-pU-wIM">
+                                <rect key="frame" x="128" y="57" width="344" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="344" id="u62-19-qZP"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Method"/>
+                                    <segment title="Amount"/>
+                                    <segment title="When"/>
+                                    <segment title="Pay Method"/>
+                                </segments>
+                                <connections>
+                                    <action selector="clearsChoicesChanged:" destination="hUt-zs-xDU" eventType="valueChanged" id="chm-ga-Y3J"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yb-DR-fqi">
+                                <rect key="frame" x="0.0" y="28" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZ7-g3-HCX">
+                                <rect key="frame" x="0.0" y="96" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-wo-sDD">
+                                <rect key="frame" x="20" y="122" width="560" height="458"/>
+                                <connections>
+                                    <segue destination="tmu-9U-BGk" kind="embed" identifier="toMethodClearsEditor" id="li0-xN-S6q"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yca-lE-UtG">
+                                <rect key="frame" x="20" y="122" width="560" height="458"/>
+                                <connections>
+                                    <segue destination="yg4-5i-MmC" kind="embed" identifier="toAmountClearsEditor" id="69Y-HC-rxO"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amc-Ho-O5F">
+                                <rect key="frame" x="20" y="122" width="560" height="458"/>
+                                <connections>
+                                    <segue destination="S3U-4C-wit" kind="embed" identifier="toWhenClearsEditor" id="hI0-9L-qGC"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cki-Jc-G6f">
+                                <rect key="frame" x="20" y="122" width="560" height="458"/>
+                                <connections>
+                                    <segue destination="eSN-SX-jYA" kind="embed" identifier="toSendMethodEditor" id="Set-hO-Dhi"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5yb-DR-fqi" firstAttribute="top" secondItem="yiR-SL-6vR" secondAttribute="bottom" constant="8" symbolic="YES" id="24Y-yc-IW7"/>
+                            <constraint firstItem="eTb-pU-wIM" firstAttribute="centerX" secondItem="5yb-DR-fqi" secondAttribute="centerX" id="2Nx-DF-xaR"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="leading" secondItem="amc-Ho-O5F" secondAttribute="leading" id="2vI-Mp-0si"/>
+                            <constraint firstItem="5yb-DR-fqi" firstAttribute="leading" secondItem="oZ7-g3-HCX" secondAttribute="leading" id="4yx-h5-8DJ"/>
+                            <constraint firstItem="amc-Ho-O5F" firstAttribute="leading" secondItem="b6J-wo-sDD" secondAttribute="leading" id="9ss-uZ-QdK"/>
+                            <constraint firstItem="oZ7-g3-HCX" firstAttribute="top" secondItem="eTb-pU-wIM" secondAttribute="bottom" constant="11" id="A3a-eO-mU0"/>
+                            <constraint firstItem="amc-Ho-O5F" firstAttribute="bottom" secondItem="b6J-wo-sDD" secondAttribute="bottom" id="B3V-Ko-IVT"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="top" secondItem="yca-lE-UtG" secondAttribute="top" id="Bwq-6V-S0Q"/>
+                            <constraint firstAttribute="bottom" secondItem="Cki-Jc-G6f" secondAttribute="bottom" constant="20" symbolic="YES" id="IGe-Rh-mLY"/>
+                            <constraint firstItem="yca-lE-UtG" firstAttribute="trailing" secondItem="b6J-wo-sDD" secondAttribute="trailing" id="Kb5-JW-7Ip"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="trailing" secondItem="amc-Ho-O5F" secondAttribute="trailing" id="Oag-NE-sex"/>
+                            <constraint firstItem="yca-lE-UtG" firstAttribute="bottom" secondItem="b6J-wo-sDD" secondAttribute="bottom" id="Rv6-z1-0st"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="trailing" secondItem="b6J-wo-sDD" secondAttribute="trailing" id="T9l-Js-IbB"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="bottom" secondItem="amc-Ho-O5F" secondAttribute="bottom" id="Z8S-RX-yRV"/>
+                            <constraint firstItem="5yb-DR-fqi" firstAttribute="trailing" secondItem="oZ7-g3-HCX" secondAttribute="trailing" id="bx1-ms-QSX"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="trailing" secondItem="xp2-xQ-erm" secondAttribute="trailingMargin" id="dbR-zY-WiP"/>
+                            <constraint firstItem="eTb-pU-wIM" firstAttribute="top" secondItem="5yb-DR-fqi" secondAttribute="bottom" constant="8" symbolic="YES" id="hNQ-7L-Qbo"/>
+                            <constraint firstItem="oZ7-g3-HCX" firstAttribute="leading" secondItem="xp2-xQ-erm" secondAttribute="leading" id="kEt-XT-yS2"/>
+                            <constraint firstItem="yca-lE-UtG" firstAttribute="leading" secondItem="b6J-wo-sDD" secondAttribute="leading" id="ktJ-m6-sAg"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="leading" secondItem="xp2-xQ-erm" secondAttribute="leadingMargin" id="lCH-ZV-xiH"/>
+                            <constraint firstItem="yca-lE-UtG" firstAttribute="top" secondItem="b6J-wo-sDD" secondAttribute="top" id="rPD-q8-iNp"/>
+                            <constraint firstItem="Cki-Jc-G6f" firstAttribute="top" secondItem="oZ7-g3-HCX" secondAttribute="bottom" constant="5" id="tj3-lN-z9a"/>
+                            <constraint firstItem="amc-Ho-O5F" firstAttribute="top" secondItem="b6J-wo-sDD" secondAttribute="top" id="uIj-fe-hz3"/>
+                            <constraint firstItem="yca-lE-UtG" firstAttribute="centerX" secondItem="oZ7-g3-HCX" secondAttribute="centerX" id="whd-cr-vvV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="amountClearsContainerView" destination="yca-lE-UtG" id="6VY-wi-ERb"/>
+                        <outlet property="clearsSegmentedChoices" destination="eTb-pU-wIM" id="Qzg-tZ-Ndj"/>
+                        <outlet property="editorDescription" destination="oZ7-g3-HCX" id="PdG-9z-dA2"/>
+                        <outlet property="editorLabel" destination="5yb-DR-fqi" id="ODv-ic-FI9"/>
+                        <outlet property="methodClearsContainerView" destination="b6J-wo-sDD" id="5JW-fK-EhK"/>
+                        <outlet property="sendMethodContainerView" destination="Cki-Jc-G6f" id="zIa-iM-Kdq"/>
+                        <outlet property="whenClearsContainerView" destination="amc-Ho-O5F" id="cEK-Qe-VCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1f-si-IRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-66" y="-6"/>
+        </scene>
+        <!--Item Amount Clears Editor View Controller-->
+        <scene sceneID="km9-zW-zTm">
+            <objects>
+                <viewController storyboardIdentifier="ItemAmountClearsEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yg4-5i-MmC" customClass="ItemAmountClearsEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z2n-tz-7Uz"/>
+                        <viewControllerLayoutGuide type="bottom" id="GWq-gB-cO1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qLu-0h-gdk">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="458"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlK-jh-dwp">
+                                <rect key="frame" x="20" y="20" width="520" height="129"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yg4-5i-MmC" id="ncX-W2-ijs"/>
+                                    <outlet property="delegate" destination="yg4-5i-MmC" id="9Qh-p0-okN"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nlK-jh-dwp" firstAttribute="top" secondItem="Z2n-tz-7Uz" secondAttribute="bottom" constant="20" id="3qO-VY-DrR"/>
+                            <constraint firstItem="nlK-jh-dwp" firstAttribute="trailing" secondItem="qLu-0h-gdk" secondAttribute="trailingMargin" id="F1c-yS-XyK"/>
+                            <constraint firstItem="nlK-jh-dwp" firstAttribute="leading" secondItem="qLu-0h-gdk" secondAttribute="leadingMargin" id="Iaa-JY-XkX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="choicesView" destination="nlK-jh-dwp" id="iox-sV-Rcb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nTh-YS-Chm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1336" y="-52"/>
+        </scene>
+        <!--Item Method Clears Editor View Controller-->
+        <scene sceneID="0at-fe-gX1">
+            <objects>
+                <viewController id="tmu-9U-BGk" customClass="ItemMethodClearsEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dZx-b9-A4F"/>
+                        <viewControllerLayoutGuide type="bottom" id="GUp-vG-GW8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZEX-ta-JtT">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="458"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-eI-32a">
+                                <rect key="frame" x="20" y="20" width="520" height="129"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tmu-9U-BGk" id="wKY-I4-Dv8"/>
+                                    <outlet property="delegate" destination="tmu-9U-BGk" id="agv-TB-eZW"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LGU-eI-32a" firstAttribute="leading" secondItem="ZEX-ta-JtT" secondAttribute="leadingMargin" id="DXO-6w-Wyz"/>
+                            <constraint firstItem="LGU-eI-32a" firstAttribute="trailing" secondItem="ZEX-ta-JtT" secondAttribute="trailingMargin" id="NOp-Fz-wn8"/>
+                            <constraint firstItem="LGU-eI-32a" firstAttribute="top" secondItem="ZEX-ta-JtT" secondAttribute="topMargin" constant="20" id="aP9-vD-hSE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="choicesView" destination="LGU-eI-32a" id="k94-GP-HrF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iy-Sw-BHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648" y="-67"/>
+        </scene>
+        <!--Item When Clears Editor View Controller-->
+        <scene sceneID="kru-8h-xBH">
+            <objects>
+                <viewController id="S3U-4C-wit" customClass="ItemWhenClearsEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fMd-zr-6hy"/>
+                        <viewControllerLayoutGuide type="bottom" id="n2Q-gQ-ixe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ith-jK-FUD">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="458"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNt-P0-9cg">
+                                <rect key="frame" x="20" y="20" width="520" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="Sp9-5Z-VGK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="S3U-4C-wit" id="r8N-h3-Adf"/>
+                                    <outlet property="delegate" destination="S3U-4C-wit" id="u4A-ko-tJv"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP4-nk-lJo">
+                                <rect key="frame" x="20" y="240" width="520" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Days?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIJ-7t-IMf">
+                                <rect key="frame" x="20" y="173" width="520" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="14" translatesAutoresizingMaskIntoConstraints="NO" id="O7R-6D-dwG">
+                                <rect key="frame" x="221" y="202" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="75i-bJ-Ilg"/>
+                                    <constraint firstAttribute="width" constant="114" id="UEX-yd-1dJ"/>
+                                    <constraint firstAttribute="width" secondItem="O7R-6D-dwG" secondAttribute="height" multiplier="19:5" id="rRW-Jg-XeQ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="daysChanged:" destination="S3U-4C-wit" eventType="valueChanged" id="AnF-9U-a4k"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WNt-P0-9cg" firstAttribute="leading" secondItem="ith-jK-FUD" secondAttribute="leadingMargin" id="4on-ni-np1"/>
+                            <constraint firstItem="TP4-nk-lJo" firstAttribute="top" secondItem="O7R-6D-dwG" secondAttribute="bottom" constant="8" id="Fgf-w1-NlF"/>
+                            <constraint firstItem="O7R-6D-dwG" firstAttribute="centerX" secondItem="mIJ-7t-IMf" secondAttribute="centerX" id="HVk-Ti-ExZ"/>
+                            <constraint firstItem="TP4-nk-lJo" firstAttribute="leading" secondItem="ith-jK-FUD" secondAttribute="leadingMargin" id="Hr4-lh-lj7"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="trailing" secondItem="ith-jK-FUD" secondAttribute="trailingMargin" id="PRa-QL-wn3"/>
+                            <constraint firstItem="WNt-P0-9cg" firstAttribute="trailing" secondItem="ith-jK-FUD" secondAttribute="trailingMargin" id="Sxv-VD-Tc0"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="leading" secondItem="ith-jK-FUD" secondAttribute="leadingMargin" id="YT7-x3-Yo5"/>
+                            <constraint firstItem="TP4-nk-lJo" firstAttribute="leading" secondItem="ith-jK-FUD" secondAttribute="leadingMargin" id="ZIc-PR-Eyf"/>
+                            <constraint firstItem="TP4-nk-lJo" firstAttribute="trailing" secondItem="ith-jK-FUD" secondAttribute="trailingMargin" id="bH4-Dv-oAH"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="top" secondItem="WNt-P0-9cg" secondAttribute="bottom" constant="8" symbolic="YES" id="cFX-Dj-B7A"/>
+                            <constraint firstItem="TP4-nk-lJo" firstAttribute="trailing" secondItem="ith-jK-FUD" secondAttribute="trailingMargin" id="cgc-ux-bb3"/>
+                            <constraint firstItem="O7R-6D-dwG" firstAttribute="top" secondItem="mIJ-7t-IMf" secondAttribute="bottom" constant="8" id="dev-r7-EDV"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="trailing" secondItem="ith-jK-FUD" secondAttribute="trailingMargin" id="g0x-vm-UvP"/>
+                            <constraint firstItem="O7R-6D-dwG" firstAttribute="top" secondItem="mIJ-7t-IMf" secondAttribute="bottom" constant="24" id="iei-HQ-fyi"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="top" secondItem="WNt-P0-9cg" secondAttribute="bottom" constant="24" id="ndb-oc-Smh"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="leading" secondItem="ith-jK-FUD" secondAttribute="leadingMargin" id="ndi-PB-ul1"/>
+                            <constraint firstItem="WNt-P0-9cg" firstAttribute="top" secondItem="ith-jK-FUD" secondAttribute="topMargin" constant="20" id="qNA-wr-gjc"/>
+                            <constraint firstItem="mIJ-7t-IMf" firstAttribute="top" secondItem="WNt-P0-9cg" secondAttribute="bottom" constant="24" id="qOR-t4-9Nx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="choicesView" destination="WNt-P0-9cg" id="dVB-ct-dz7"/>
+                        <outlet property="daysTextLabel" destination="TP4-nk-lJo" id="frS-b3-A8L"/>
+                        <outlet property="howManyDaysTextLabel" destination="mIJ-7t-IMf" id="azc-hi-y18"/>
+                        <outlet property="numberOfDaysSlider" destination="O7R-6D-dwG" id="pfP-lO-GUG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgE-lT-O0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741" y="637"/>
+        </scene>
+        <!--Item Send Method Editor View Controller-->
+        <scene sceneID="5Vg-gf-Whr">
+            <objects>
+                <viewController id="eSN-SX-jYA" customClass="ItemSendMethodEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YaZ-zb-GU1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Keb-4V-ZKx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FH8-HG-PiT">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="458"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw5-ZC-PZs">
+                                <rect key="frame" x="20" y="20" width="520" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="vQ7-SD-n9k"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="eSN-SX-jYA" id="nw8-iW-cju"/>
+                                    <outlet property="delegate" destination="eSN-SX-jYA" id="O9s-1w-kJc"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Rw5-ZC-PZs" firstAttribute="trailing" secondItem="FH8-HG-PiT" secondAttribute="trailingMargin" id="BWF-aS-gb9"/>
+                            <constraint firstItem="Rw5-ZC-PZs" firstAttribute="leading" secondItem="FH8-HG-PiT" secondAttribute="leadingMargin" id="XSA-6h-ic7"/>
+                            <constraint firstItem="Rw5-ZC-PZs" firstAttribute="top" secondItem="FH8-HG-PiT" secondAttribute="top" constant="20" symbolic="YES" id="mjz-Bz-8q9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="choicesView" destination="Rw5-ZC-PZs" id="4gZ-Es-tCx"/>
+                        <outlet property="view" destination="Rw5-ZC-PZs" id="UJy-ff-jqs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZf-3h-Ov5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="789"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,14 +9,26 @@
 import UIKit
 import CoreData
 
+func appDelegate() -> AppDelegate {
+    return UIApplication.sharedApplication().delegate as! AppDelegate
+}
+
+func defaultMediator() -> IsMediator {
+    return appDelegate().currentMediator
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var lookValues:HasUILookValues!
+    var lookTheme:LookTheme!
+    var currentMediator:IsMediator!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        lookValues=StandardLookValues()
+        lookTheme=LookTheme(look: lookValues)
         return true
     }
 

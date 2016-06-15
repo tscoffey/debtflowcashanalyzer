@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Occurs Vertical View Controller-->
+        <scene sceneID="Lph-SU-bTz">
+            <objects>
+                <viewController storyboardIdentifier="OccursVerticalEditor" id="28g-oa-Nvk" customClass="OccursVerticalViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ijf-R2-zkX"/>
+                        <viewControllerLayoutGuide type="bottom" id="eYA-QX-N9O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BHi-df-JSg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZB-sD-KmY">
+                                <rect key="frame" x="20" y="66" width="560" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pZB-sD-KmY" firstAttribute="leading" secondItem="BHi-df-JSg" secondAttribute="leadingMargin" id="3d0-40-7Mi"/>
+                            <constraint firstItem="pZB-sD-KmY" firstAttribute="trailing" secondItem="BHi-df-JSg" secondAttribute="trailingMargin" id="Ilv-fd-NA6"/>
+                            <constraint firstAttribute="bottom" secondItem="pZB-sD-KmY" secondAttribute="bottom" constant="20" symbolic="YES" id="miu-xh-cpf"/>
+                            <constraint firstItem="pZB-sD-KmY" firstAttribute="top" secondItem="ijf-R2-zkX" secondAttribute="bottom" constant="46" id="smv-9u-DOK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="subViews" destination="pZB-sD-KmY" id="het-tm-TDQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0JQ-VG-hOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="433" y="273"/>
+        </scene>
+    </scenes>
+</document>

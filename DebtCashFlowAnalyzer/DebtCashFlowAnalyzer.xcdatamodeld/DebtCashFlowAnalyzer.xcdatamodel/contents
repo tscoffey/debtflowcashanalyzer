@@ -1,106 +1,226 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="Account" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="bank" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bank" inverseName="accounts" inverseEntity="Bank" syncable="YES"/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="fundsSource" inverseEntity="Transaction" syncable="YES"/>
+    <entity name="Account" representedClassName=".Account" isAbstract="YES" syncable="YES">
+        <attribute name="accountTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="bank" maxCount="1" deletionRule="Nullify" destinationEntity="Bank" inverseName="accounts" inverseEntity="Bank" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="accounts" inverseEntity="CashFlowMediator" syncable="YES"/>
     </entity>
-    <entity name="Annually" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="Bank" syncable="YES">
-        <attribute name="lateFee" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="minimumPaymentAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="minimumPaymentPct" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Account" inverseName="bank" inverseEntity="Account" syncable="YES"/>
+    <entity name="Bank" representedClassName=".Bank" syncable="YES">
+        <attribute name="lateFee" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minimumPaymentAmount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minimumPaymentPct" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="accounts" toMany="YES" deletionRule="Nullify" destinationEntity="Account" inverseName="bank" inverseEntity="Account" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="banks" inverseEntity="CashFlowMediator" syncable="YES"/>
     </entity>
-    <entity name="BiMonthly" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="BiWeekly" parentEntity="SpecificWeekdays" syncable="YES"/>
-    <entity name="BudgetedSpending" parentEntity="PlannedSpending" syncable="YES">
-        <attribute name="scheduledAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    <entity name="BudgetedPayment" representedClassName=".BudgetedPayment" parentEntity="Transaction" syncable="YES"/>
+    <entity name="BudgetedSpending" representedClassName=".BudgetedSpending" parentEntity="PlannedSpending" syncable="YES">
+        <attribute name="scheduledAmount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="CashFlowModel" syncable="YES">
-        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
-        <relationship name="banks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bank" syncable="YES"/>
-        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" syncable="YES"/>
+    <entity name="BudgetedSpendingGenerator" representedClassName=".BudgetedSpendingGenerator" parentEntity="SpendingGenerator" syncable="YES"/>
+    <entity name="CashFlowMediator" representedClassName=".CashFlowMediator" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="accounts" toMany="YES" deletionRule="Cascade" destinationEntity="Account" inverseName="model" inverseEntity="Account" syncable="YES"/>
+        <relationship name="banks" toMany="YES" deletionRule="Cascade" destinationEntity="Bank" inverseName="model" inverseEntity="Bank" syncable="YES"/>
+        <relationship name="categories" toMany="YES" deletionRule="Cascade" destinationEntity="SpendCategory" inverseName="model" inverseEntity="SpendCategory" syncable="YES"/>
+        <relationship name="merchants" toMany="YES" deletionRule="Cascade" destinationEntity="Merchant" inverseName="model" inverseEntity="Merchant" syncable="YES"/>
+        <relationship name="plannedSpending" toMany="YES" deletionRule="Cascade" destinationEntity="PlannedSpending" inverseName="model" inverseEntity="PlannedSpending" syncable="YES"/>
+        <relationship name="spendingGenerators" toMany="YES" deletionRule="Cascade" destinationEntity="SpendingGenerator" inverseName="model" inverseEntity="SpendingGenerator" syncable="YES"/>
+        <relationship name="spendingOptions" maxCount="1" deletionRule="Cascade" destinationEntity="SpendingOptions" inverseName="model" inverseEntity="SpendingOptions" syncable="YES"/>
+        <relationship name="transactions" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="model" inverseEntity="Transaction" syncable="YES"/>
     </entity>
-    <entity name="Category" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="subCategories" inverseEntity="Category" syncable="YES"/>
-        <relationship name="subCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
+    <entity name="CategoryShadowAccount" representedClassName=".CategoryShadowAccount" parentEntity="SourceAccount" syncable="YES">
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="SpendCategory" inverseName="shadowAccount" inverseEntity="SpendCategory" syncable="YES"/>
+    </entity>
+    <entity name="DatedBalance" representedClassName=".DatedBalance" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" inverseName="balances" inverseEntity="SourceAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtAccount" representedClassName=".DebtAccount" parentEntity="Account" syncable="YES">
+        <attribute name="debtTypeIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="includeInPayoff" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="debtBalances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DebtDatedBalance" inverseName="debtAccount" inverseEntity="DebtDatedBalance" syncable="YES"/>
+        <relationship name="debtServicings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DebtServicing" inverseName="debtAccount" inverseEntity="DebtServicing" syncable="YES"/>
+        <relationship name="paymentCalculator" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DebtPaymentCalculator" inverseName="debtAccount" inverseEntity="DebtPaymentCalculator" syncable="YES"/>
+        <relationship name="payments" toMany="YES" deletionRule="Nullify" destinationEntity="DebtPayment" inverseName="debtAccount" inverseEntity="DebtPayment" syncable="YES"/>
+        <relationship name="payoffOrdinal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderedDebtAccount" inverseName="debtAccount" inverseEntity="OrderedDebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtBalanceRate" representedClassName=".DebtBalanceRate" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="balanceTypeIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="debtBalance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DebtDatedBalance" inverseName="balanceRates" inverseEntity="DebtDatedBalance" syncable="YES"/>
+    </entity>
+    <entity name="DebtDatedBalance" representedClassName=".DebtDatedBalance" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="balanceRates" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DebtBalanceRate" inverseName="debtBalance" inverseEntity="DebtBalanceRate" syncable="YES"/>
+        <relationship name="debtAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" inverseName="debtBalances" inverseEntity="DebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtPayment" representedClassName=".DebtPayment" parentEntity="Transaction" syncable="YES">
+        <attribute name="netAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="debtAccount" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" inverseName="payments" inverseEntity="DebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtPaymentCalculator" representedClassName=".DebtPaymentCalculator" isAbstract="YES" syncable="YES">
+        <attribute name="additionalPercent" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minimumAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="debtAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" inverseName="paymentCalculator" inverseEntity="DebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtPayoffGenerator" representedClassName=".DebtPayoffGenerator" parentEntity="SpendingGenerator" syncable="YES">
+        <attribute name="minimumOnly" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="monthlyAmount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="payoffTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="orderedAccounts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OrderedDebtAccount" inverseName="payoffGenerator" inverseEntity="OrderedDebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DebtServicing" representedClassName=".DebtServicing" parentEntity="PlannedSpending" syncable="YES">
+        <relationship name="debtAccount" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" inverseName="debtServicings" inverseEntity="DebtAccount" syncable="YES"/>
+    </entity>
+    <entity name="DefaultMerchant" representedClassName=".DefaultMerchant" syncable="YES">
+        <relationship name="merchant" maxCount="1" deletionRule="Nullify" destinationEntity="Merchant" inverseName="defaults" inverseEntity="Merchant" syncable="YES"/>
+        <relationship name="plannedSpending" maxCount="1" deletionRule="Nullify" destinationEntity="PlannedSpending" inverseName="defaultMerchant" inverseEntity="PlannedSpending" syncable="YES"/>
+    </entity>
+    <entity name="FixedDebtPaymentCalculator" representedClassName=".FixedDebtPaymentCalculator" parentEntity="DebtPaymentCalculator" syncable="YES">
+        <attribute name="fixedAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="FundsTransfer" representedClassName=".FundsTransfer" parentEntity="TransferPayment" syncable="YES"/>
+    <entity name="GoalSaving" representedClassName=".GoalSaving" parentEntity="PlannedSpending" syncable="YES">
+        <attribute name="saveAmount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="savingsAccount" maxCount="1" deletionRule="Nullify" destinationEntity="SavingsAccount" inverseName="goalSavings" inverseEntity="SavingsAccount" syncable="YES"/>
+    </entity>
+    <entity name="Merchant" representedClassName=".Merchant" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="defaults" toMany="YES" deletionRule="Cascade" destinationEntity="DefaultMerchant" inverseName="merchant" inverseEntity="DefaultMerchant" syncable="YES"/>
+        <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="merchants" inverseEntity="CashFlowMediator" syncable="YES"/>
+    </entity>
+    <entity name="OccursValues" representedClassName=".OccursValues" syncable="YES">
+        <attribute name="dataValue1" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dataValue2" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dataValue3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="reoccurrance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reoccurrance" inverseName="occursValues" inverseEntity="Reoccurrance" syncable="YES"/>
+    </entity>
+    <entity name="OrderedDebtAccount" representedClassName=".OrderedDebtAccount" syncable="YES">
+        <attribute name="ordinal" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="debtAccount" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" inverseName="payoffOrdinal" inverseEntity="DebtAccount" syncable="YES"/>
+        <relationship name="payoffGenerator" maxCount="1" deletionRule="Nullify" destinationEntity="DebtPayoffGenerator" inverseName="orderedAccounts" inverseEntity="DebtPayoffGenerator" syncable="YES"/>
+    </entity>
+    <entity name="PlannedSpending" representedClassName=".PlannedSpending" isAbstract="YES" syncable="YES">
+        <attribute name="amountClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="clearedAfterDays" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="howClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemSendTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="leadDays" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="whenClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpendCategory" inverseName="plannedSpending" inverseEntity="SpendCategory" syncable="YES"/>
+        <relationship name="defaultMerchant" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DefaultMerchant" inverseName="plannedSpending" inverseEntity="DefaultMerchant" syncable="YES"/>
+        <relationship name="fundsSource" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" inverseName="plannedSpending" inverseEntity="SourceAccount" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="plannedSpending" inverseEntity="CashFlowMediator" syncable="YES"/>
+        <relationship name="reoccurrance" maxCount="1" deletionRule="Cascade" destinationEntity="Reoccurrance" inverseName="plannedSpending" inverseEntity="Reoccurrance" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="spending" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Reoccurrance" representedClassName=".Reoccurrance" syncable="YES">
+        <attribute name="reoccursTypeIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="occursValues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OccursValues" inverseName="reoccurrance" inverseEntity="OccursValues" syncable="YES"/>
+        <relationship name="plannedSpending" maxCount="1" deletionRule="Nullify" destinationEntity="PlannedSpending" inverseName="reoccurrance" inverseEntity="PlannedSpending" syncable="YES"/>
+    </entity>
+    <entity name="SavingsAccount" representedClassName=".SavingsAccount" parentEntity="SourceAccount" syncable="YES">
+        <attribute name="amountSavedForGoals" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="goalSavings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GoalSaving" inverseName="savingsAccount" inverseEntity="GoalSaving" syncable="YES"/>
+    </entity>
+    <entity name="SavingsGoalTransfer" representedClassName=".SavingsTransfer" parentEntity="TransferPayment" syncable="YES"/>
+    <entity name="SourceAccount" representedClassName=".SourceAccount" parentEntity="Account" syncable="YES">
+        <attribute name="amountClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="howClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemsClearedAfterDays" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemSendTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="whenClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="balances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DatedBalance" inverseName="account" inverseEntity="DatedBalance" syncable="YES"/>
+        <relationship name="plannedSpending" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlannedSpending" inverseName="fundsSource" inverseEntity="PlannedSpending" syncable="YES"/>
+        <relationship name="transactionsAsDestination" toMany="YES" deletionRule="Nullify" destinationEntity="TransferPayment" inverseName="fundsDestination" inverseEntity="TransferPayment" syncable="YES"/>
+        <relationship name="transactionsAsSource" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="fundsSource" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="SpendCategory" representedClassName=".SpendCategory" syncable="YES">
+        <attribute name="amountClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="clearedAfterDays" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="howClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemSendTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="whenClearsTypeIndex" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="categories" inverseEntity="CashFlowMediator" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpendCategory" inverseName="subCategories" inverseEntity="SpendCategory" syncable="YES"/>
+        <relationship name="plannedSpending" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlannedSpending" inverseName="category" inverseEntity="PlannedSpending" syncable="YES"/>
+        <relationship name="shadowAccount" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CategoryShadowAccount" inverseName="category" inverseEntity="CategoryShadowAccount" syncable="YES"/>
+        <relationship name="subCategories" toMany="YES" deletionRule="Nullify" destinationEntity="SpendCategory" inverseName="parent" inverseEntity="SpendCategory" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
     </entity>
-    <entity name="Daily" parentEntity="SpecificWeekdays" syncable="YES"/>
-    <entity name="DebtAccount" parentEntity="Account" syncable="YES"/>
-    <entity name="DebtServicing" parentEntity="PlannedSpending" syncable="YES">
-        <relationship name="debtAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DebtAccount" syncable="YES"/>
+    <entity name="SpendingGenerator" representedClassName=".SpendingGenerator" isAbstract="YES" syncable="YES">
+        <attribute name="firstDate" attributeType="Date" syncable="YES"/>
+        <attribute name="lastDate" attributeType="Date" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="spendingGenerators" inverseEntity="CashFlowMediator" syncable="YES"/>
     </entity>
-    <entity name="FirstAndMiddle" parentEntity="SemiMonthly" syncable="YES"/>
-    <entity name="GoalSaving" parentEntity="PlannedSpending" syncable="YES">
-        <attribute name="attribute" optional="YES" syncable="YES"/>
-        <attribute name="saveAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="saveInto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" syncable="YES"/>
+    <entity name="SpendingOptions" representedClassName=".SpendingOptions" syncable="YES">
+        <attribute name="debtPaymentGranularity" attributeType="Decimal" defaultValueString="0.01" syncable="YES"/>
+        <attribute name="dipIntoGoalSavings" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="optimizeTransfers" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="weekendsAndHolidayMitigationIndex" attributeType="Integer 32" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="spendingOptions" inverseEntity="CashFlowMediator" syncable="YES"/>
     </entity>
-    <entity name="MiddleAndEnd" parentEntity="SemiMonthly" syncable="YES"/>
-    <entity name="MonthDayIndex" syncable="YES">
-        <attribute name="dayOfMonth" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="monthOfYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="Transaction" representedClassName=".Transaction" isAbstract="YES" syncable="YES">
+        <attribute name="actualAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dueDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="hasCleared" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="merchantName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plannedAmount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sendDate" attributeType="Date" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="SpendCategory" inverseName="transactions" inverseEntity="SpendCategory" syncable="YES"/>
+        <relationship name="fundsSource" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" inverseName="transactionsAsSource" inverseEntity="SourceAccount" syncable="YES"/>
+        <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="CashFlowMediator" inverseName="transactions" inverseEntity="CashFlowMediator" syncable="YES"/>
+        <relationship name="spending" maxCount="1" deletionRule="Nullify" destinationEntity="PlannedSpending" inverseName="transactions" inverseEntity="PlannedSpending" syncable="YES"/>
     </entity>
-    <entity name="Monthly" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="PlannedSpending" syncable="YES">
-        <attribute name="firstDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="lastDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" syncable="YES"/>
-        <relationship name="fundsSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
+    <entity name="TransferPayment" representedClassName=".TransferPayment" parentEntity="Transaction" syncable="YES">
+        <relationship name="fundsDestination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SourceAccount" inverseName="transactionsAsDestination" inverseEntity="SourceAccount" syncable="YES"/>
     </entity>
-    <entity name="Quarterly" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="Reoccurrance" syncable="YES"/>
-    <entity name="SemiAnnually" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="SemiMonthly" parentEntity="SpecificMonthDays" syncable="YES"/>
-    <entity name="SourceAccount" parentEntity="Account" syncable="YES"/>
-    <entity name="SpecificMonthDays" parentEntity="Reoccurrance" syncable="YES">
-        <relationship name="monthDays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MonthDayIndex" syncable="YES"/>
+    <entity name="UnplannedSpending" representedClassName=".UnplannedSpending" parentEntity="Transaction" syncable="YES"/>
+    <entity name="VariableDebtPaymentCalculator" representedClassName=".VariableDebtPaymentCalculator" parentEntity="DebtPaymentCalculator" syncable="YES">
+        <attribute name="minimumPercent" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="SpecificWeekdays" parentEntity="Reoccurrance" syncable="YES">
-        <relationship name="daysOfWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeekdayIndex" syncable="YES"/>
-    </entity>
-    <entity name="Transaction" syncable="YES">
-        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="netAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category" syncable="YES"/>
-        <relationship name="fundsSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="transactions" inverseEntity="Account" syncable="YES"/>
-    </entity>
-    <entity name="WeekdayIndex" syncable="YES">
-        <attribute name="dayOfWeek" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="Weekly" parentEntity="SpecificWeekdays" syncable="YES"/>
     <elements>
-        <element name="Account" positionX="378" positionY="1134" width="128" height="88"/>
-        <element name="Transaction" positionX="351" positionY="936" width="128" height="118"/>
-        <element name="Category" positionX="-153" positionY="1031" width="128" height="103"/>
-        <element name="CashFlowModel" positionX="-180" positionY="846" width="128" height="88"/>
-        <element name="Bank" positionX="7" positionY="972" width="128" height="118"/>
-        <element name="PlannedSpending" positionX="25" positionY="1229" width="128" height="103"/>
-        <element name="BudgetedSpending" positionX="-72" positionY="1485" width="128" height="58"/>
-        <element name="GoalSaving" positionX="196" positionY="1466" width="128" height="88"/>
-        <element name="DebtServicing" positionX="61" positionY="1526" width="128" height="58"/>
-        <element name="DebtAccount" positionX="412" positionY="1343" width="128" height="43"/>
-        <element name="SourceAccount" positionX="243" positionY="1343" width="128" height="43"/>
-        <element name="Reoccurrance" positionX="-414" positionY="1053" width="128" height="43"/>
-        <element name="SpecificWeekdays" positionX="-506" positionY="1179" width="128" height="58"/>
-        <element name="SpecificMonthDays" positionX="-369" positionY="1179" width="128" height="58"/>
-        <element name="WeekdayIndex" positionX="-684" positionY="1148" width="128" height="58"/>
-        <element name="MonthDayIndex" positionX="-216" positionY="1170" width="128" height="73"/>
-        <element name="Weekly" positionX="-666" positionY="1287" width="128" height="43"/>
-        <element name="BiWeekly" positionX="-666" positionY="1332" width="128" height="43"/>
-        <element name="Daily" positionX="-666" positionY="1377" width="128" height="43"/>
-        <element name="Monthly" positionX="-495" positionY="1332" width="128" height="43"/>
-        <element name="SemiMonthly" positionX="-398" positionY="1422" width="128" height="43"/>
-        <element name="Quarterly" positionX="-452" positionY="1377" width="128" height="43"/>
-        <element name="Annually" positionX="-191" positionY="1334" width="128" height="43"/>
-        <element name="SemiAnnually" positionX="-225" positionY="1379" width="128" height="43"/>
-        <element name="BiMonthly" positionX="-261" positionY="1422" width="128" height="43"/>
-        <element name="FirstAndMiddle" positionX="-504" positionY="1485" width="128" height="43"/>
-        <element name="MiddleAndEnd" positionX="-333" positionY="1485" width="128" height="43"/>
+        <element name="Account" positionX="421" positionY="945" width="128" height="103"/>
+        <element name="Bank" positionX="63" positionY="821" width="128" height="133"/>
+        <element name="BudgetedPayment" positionX="835" positionY="1035" width="128" height="45"/>
+        <element name="BudgetedSpending" positionX="-504" positionY="1436" width="128" height="58"/>
+        <element name="BudgetedSpendingGenerator" positionX="-873" positionY="675" width="162" height="43"/>
+        <element name="CashFlowMediator" positionX="-540" positionY="938" width="128" height="178"/>
+        <element name="CategoryShadowAccount" positionX="270" positionY="1458" width="153" height="58"/>
+        <element name="DatedBalance" positionX="171" positionY="1334" width="128" height="88"/>
+        <element name="DebtAccount" positionX="511" positionY="1400" width="128" height="148"/>
+        <element name="DebtBalanceRate" positionX="925" positionY="1404" width="128" height="103"/>
+        <element name="DebtDatedBalance" positionX="763" positionY="1334" width="128" height="88"/>
+        <element name="DebtPayment" positionX="799" positionY="1242" width="128" height="73"/>
+        <element name="DebtPaymentCalculator" positionX="745" positionY="1460" width="146" height="88"/>
+        <element name="DebtPayoffGenerator" positionX="-702" positionY="677" width="128" height="103"/>
+        <element name="DebtServicing" positionX="-360" positionY="1449" width="128" height="58"/>
+        <element name="DefaultMerchant" positionX="-191" positionY="683" width="128" height="73"/>
+        <element name="FixedDebtPaymentCalculator" positionX="621" positionY="1566" width="171" height="58"/>
+        <element name="FundsTransfer" positionX="844" positionY="1188" width="128" height="45"/>
+        <element name="GoalSaving" positionX="-216" positionY="1404" width="128" height="73"/>
+        <element name="Merchant" positionX="-522" positionY="695" width="128" height="88"/>
+        <element name="OccursValues" positionX="-774" positionY="1334" width="128" height="105"/>
+        <element name="OrderedDebtAccount" positionX="-776" positionY="837" width="128" height="88"/>
+        <element name="PlannedSpending" positionX="-389" positionY="1130" width="128" height="268"/>
+        <element name="Reoccurrance" positionX="-585" positionY="1316" width="128" height="88"/>
+        <element name="SavingsAccount" positionX="441" positionY="1565" width="135" height="73"/>
+        <element name="SavingsGoalTransfer" positionX="979" positionY="1188" width="128" height="45"/>
+        <element name="SourceAccount" positionX="351" positionY="1179" width="144" height="178"/>
+        <element name="SpendCategory" positionX="-198" positionY="1031" width="128" height="223"/>
+        <element name="SpendingGenerator" positionX="-765" positionY="531" width="128" height="88"/>
+        <element name="SpendingOptions" positionX="-837" positionY="950" width="198" height="118"/>
+        <element name="Transaction" positionX="639" positionY="974" width="128" height="193"/>
+        <element name="TransferPayment" positionX="907" positionY="1116" width="128" height="58"/>
+        <element name="UnplannedSpending" positionX="835" positionY="938" width="128" height="45"/>
+        <element name="VariableDebtPaymentCalculator" positionX="828" positionY="1566" width="180" height="58"/>
     </elements>
 </model>

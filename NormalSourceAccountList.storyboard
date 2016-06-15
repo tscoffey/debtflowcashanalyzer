@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--ItemsClearEditor-->
+        <scene sceneID="ob2-uB-viI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemsClearEditor" referencedIdentifier="ItemsClearEditor" id="zxd-DS-yv1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="icd-zd-0E7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-154.5" y="-66"/>
+        </scene>
+        <!--Normal Source Account List And Edit View Controller-->
+        <scene sceneID="why-BY-Hky">
+            <objects>
+                <viewController storyboardIdentifier="NormalSourceAccountListAndEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Azp-XO-Avj" customClass="NormalSourceAccountListAndEditViewController" customModule="DebtCashFlowAnalyzer" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C8k-2J-hKX"/>
+                        <viewControllerLayoutGuide type="bottom" id="uci-89-anb"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="H8e-9p-uIb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zD-F3-ylv">
+                                <rect key="frame" x="0.0" y="20" width="117" height="560"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="a6g-ys-5Ir"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Mhz-81-CAa" kind="embed" identifier="toAccountsListTable" id="ZDT-3I-W0F"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ezR-Y6-j2c">
+                                <rect key="frame" x="125" y="20" width="455" height="29"/>
+                                <segments>
+                                    <segment title="Name"/>
+                                    <segment title="Account type"/>
+                                    <segment title="Clears and Send"/>
+                                </segments>
+                                <connections>
+                                    <action selector="editChoicesChanged:" destination="Azp-XO-Avj" eventType="valueChanged" id="gOd-7n-SO9"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-lS-5zc">
+                                <rect key="frame" x="120" y="70" width="460" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jn3-yc-yJh">
+                                <rect key="frame" x="125" y="99" width="455" height="481"/>
+                                <connections>
+                                    <segue destination="uzq-Nc-1gh" kind="embed" identifier="toAccountNameEditor" id="BFc-Fy-Dpq"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ock-Ed-ufF">
+                                <rect key="frame" x="125" y="99" width="455" height="481"/>
+                                <connections>
+                                    <segue destination="3sN-ig-VA5" kind="embed" identifier="toAccountTypeEditor" id="xuT-Z1-SQ9"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-bc-2fj">
+                                <rect key="frame" x="125" y="99" width="455" height="481"/>
+                                <connections>
+                                    <segue destination="zxd-DS-yv1" kind="embed" identifier="toClearsSendsEditor" id="R6A-ae-hF8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="bottom" secondItem="7zD-F3-ylv" secondAttribute="bottom" id="1Qm-23-aFK"/>
+                            <constraint firstItem="7Da-lS-5zc" firstAttribute="trailing" secondItem="ezR-Y6-j2c" secondAttribute="trailing" id="77p-q8-Wu6"/>
+                            <constraint firstItem="7zD-F3-ylv" firstAttribute="leading" secondItem="H8e-9p-uIb" secondAttribute="leadingMargin" constant="-20" id="90e-LR-im5"/>
+                            <constraint firstItem="7Da-lS-5zc" firstAttribute="top" secondItem="ezR-Y6-j2c" secondAttribute="bottom" constant="22" id="A4O-E1-RqO"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="bottom" secondItem="zxY-bc-2fj" secondAttribute="bottom" id="A8F-dh-HQv"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="top" secondItem="7Da-lS-5zc" secondAttribute="bottom" constant="8" symbolic="YES" id="Cwi-EU-Xh0"/>
+                            <constraint firstItem="ock-Ed-ufF" firstAttribute="top" secondItem="zxY-bc-2fj" secondAttribute="top" id="ELi-Wa-WdU"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="leading" secondItem="ezR-Y6-j2c" secondAttribute="leading" id="Idg-9E-73v"/>
+                            <constraint firstItem="7Da-lS-5zc" firstAttribute="leading" secondItem="7zD-F3-ylv" secondAttribute="trailing" constant="3" id="NQi-0A-kNT"/>
+                            <constraint firstItem="ezR-Y6-j2c" firstAttribute="leading" secondItem="7zD-F3-ylv" secondAttribute="trailing" constant="8" symbolic="YES" id="NqG-gC-zGh"/>
+                            <constraint firstItem="7zD-F3-ylv" firstAttribute="top" secondItem="C8k-2J-hKX" secondAttribute="bottom" constant="8" symbolic="YES" id="QAr-9p-0AA"/>
+                            <constraint firstItem="ezR-Y6-j2c" firstAttribute="top" secondItem="7zD-F3-ylv" secondAttribute="top" id="Xfk-cV-cct"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="trailing" secondItem="7Da-lS-5zc" secondAttribute="trailing" id="YRc-xs-1Gv"/>
+                            <constraint firstItem="ock-Ed-ufF" firstAttribute="bottom" secondItem="zxY-bc-2fj" secondAttribute="bottom" id="ZnH-Kg-1DQ"/>
+                            <constraint firstItem="ezR-Y6-j2c" firstAttribute="trailing" secondItem="H8e-9p-uIb" secondAttribute="trailingMargin" id="ceL-B1-Oaw"/>
+                            <constraint firstItem="ock-Ed-ufF" firstAttribute="trailing" secondItem="zxY-bc-2fj" secondAttribute="trailing" id="kL4-P9-AMR"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="trailing" secondItem="zxY-bc-2fj" secondAttribute="trailing" id="mlt-8Z-EwJ"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="leading" secondItem="zxY-bc-2fj" secondAttribute="leading" id="sq6-yw-ULH"/>
+                            <constraint firstItem="jn3-yc-yJh" firstAttribute="top" secondItem="zxY-bc-2fj" secondAttribute="top" id="ui1-i3-7h0"/>
+                            <constraint firstItem="ezR-Y6-j2c" firstAttribute="top" secondItem="C8k-2J-hKX" secondAttribute="bottom" id="vmB-Rr-nTQ"/>
+                            <constraint firstItem="uci-89-anb" firstAttribute="top" secondItem="7zD-F3-ylv" secondAttribute="bottom" constant="20" id="y50-x3-tA8"/>
+                            <constraint firstItem="ock-Ed-ufF" firstAttribute="leading" secondItem="zxY-bc-2fj" secondAttribute="leading" id="zid-BA-mcJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountEditChoices" destination="ezR-Y6-j2c" id="bFC-mj-ZGL"/>
+                        <outlet property="accountNameEditorContainer" destination="jn3-yc-yJh" id="BsX-wn-Rka"/>
+                        <outlet property="accountTypeEditorContainer" destination="ock-Ed-ufF" id="IcG-wN-BwL"/>
+                        <outlet property="accountsListContainer" destination="7zD-F3-ylv" id="KEc-Nw-ozU"/>
+                        <outlet property="clearSendsEditorContainer" destination="zxY-bc-2fj" id="ejT-0G-EbI"/>
+                        <outlet property="editorDescription" destination="7Da-lS-5zc" id="s7N-TY-bHh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVx-7O-BDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="-277"/>
+        </scene>
+        <!--Source Account Master List Table View Controller-->
+        <scene sceneID="scR-jZ-nHz">
+            <objects>
+                <tableViewController id="Mhz-81-CAa" customClass="SourceAccountMasterListTableViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kqu-tm-M51">
+                        <rect key="frame" x="0.0" y="0.0" width="117" height="560"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SourceAccountCell" id="5yC-JH-hGD">
+                                <rect key="frame" x="0.0" y="28" width="117" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5yC-JH-hGD" id="wJX-BS-iZp">
+                                    <rect key="frame" x="0.0" y="0.0" width="117" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Mhz-81-CAa" id="yIr-y4-UGC"/>
+                            <outlet property="delegate" destination="Mhz-81-CAa" id="2oz-Sa-wP4"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="he0-2b-39B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1313.5" y="164"/>
+        </scene>
+        <!--Source Account Name Editor View Controller-->
+        <scene sceneID="Yma-G6-Hr2">
+            <objects>
+                <viewController id="uzq-Nc-1gh" customClass="SourceAccountNameEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dfD-el-SlQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="i92-Pd-bLE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h5D-yg-Bqv">
+                        <rect key="frame" x="0.0" y="0.0" width="455" height="481"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJ6-od-wwE">
+                                <rect key="frame" x="72" y="61" width="312" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="312" id="hJ9-za-3DQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uzq-Nc-1gh" id="ouT-4c-uqN"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LJ6-od-wwE" firstAttribute="centerX" secondItem="h5D-yg-Bqv" secondAttribute="centerX" id="JRj-0R-0Ku"/>
+                            <constraint firstItem="LJ6-od-wwE" firstAttribute="top" secondItem="h5D-yg-Bqv" secondAttribute="topMargin" constant="61" id="v2p-WU-Q6g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="LJ6-od-wwE" id="dbu-wj-8Iu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLw-B8-L8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297" y="436"/>
+        </scene>
+        <!--Source Account Type Editor View Controller-->
+        <scene sceneID="sFC-fr-08M">
+            <objects>
+                <viewController id="3sN-ig-VA5" customClass="SourceAccountTypeEditorViewController" customModule="DebtCashFlowAnalyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2B-Gt-JDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="iCg-T3-vxG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aJY-ax-Hbu">
+                        <rect key="frame" x="0.0" y="0.0" width="455" height="481"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-Ny-AQf">
+                                <rect key="frame" x="0.0" y="0.0" width="455" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3sN-ig-VA5" id="oaL-Ic-xjo"/>
+                                    <outlet property="delegate" destination="3sN-ig-VA5" id="LSp-vS-55q"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gqG-Ny-AQf" secondAttribute="trailing" id="9oc-wT-OTR"/>
+                            <constraint firstItem="gqG-Ny-AQf" firstAttribute="top" secondItem="aJY-ax-Hbu" secondAttribute="top" id="Hxg-vJ-wht"/>
+                            <constraint firstItem="gqG-Ny-AQf" firstAttribute="leading" secondItem="aJY-ax-Hbu" secondAttribute="leading" id="ks3-Qw-sGY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="choicesView" destination="gqG-Ny-AQf" id="CGc-ua-NSX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4B-gq-GKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795.5" y="417.5"/>
+        </scene>
+    </scenes>
+</document>
