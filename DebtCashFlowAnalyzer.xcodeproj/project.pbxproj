@@ -48,6 +48,7 @@
 		222A5B471CC07EB700B70465 /* SpendingOptionsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A5B461CC07EB700B70465 /* SpendingOptionsProtocols.swift */; };
 		223CACC91CE56C6C00A44176 /* NormalSourceAccountList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223CACC81CE56C6C00A44176 /* NormalSourceAccountList.storyboard */; };
 		223CACCD1CE56D9400A44176 /* NormalSourceAccountListAndEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CACCC1CE56D9400A44176 /* NormalSourceAccountListAndEditViewController.swift */; };
+		22437E9A1D20FC4800D7AE82 /* QuarterChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22437E991D20FC4800D7AE82 /* QuarterChoicesProvider.swift */; };
 		2244C21E1CE6ADB0009F049C /* AccountListAndEditorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244C21D1CE6ADB0009F049C /* AccountListAndEditorTest.swift */; };
 		2244C2201CE980AB009F049C /* ItemClearsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244C21F1CE980AB009F049C /* ItemClearsProtocols.swift */; };
 		2244C2241CE984E2009F049C /* SpendCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244C2231CE984E2009F049C /* SpendCategory+CoreDataProperties.swift */; };
@@ -76,6 +77,13 @@
 		2254FD331CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD321CB3554500E87A8A /* DebtCashFlowAnalyzerTests.swift */; };
 		2254FD3E1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254FD3D1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift */; };
 		22665E501D122058000C7C25 /* DateChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E4F1D122058000C7C25 /* DateChooserSubController.swift */; };
+		22665E521D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E511D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift */; };
+		22665E541D13CB37000C7C25 /* DKDropMenu+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E531D13CB37000C7C25 /* DKDropMenu+IsSubControl.swift */; };
+		22665E561D13D01A000C7C25 /* DropDown+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E551D13D01A000C7C25 /* DropDown+IsSubControl.swift */; };
+		22665E581D14F5FB000C7C25 /* UITableView+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E571D14F5FB000C7C25 /* UITableView+IsSubControl.swift */; };
+		22665E5A1D15054E000C7C25 /* IsSubControlBoundsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E591D15054E000C7C25 /* IsSubControlBoundsProvider.swift */; };
+		22665E5C1D151519000C7C25 /* SubControlChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E5B1D151519000C7C25 /* SubControlChoiceDelegate.swift */; };
+		22665E601D1B7DBC000C7C25 /* NumberChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22665E5F1D1B7DBC000C7C25 /* NumberChoiceDelegate.swift */; };
 		226782411CEB856F00BBF151 /* IsNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226782401CEB856F00BBF151 /* IsNavigable.swift */; };
 		226782431CEBD46A00BBF151 /* StandardLookValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226782421CEBD46A00BBF151 /* StandardLookValues.swift */; };
 		226782471CEBFAAD00BBF151 /* SourceAccountNameEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226782461CEBFAAD00BBF151 /* SourceAccountNameEditorViewController.swift */; };
@@ -105,8 +113,6 @@
 		226BCAFD1D0F936D009B5664 /* UILabel+IsSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */; };
 		226BCAFF1D0F94FE009B5664 /* String+IsChoiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */; };
 		226BCB011D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCB001D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift */; };
-		226BCB031D0FCCE6009B5664 /* MonthOfQuarterChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCB021D0FCCE6009B5664 /* MonthOfQuarterChoiceDelegate.swift */; };
-		226BCB051D0FE18D009B5664 /* UIDatePicker+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCB041D0FE18D009B5664 /* UIDatePicker+IsSubControl.swift */; };
 		226D56101CCAF41100B806E6 /* OccursValues+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D560E1CCAF41100B806E6 /* OccursValues+CoreDataProperties.swift */; };
 		226D56111CCAF41100B806E6 /* OccursValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D560F1CCAF41100B806E6 /* OccursValues.swift */; };
 		226D56131CCAF48600B806E6 /* OccursValueUsageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D56121CCAF48600B806E6 /* OccursValueUsageType.swift */; };
@@ -128,7 +134,7 @@
 		22B4C9E61CD43FF30076162C /* MonthlyDateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4C9E51CD43FF30076162C /* MonthlyDateCalculatorTests.swift */; };
 		22C42B431D0AA1B700B4E771 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B421D0AA1B700B4E771 /* UIView+Constraints.swift */; };
 		22C42B481D0B9EBF00B4E771 /* ControlPresentationFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B471D0B9EBF00B4E771 /* ControlPresentationFormat.swift */; };
-		22C42B4A1D0B9F5200B4E771 /* IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B491D0B9F5200B4E771 /* IsSubControl.swift */; };
+		22C42B4A1D0B9F5200B4E771 /* IsOccursUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B491D0B9F5200B4E771 /* IsOccursUIControl.swift */; };
 		22C42B4C1D0B9FB400B4E771 /* IsChoiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B4B1D0B9FB400B4E771 /* IsChoiceProvider.swift */; };
 		22C42B4E1D0B9FF600B4E771 /* IsSubControlChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B4D1D0B9FF600B4E771 /* IsSubControlChoiceDelegate.swift */; };
 		22C42B501D0BA03B00B4E771 /* SubControllerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B4F1D0BA03B00B4E771 /* SubControllerStyle.swift */; };
@@ -142,21 +148,43 @@
 		22C42B621D0BAE3C00B4E771 /* ReoccurranceBuilder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C42B611D0BAE3C00B4E771 /* ReoccurranceBuilder.storyboard */; };
 		22C42B641D0BDFA400B4E771 /* HorizontalPickerView+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B631D0BDFA400B4E771 /* HorizontalPickerView+IsSubControl.swift */; };
 		22C42B661D0E582C00B4E771 /* DayOfMonthChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B651D0E582C00B4E771 /* DayOfMonthChoicesProvider.swift */; };
-		22C42B681D0E5A4D00B4E771 /* DayOfMonthChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B671D0E5A4D00B4E771 /* DayOfMonthChoiceDelegate.swift */; };
 		22C42B6A1D0E61F600B4E771 /* WeekdayChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B691D0E61F600B4E771 /* WeekdayChoicesProvider.swift */; };
 		22C42B6C1D0E623C00B4E771 /* String+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B6B1D0E623C00B4E771 /* String+Names.swift */; };
-		22C42B6E1D0E636D00B4E771 /* WeekdayChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B6D1D0E636D00B4E771 /* WeekdayChoiceDelegate.swift */; };
 		22C42B701D0E7BAB00B4E771 /* MonthOfYearChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B6F1D0E7BAB00B4E771 /* MonthOfYearChoicesProvider.swift */; };
-		22C42B721D0E7BE700B4E771 /* MonthOfYearChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42B711D0E7BE700B4E771 /* MonthOfYearChoiceDelegate.swift */; };
 		22C5F9C01D10EFBC00993B7E /* YearChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5F9BF1D10EFBC00993B7E /* YearChoicesProvider.swift */; };
-		22C5F9C41D10F7AC00993B7E /* YearChoiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5F9C31D10F7AC00993B7E /* YearChoiceDelegate.swift */; };
 		22C5F9C61D10FA4700993B7E /* DateView+IsSubControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5F9C51D10FA4700993B7E /* DateView+IsSubControl.swift */; };
 		22C5F9C81D110BA800993B7E /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5F9C71D110BA800993B7E /* DateView.swift */; };
 		22C5F9E81D1129AC00993B7E /* DateChooserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5F9E71D1129AC00993B7E /* DateChooserType.swift */; };
 		22CFEC811CB72C4D00FA0447 /* ReoccurranceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFEC801CB72C4D00FA0447 /* ReoccurranceType.swift */; };
 		22CFEC831CB72DF100FA0447 /* DebtPayoffType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFEC821CB72DF100FA0447 /* DebtPayoffType.swift */; };
 		22CFEC8F1CB735F700FA0447 /* CashFlowMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFEC8D1CB735F700FA0447 /* CashFlowMediator.swift */; };
+		22D1C71A1D1D003A00D15FC9 /* DateChoiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1C7191D1D003A00D15FC9 /* DateChoiceProvider.swift */; };
 		22D4C96B1CD83BEA00634221 /* WeeklyDateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C96A1CD83BEA00634221 /* WeeklyDateCalculatorTests.swift */; };
+		22D6A31D1D2C824300C61FE6 /* NumberChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A31C1D2C824300C61FE6 /* NumberChooserSubController.swift */; };
+		22D6A3201D2C85F800C61FE6 /* DayNumberChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A31F1D2C85F800C61FE6 /* DayNumberChooserSubController.swift */; };
+		22D6A3241D2C863400C61FE6 /* MonthNumberChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3231D2C863400C61FE6 /* MonthNumberChooserSubController.swift */; };
+		22D6A3261D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3251D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift */; };
+		22D6A3291D2F426400C61FE6 /* NSDate+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3281D2F426400C61FE6 /* NSDate+Functions.swift */; };
+		22D6A32B1D34A90200C61FE6 /* WeekdayChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A32A1D34A90200C61FE6 /* WeekdayChooserSubController.swift */; };
+		22D6A32D1D34A95200C61FE6 /* WeekOfMonthChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A32C1D34A95200C61FE6 /* WeekOfMonthChooserSubController.swift */; };
+		22D6A32F1D34A96D00C61FE6 /* WeekOfQuarterChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A32E1D34A96D00C61FE6 /* WeekOfQuarterChooserSubController.swift */; };
+		22D6A3311D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3301D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift */; };
+		22D6A3331D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3321D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift */; };
+		22D6A3351D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3341D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift */; };
+		22D6A3371D34AA2B00C61FE6 /* SecondDayOfMonthChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3361D34AA2B00C61FE6 /* SecondDayOfMonthChooserSubController.swift */; };
+		22D6A3391D34AA7900C61FE6 /* MonthNumberOfQuarterChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3381D34AA7900C61FE6 /* MonthNumberOfQuarterChooserSubController.swift */; };
+		22D6A33B1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A33A1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift */; };
+		22D6A33D1D34AAA700C61FE6 /* MonthNumberOfYearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A33C1D34AAA700C61FE6 /* MonthNumberOfYearChooserSubController.swift */; };
+		22D6A33F1D34AACE00C61FE6 /* QuarterOfYearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A33E1D34AACE00C61FE6 /* QuarterOfYearChooserSubController.swift */; };
+		22D6A3411D34AAE200C61FE6 /* YearChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3401D34AAE200C61FE6 /* YearChooserSubController.swift */; };
+		22D6A3431D34ACDC00C61FE6 /* WeekNumberChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3421D34ACDC00C61FE6 /* WeekNumberChooserSubController.swift */; };
+		22D6A3451D34ADC900C61FE6 /* FirstDateChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3441D34ADC900C61FE6 /* FirstDateChooserSubController.swift */; };
+		22D6A3471D34ADDC00C61FE6 /* LastDateChooserSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3461D34ADDC00C61FE6 /* LastDateChooserSubController.swift */; };
+		22D6A3491D34B1C100C61FE6 /* MonthOfHalfYearChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3481D34B1C100C61FE6 /* MonthOfHalfYearChoicesProvider.swift */; };
+		22D6A34B1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A34A1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift */; };
+		22D6A34D1D34B4DF00C61FE6 /* WeekNumberOfQuarterChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A34C1D34B4DF00C61FE6 /* WeekNumberOfQuarterChoicesProvider.swift */; };
+		22D6A34F1D34B50600C61FE6 /* WeekNumberOfHalfYearChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A34E1D34B50600C61FE6 /* WeekNumberOfHalfYearChoicesProvider.swift */; };
+		22D6A3511D34B53900C61FE6 /* WeekNumberOfYearChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6A3501D34B53900C61FE6 /* WeekNumberOfYearChoicesProvider.swift */; };
 		22D81D981CD2CDDC0013E44D /* DefaultMerchant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D81D961CD2CDDC0013E44D /* DefaultMerchant+CoreDataProperties.swift */; };
 		22D81D991CD2CDDC0013E44D /* DefaultMerchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D81D971CD2CDDC0013E44D /* DefaultMerchant.swift */; };
 		22D81D9C1CD2D0170013E44D /* UnplannedSpending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D81D9A1CD2D0170013E44D /* UnplannedSpending+CoreDataProperties.swift */; };
@@ -269,6 +297,7 @@
 		222A5B461CC07EB700B70465 /* SpendingOptionsProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingOptionsProtocols.swift; sourceTree = "<group>"; };
 		223CACC81CE56C6C00A44176 /* NormalSourceAccountList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NormalSourceAccountList.storyboard; sourceTree = "<group>"; };
 		223CACCC1CE56D9400A44176 /* NormalSourceAccountListAndEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalSourceAccountListAndEditViewController.swift; sourceTree = "<group>"; };
+		22437E991D20FC4800D7AE82 /* QuarterChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterChoicesProvider.swift; sourceTree = "<group>"; };
 		2244C21D1CE6ADB0009F049C /* AccountListAndEditorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListAndEditorTest.swift; sourceTree = "<group>"; };
 		2244C21F1CE980AB009F049C /* ItemClearsProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemClearsProtocols.swift; sourceTree = "<group>"; };
 		2244C2231CE984E2009F049C /* SpendCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpendCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -303,6 +332,13 @@
 		2254FD3D1CB3554500E87A8A /* DebtCashFlowAnalyzerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCashFlowAnalyzerUITests.swift; sourceTree = "<group>"; };
 		2254FD3F1CB3554500E87A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22665E4F1D122058000C7C25 /* DateChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChooserSubController.swift; sourceTree = "<group>"; };
+		22665E511D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+IsSubControl.swift"; sourceTree = "<group>"; };
+		22665E531D13CB37000C7C25 /* DKDropMenu+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DKDropMenu+IsSubControl.swift"; sourceTree = "<group>"; };
+		22665E551D13D01A000C7C25 /* DropDown+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+IsSubControl.swift"; sourceTree = "<group>"; };
+		22665E571D14F5FB000C7C25 /* UITableView+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+IsSubControl.swift"; sourceTree = "<group>"; };
+		22665E591D15054E000C7C25 /* IsSubControlBoundsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsSubControlBoundsProvider.swift; sourceTree = "<group>"; };
+		22665E5B1D151519000C7C25 /* SubControlChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubControlChoiceDelegate.swift; sourceTree = "<group>"; };
+		22665E5F1D1B7DBC000C7C25 /* NumberChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberChoiceDelegate.swift; sourceTree = "<group>"; };
 		226782401CEB856F00BBF151 /* IsNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNavigable.swift; sourceTree = "<group>"; };
 		226782421CEBD46A00BBF151 /* StandardLookValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLookValues.swift; sourceTree = "<group>"; };
 		226782461CEBFAAD00BBF151 /* SourceAccountNameEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceAccountNameEditorViewController.swift; sourceTree = "<group>"; };
@@ -332,8 +368,6 @@
 		226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+IsSubController.swift"; sourceTree = "<group>"; };
 		226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsChoiceProvider.swift"; sourceTree = "<group>"; };
 		226BCB001D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfQuarterChoicesProvider.swift; sourceTree = "<group>"; };
-		226BCB021D0FCCE6009B5664 /* MonthOfQuarterChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfQuarterChoiceDelegate.swift; sourceTree = "<group>"; };
-		226BCB041D0FE18D009B5664 /* UIDatePicker+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+IsSubControl.swift"; sourceTree = "<group>"; };
 		226D560E1CCAF41100B806E6 /* OccursValues+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OccursValues+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		226D560F1CCAF41100B806E6 /* OccursValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccursValues.swift; sourceTree = "<group>"; };
 		226D56121CCAF48600B806E6 /* OccursValueUsageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccursValueUsageType.swift; sourceTree = "<group>"; };
@@ -355,7 +389,7 @@
 		22B4C9E51CD43FF30076162C /* MonthlyDateCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyDateCalculatorTests.swift; sourceTree = "<group>"; };
 		22C42B421D0AA1B700B4E771 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		22C42B471D0B9EBF00B4E771 /* ControlPresentationFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPresentationFormat.swift; sourceTree = "<group>"; };
-		22C42B491D0B9F5200B4E771 /* IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsSubControl.swift; sourceTree = "<group>"; };
+		22C42B491D0B9F5200B4E771 /* IsOccursUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsOccursUIControl.swift; sourceTree = "<group>"; };
 		22C42B4B1D0B9FB400B4E771 /* IsChoiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsChoiceProvider.swift; sourceTree = "<group>"; };
 		22C42B4D1D0B9FF600B4E771 /* IsSubControlChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsSubControlChoiceDelegate.swift; sourceTree = "<group>"; };
 		22C42B4F1D0BA03B00B4E771 /* SubControllerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubControllerStyle.swift; sourceTree = "<group>"; };
@@ -369,21 +403,43 @@
 		22C42B611D0BAE3C00B4E771 /* ReoccurranceBuilder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReoccurranceBuilder.storyboard; sourceTree = "<group>"; };
 		22C42B631D0BDFA400B4E771 /* HorizontalPickerView+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HorizontalPickerView+IsSubControl.swift"; sourceTree = "<group>"; };
 		22C42B651D0E582C00B4E771 /* DayOfMonthChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfMonthChoicesProvider.swift; sourceTree = "<group>"; };
-		22C42B671D0E5A4D00B4E771 /* DayOfMonthChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfMonthChoiceDelegate.swift; sourceTree = "<group>"; };
 		22C42B691D0E61F600B4E771 /* WeekdayChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayChoicesProvider.swift; sourceTree = "<group>"; };
 		22C42B6B1D0E623C00B4E771 /* String+Names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Names.swift"; sourceTree = "<group>"; };
-		22C42B6D1D0E636D00B4E771 /* WeekdayChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayChoiceDelegate.swift; sourceTree = "<group>"; };
 		22C42B6F1D0E7BAB00B4E771 /* MonthOfYearChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfYearChoicesProvider.swift; sourceTree = "<group>"; };
-		22C42B711D0E7BE700B4E771 /* MonthOfYearChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfYearChoiceDelegate.swift; sourceTree = "<group>"; };
 		22C5F9BF1D10EFBC00993B7E /* YearChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearChoicesProvider.swift; sourceTree = "<group>"; };
-		22C5F9C31D10F7AC00993B7E /* YearChoiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearChoiceDelegate.swift; sourceTree = "<group>"; };
 		22C5F9C51D10FA4700993B7E /* DateView+IsSubControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateView+IsSubControl.swift"; sourceTree = "<group>"; };
 		22C5F9C71D110BA800993B7E /* DateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		22C5F9E71D1129AC00993B7E /* DateChooserType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChooserType.swift; sourceTree = "<group>"; };
 		22CFEC801CB72C4D00FA0447 /* ReoccurranceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReoccurranceType.swift; sourceTree = "<group>"; };
 		22CFEC821CB72DF100FA0447 /* DebtPayoffType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtPayoffType.swift; sourceTree = "<group>"; };
 		22CFEC8D1CB735F700FA0447 /* CashFlowMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashFlowMediator.swift; sourceTree = "<group>"; };
+		22D1C7191D1D003A00D15FC9 /* DateChoiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateChoiceProvider.swift; sourceTree = "<group>"; };
 		22D4C96A1CD83BEA00634221 /* WeeklyDateCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyDateCalculatorTests.swift; sourceTree = "<group>"; };
+		22D6A31C1D2C824300C61FE6 /* NumberChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A31F1D2C85F800C61FE6 /* DayNumberChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayNumberChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3231D2C863400C61FE6 /* MonthNumberChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthNumberChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3251D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfMonthChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3281D2F426400C61FE6 /* NSDate+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Functions.swift"; sourceTree = "<group>"; };
+		22D6A32A1D34A90200C61FE6 /* WeekdayChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A32C1D34A95200C61FE6 /* WeekOfMonthChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekOfMonthChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A32E1D34A96D00C61FE6 /* WeekOfQuarterChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekOfQuarterChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3301D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekOfHalfYearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3321D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekOfYearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3341D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstDayOfMonthChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3361D34AA2B00C61FE6 /* SecondDayOfMonthChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondDayOfMonthChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3381D34AA7900C61FE6 /* MonthNumberOfQuarterChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthNumberOfQuarterChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A33A1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthNumberOfHalfYearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A33C1D34AAA700C61FE6 /* MonthNumberOfYearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthNumberOfYearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A33E1D34AACE00C61FE6 /* QuarterOfYearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterOfYearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3401D34AAE200C61FE6 /* YearChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3421D34ACDC00C61FE6 /* WeekNumberChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekNumberChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3441D34ADC900C61FE6 /* FirstDateChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstDateChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3461D34ADDC00C61FE6 /* LastDateChooserSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastDateChooserSubController.swift; sourceTree = "<group>"; };
+		22D6A3481D34B1C100C61FE6 /* MonthOfHalfYearChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfHalfYearChoicesProvider.swift; sourceTree = "<group>"; };
+		22D6A34A1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekNumberOfMonthChoicesProvider.swift; sourceTree = "<group>"; };
+		22D6A34C1D34B4DF00C61FE6 /* WeekNumberOfQuarterChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekNumberOfQuarterChoicesProvider.swift; sourceTree = "<group>"; };
+		22D6A34E1D34B50600C61FE6 /* WeekNumberOfHalfYearChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekNumberOfHalfYearChoicesProvider.swift; sourceTree = "<group>"; };
+		22D6A3501D34B53900C61FE6 /* WeekNumberOfYearChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekNumberOfYearChoicesProvider.swift; sourceTree = "<group>"; };
 		22D81D961CD2CDDC0013E44D /* DefaultMerchant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DefaultMerchant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22D81D971CD2CDDC0013E44D /* DefaultMerchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultMerchant.swift; sourceTree = "<group>"; };
 		22D81D9A1CD2D0170013E44D /* UnplannedSpending+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnplannedSpending+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -814,9 +870,7 @@
 			isa = PBXGroup;
 			children = (
 				22C42B421D0AA1B700B4E771 /* UIView+Constraints.swift */,
-				22C42B6B1D0E623C00B4E771 /* String+Names.swift */,
-				226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */,
-				226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */,
+				22D6A3281D2F426400C61FE6 /* NSDate+Functions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -836,10 +890,11 @@
 		22C42B451D0B9E6700B4E771 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				22C42B491D0B9F5200B4E771 /* IsSubControl.swift */,
+				22C42B491D0B9F5200B4E771 /* IsOccursUIControl.swift */,
 				226970321CF6006200B33C6A /* IsOccursContentDataSource.swift */,
 				22C42B4B1D0B9FB400B4E771 /* IsChoiceProvider.swift */,
 				22C42B4D1D0B9FF600B4E771 /* IsSubControlChoiceDelegate.swift */,
+				22665E591D15054E000C7C25 /* IsSubControlBoundsProvider.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -858,10 +913,16 @@
 		22C42B511D0BA0AC00B4E771 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */,
+				22C42B6B1D0E623C00B4E771 /* String+Names.swift */,
+				226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */,
 				22C42B531D0BA0E400B4E771 /* UIPickerView+IsSubControl.swift */,
 				22C42B631D0BDFA400B4E771 /* HorizontalPickerView+IsSubControl.swift */,
-				226BCB041D0FE18D009B5664 /* UIDatePicker+IsSubControl.swift */,
 				22C5F9C51D10FA4700993B7E /* DateView+IsSubControl.swift */,
+				22665E511D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift */,
+				22665E531D13CB37000C7C25 /* DKDropMenu+IsSubControl.swift */,
+				22665E551D13D01A000C7C25 /* DropDown+IsSubControl.swift */,
+				22665E571D14F5FB000C7C25 /* UITableView+IsSubControl.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -869,11 +930,10 @@
 		22C42B521D0BA0BF00B4E771 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				22D6A31E1D2C826900C61FE6 /* SubControllers */,
 				22C5F9C21D10F73D00993B7E /* Choice Delegates */,
 				22C5F9C11D10F72E00993B7E /* Choice Providers */,
-				22C42B5B1D0BA48900B4E771 /* OccursSubController.swift */,
 				22C42B5D1D0BA92A00B4E771 /* OccursVerticalViewController.swift */,
-				22665E4F1D122058000C7C25 /* DateChooserSubController.swift */,
 				22C42B5F1D0BA94C00B4E771 /* ReoccurranceBuilderViewController.swift */,
 				22C5F9C71D110BA800993B7E /* DateView.swift */,
 			);
@@ -890,6 +950,13 @@
 				22C42B571D0BA23100B4E771 /* OccursContentTypeChoicesProvider.swift */,
 				22C42B691D0E61F600B4E771 /* WeekdayChoicesProvider.swift */,
 				22C5F9BF1D10EFBC00993B7E /* YearChoicesProvider.swift */,
+				22D1C7191D1D003A00D15FC9 /* DateChoiceProvider.swift */,
+				22437E991D20FC4800D7AE82 /* QuarterChoicesProvider.swift */,
+				22D6A3481D34B1C100C61FE6 /* MonthOfHalfYearChoicesProvider.swift */,
+				22D6A34A1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift */,
+				22D6A34C1D34B4DF00C61FE6 /* WeekNumberOfQuarterChoicesProvider.swift */,
+				22D6A34E1D34B50600C61FE6 /* WeekNumberOfHalfYearChoicesProvider.swift */,
+				22D6A3501D34B53900C61FE6 /* WeekNumberOfYearChoicesProvider.swift */,
 			);
 			name = "Choice Providers";
 			sourceTree = "<group>";
@@ -897,12 +964,9 @@
 		22C5F9C21D10F73D00993B7E /* Choice Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				22C42B671D0E5A4D00B4E771 /* DayOfMonthChoiceDelegate.swift */,
-				226BCB021D0FCCE6009B5664 /* MonthOfQuarterChoiceDelegate.swift */,
-				22C42B711D0E7BE700B4E771 /* MonthOfYearChoiceDelegate.swift */,
 				22C42B591D0BA30A00B4E771 /* OccursContentTypeChoiceDelegate.swift */,
-				22C42B6D1D0E636D00B4E771 /* WeekdayChoiceDelegate.swift */,
-				22C5F9C31D10F7AC00993B7E /* YearChoiceDelegate.swift */,
+				22665E5B1D151519000C7C25 /* SubControlChoiceDelegate.swift */,
+				22665E5F1D1B7DBC000C7C25 /* NumberChoiceDelegate.swift */,
 			);
 			name = "Choice Delegates";
 			sourceTree = "<group>";
@@ -912,6 +976,34 @@
 			children = (
 			);
 			name = Code;
+			sourceTree = "<group>";
+		};
+		22D6A31E1D2C826900C61FE6 /* SubControllers */ = {
+			isa = PBXGroup;
+			children = (
+				22665E4F1D122058000C7C25 /* DateChooserSubController.swift */,
+				22D6A31F1D2C85F800C61FE6 /* DayNumberChooserSubController.swift */,
+				22D6A3251D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift */,
+				22D6A3341D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift */,
+				22D6A3231D2C863400C61FE6 /* MonthNumberChooserSubController.swift */,
+				22D6A33A1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift */,
+				22D6A3381D34AA7900C61FE6 /* MonthNumberOfQuarterChooserSubController.swift */,
+				22D6A33C1D34AAA700C61FE6 /* MonthNumberOfYearChooserSubController.swift */,
+				22D6A31C1D2C824300C61FE6 /* NumberChooserSubController.swift */,
+				22C42B5B1D0BA48900B4E771 /* OccursSubController.swift */,
+				22D6A33E1D34AACE00C61FE6 /* QuarterOfYearChooserSubController.swift */,
+				22D6A3361D34AA2B00C61FE6 /* SecondDayOfMonthChooserSubController.swift */,
+				22D6A32A1D34A90200C61FE6 /* WeekdayChooserSubController.swift */,
+				22D6A3421D34ACDC00C61FE6 /* WeekNumberChooserSubController.swift */,
+				22D6A3301D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift */,
+				22D6A32C1D34A95200C61FE6 /* WeekOfMonthChooserSubController.swift */,
+				22D6A32E1D34A96D00C61FE6 /* WeekOfQuarterChooserSubController.swift */,
+				22D6A3321D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift */,
+				22D6A3401D34AAE200C61FE6 /* YearChooserSubController.swift */,
+				22D6A3441D34ADC900C61FE6 /* FirstDateChooserSubController.swift */,
+				22D6A3461D34ADDC00C61FE6 /* LastDateChooserSubController.swift */,
+			);
+			name = SubControllers;
 			sourceTree = "<group>";
 		};
 		22E21BB61CEFE40800CA43D9 /* Types */ = {
@@ -1047,13 +1139,16 @@
 				TargetAttributes = {
 					2254FD161CB3554400E87A8A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					2254FD2D1CB3554500E87A8A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2254FD161CB3554400E87A8A;
 					};
 					2254FD381CB3554500E87A8A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2254FD161CB3554400E87A8A;
 					};
 				};
@@ -1121,11 +1216,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D6A3311D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift in Sources */,
 				2253F94B1CED4D6D00CCEDDB /* ColorTupleTableViewController.swift in Sources */,
 				222A5B241CC07C1500B70465 /* DebtAccount+CoreDataProperties.swift in Sources */,
 				226970541CFA39BC00B33C6A /* ASBubbleDrag.swift in Sources */,
+				22D6A3261D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift in Sources */,
 				222A5B291CC07C1500B70465 /* Reoccurrance+CoreDataProperties.swift in Sources */,
-				22C42B4A1D0B9F5200B4E771 /* IsSubControl.swift in Sources */,
+				22C42B4A1D0B9F5200B4E771 /* IsOccursUIControl.swift in Sources */,
 				22F89D001CB4D18800B4417E /* DebtDatedBalance.swift in Sources */,
 				22C5F9C01D10EFBC00993B7E /* YearChoicesProvider.swift in Sources */,
 				2254FD231CB3554400E87A8A /* DebtCashFlowAnalyzer.xcdatamodeld in Sources */,
@@ -1133,6 +1230,7 @@
 				22F89D061CB4D18800B4417E /* SavingsAccount.swift in Sources */,
 				22830AD41CE1958A00EFD0A4 /* ProposedReoccurrance.swift in Sources */,
 				22F89CDC1CB4D18800B4417E /* DebtPayment.swift in Sources */,
+				22D6A32B1D34A90200C61FE6 /* WeekdayChooserSubController.swift in Sources */,
 				22FF50DF1CBDBB3800C66831 /* FixedDebtPaymentCalculator.swift in Sources */,
 				22DAF7621CBCA8BB0011FCC3 /* NameProtocols.swift in Sources */,
 				226D56131CCAF48600B806E6 /* OccursValueUsageType.swift in Sources */,
@@ -1142,14 +1240,16 @@
 				222A5B361CC07C1500B70465 /* CategoryShadowAccount+CoreDataProperties.swift in Sources */,
 				22F55C1A1CEAACF5005018AB /* ItemMethodClearsEditorViewController.swift in Sources */,
 				22F89CE81CB4D18800B4417E /* TransferPayment.swift in Sources */,
+				22665E561D13D01A000C7C25 /* DropDown+IsSubControl.swift in Sources */,
 				226D561D1CCB40DA00B806E6 /* MonthsAndDaysDateCalculator.swift in Sources */,
 				22F55C141CEA910B005018AB /* ViewController.swift in Sources */,
+				22437E9A1D20FC4800D7AE82 /* QuarterChoicesProvider.swift in Sources */,
 				222A5B3F1CC07C1500B70465 /* FixedDebtPaymentCalculator+CoreDataProperties.swift in Sources */,
 				226D561F1CCED6D000B806E6 /* WeeksInMonthDateCalculator.swift in Sources */,
 				222A5B351CC07C1500B70465 /* VariableDebtPaymentCalculator+CoreDataProperties.swift in Sources */,
-				22C42B721D0E7BE700B4E771 /* MonthOfYearChoiceDelegate.swift in Sources */,
 				2269705C1CFA39E700B33C6A /* roundImageView.swift in Sources */,
 				22F89D231CB4DA2000B4417E /* DebtBalanceType.swift in Sources */,
+				22D1C71A1D1D003A00D15FC9 /* DateChoiceProvider.swift in Sources */,
 				22C42B661D0E582C00B4E771 /* DayOfMonthChoicesProvider.swift in Sources */,
 				222A5B261CC07C1500B70465 /* SpendingOptions+CoreDataProperties.swift in Sources */,
 				222A5B281CC07C1500B70465 /* SavingsAccount+CoreDataProperties.swift in Sources */,
@@ -1160,28 +1260,36 @@
 				22C42B431D0AA1B700B4E771 /* UIView+Constraints.swift in Sources */,
 				22FF50C51CBDB92000C66831 /* AccountProtocols.swift in Sources */,
 				22F89D121CB4D18800B4417E /* DebtPayoffGenerator.swift in Sources */,
-				22C5F9C41D10F7AC00993B7E /* YearChoiceDelegate.swift in Sources */,
 				22D81D9D1CD2D0170013E44D /* UnplannedSpending.swift in Sources */,
 				22F55C1C1CEABD78005018AB /* ItemWhenClearsEditorViewController.swift in Sources */,
 				22FF50D51CBDBB3800C66831 /* VariableDebtPaymentCalculator.swift in Sources */,
 				22F89CEC1CB4D18800B4417E /* Account.swift in Sources */,
 				22F55C1E1CEAC238005018AB /* ItemSendMethodEditorViewController.swift in Sources */,
+				22D6A3411D34AAE200C61FE6 /* YearChooserSubController.swift in Sources */,
+				22D6A3201D2C85F800C61FE6 /* DayNumberChooserSubController.swift in Sources */,
 				222A5B2F1CC07C1500B70465 /* Transaction+CoreDataProperties.swift in Sources */,
 				22C5F9E81D1129AC00993B7E /* DateChooserType.swift in Sources */,
 				226782411CEB856F00BBF151 /* IsNavigable.swift in Sources */,
 				225485601CE2D9620011093B /* ProposedSourceAccount.swift in Sources */,
 				225117981CC2076C005CFA28 /* TransactionProtocols.swift in Sources */,
 				22C42B6A1D0E61F600B4E771 /* WeekdayChoicesProvider.swift in Sources */,
+				22D6A31D1D2C824300C61FE6 /* NumberChooserSubController.swift in Sources */,
 				222A5B231CC07C1500B70465 /* BudgetedSpending+CoreDataProperties.swift in Sources */,
 				226D56151CCB385500B806E6 /* AbstractDateCalculator.swift in Sources */,
 				22F55C161CEA92A9005018AB /* ItemsClearEditorViewController.swift in Sources */,
+				22D6A3491D34B1C100C61FE6 /* MonthOfHalfYearChoicesProvider.swift in Sources */,
 				22D81D981CD2CDDC0013E44D /* DefaultMerchant+CoreDataProperties.swift in Sources */,
 				22F89CE61CB4D18800B4417E /* Reoccurrance.swift in Sources */,
 				22C5F9C61D10FA4700993B7E /* DateView+IsSubControl.swift in Sources */,
 				222A5B311CC07C1500B70465 /* GoalSaving+CoreDataProperties.swift in Sources */,
 				221486401CE4251C005DF281 /* UILookProtocols.swift in Sources */,
 				2267D2711CEEBB210090A576 /* HorizontalPickerViewController.swift in Sources */,
+				22D6A3241D2C863400C61FE6 /* MonthNumberChooserSubController.swift in Sources */,
+				22D6A3471D34ADDC00C61FE6 /* LastDateChooserSubController.swift in Sources */,
+				22665E541D13CB37000C7C25 /* DKDropMenu+IsSubControl.swift in Sources */,
 				226782491CEBFD7C00BBF151 /* AccountSelectedDelegate.swift in Sources */,
+				22D6A3371D34AA2B00C61FE6 /* SecondDayOfMonthChooserSubController.swift in Sources */,
+				22665E5C1D151519000C7C25 /* SubControlChoiceDelegate.swift in Sources */,
 				22830AC91CE15B9300EFD0A4 /* ClearsTypes.swift in Sources */,
 				222A5B1E1CC07C1500B70465 /* CashFlowMediator+CoreDataProperties.swift in Sources */,
 				222A5B2A1CC07C1500B70465 /* PlannedSpending+CoreDataProperties.swift in Sources */,
@@ -1195,18 +1303,22 @@
 				22F801531D07D57600E5A046 /* DropDown.swift in Sources */,
 				222A5B221CC07C1500B70465 /* BudgetedSpendingGenerator+CoreDataProperties.swift in Sources */,
 				226970351CF7C8EF00B33C6A /* OccursData.swift in Sources */,
+				22D6A3331D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift in Sources */,
 				2253F9541CED82EC00CCEDDB /* PhonyDateHolder.swift in Sources */,
 				226970581CFA39DB00B33C6A /* BubbleDragView.swift in Sources */,
+				22D6A3351D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift in Sources */,
 				222A5B1F1CC07C1500B70465 /* TransferPayment+CoreDataProperties.swift in Sources */,
 				222A5B391CC07C1500B70465 /* BudgetedPayment+CoreDataProperties.swift in Sources */,
 				2211C9D01CD961830032CB88 /* SpendingDateMitigation.swift in Sources */,
+				22D6A33B1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift in Sources */,
 				226BCB011D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift in Sources */,
-				22C42B6E1D0E636D00B4E771 /* WeekdayChoiceDelegate.swift in Sources */,
 				2269705A1CFA39E200B33C6A /* roundCornerView.swift in Sources */,
 				2254FD1D1CB3554400E87A8A /* PhonyAccountsHolder.swift in Sources */,
+				22D6A34B1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift in Sources */,
 				222A5B2E1CC07C1500B70465 /* FundsTransfer+CoreDataProperties.swift in Sources */,
 				22FF50C31CBDB67B00C66831 /* SpendCategoryProtocols.swift in Sources */,
 				226BCAFD1D0F936D009B5664 /* UILabel+IsSubController.swift in Sources */,
+				22665E5A1D15054E000C7C25 /* IsSubControlBoundsProvider.swift in Sources */,
 				2253F94D1CED53D300CCEDDB /* ColorTupleCollectionViewCell.swift in Sources */,
 				22C42B5E1D0BA92A00B4E771 /* OccursVerticalViewController.swift in Sources */,
 				22F89CEA1CB4D18800B4417E /* PlannedSpending.swift in Sources */,
@@ -1215,20 +1327,26 @@
 				22F89CFC1CB4D18800B4417E /* FundsTransfer.swift in Sources */,
 				22C42B4C1D0B9FB400B4E771 /* IsChoiceProvider.swift in Sources */,
 				22FF50DD1CBDBB3800C66831 /* SpendingOptions.swift in Sources */,
+				22D6A33F1D34AACE00C61FE6 /* QuarterOfYearChooserSubController.swift in Sources */,
 				2253F9561CED8D7300CCEDDB /* LookTheme.swift in Sources */,
 				222A5B331CC07C1500B70465 /* DatedBalance+CoreDataProperties.swift in Sources */,
 				222A5B471CC07EB700B70465 /* SpendingOptionsProtocols.swift in Sources */,
+				22D6A32F1D34A96D00C61FE6 /* WeekOfQuarterChooserSubController.swift in Sources */,
+				22D6A34F1D34B50600C61FE6 /* WeekNumberOfHalfYearChoicesProvider.swift in Sources */,
 				2267D26F1CEEB7710090A576 /* DayOfMonthPickerViewController.swift in Sources */,
 				22FF50BF1CBDB3AE00C66831 /* MediatorProtocols.swift in Sources */,
-				226BCB031D0FCCE6009B5664 /* MonthOfQuarterChoiceDelegate.swift in Sources */,
 				2244C2241CE984E2009F049C /* SpendCategory+CoreDataProperties.swift in Sources */,
 				22CFEC831CB72DF100FA0447 /* DebtPayoffType.swift in Sources */,
+				22D6A3431D34ACDC00C61FE6 /* WeekNumberChooserSubController.swift in Sources */,
 				222A5B3E1CC07C1500B70465 /* DebtDatedBalance+CoreDataProperties.swift in Sources */,
+				22665E581D14F5FB000C7C25 /* UITableView+IsSubControl.swift in Sources */,
 				22F89CE41CB4D18800B4417E /* CategoryShadowAccount.swift in Sources */,
 				2267824D1CEC0DCB00BBF151 /* StubbedMediator.swift in Sources */,
 				225485621CE2E8530011093B /* StubbedSpendingOptions.swift in Sources */,
 				222A5B2D1CC07C1500B70465 /* Merchant+CoreDataProperties.swift in Sources */,
+				22D6A3291D2F426400C61FE6 /* NSDate+Functions.swift in Sources */,
 				226970561CFA39C500B33C6A /* BubbleCollectionCell.swift in Sources */,
+				22665E521D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift in Sources */,
 				222A5B451CC07E1400B70465 /* SpendingGeneratorProtocols.swift in Sources */,
 				22C42B501D0BA03B00B4E771 /* SubControllerStyle.swift in Sources */,
 				22F89CFE1CB4D18800B4417E /* SpendingGenerator.swift in Sources */,
@@ -1243,7 +1361,10 @@
 				22CFEC8F1CB735F700FA0447 /* CashFlowMediator.swift in Sources */,
 				22C42B641D0BDFA400B4E771 /* HorizontalPickerView+IsSubControl.swift in Sources */,
 				221F78771CC9B1140025DDA5 /* ModelBuilder.swift in Sources */,
+				22D6A3451D34ADC900C61FE6 /* FirstDateChooserSubController.swift in Sources */,
+				22D6A3511D34B53900C61FE6 /* WeekNumberOfYearChoicesProvider.swift in Sources */,
 				22C42B481D0B9EBF00B4E771 /* ControlPresentationFormat.swift in Sources */,
+				22D6A34D1D34B4DF00C61FE6 /* WeekNumberOfQuarterChoicesProvider.swift in Sources */,
 				226D561B1CCB3B3100B806E6 /* DaysOfMonthDateCalculator.swift in Sources */,
 				226D56191CCB3AB900B806E6 /* DaysIntervalDateCalculator.swift in Sources */,
 				22FF50D71CBDBB3800C66831 /* OrderedDebtAccount.swift in Sources */,
@@ -1253,15 +1374,15 @@
 				222A5B271CC07C1500B70465 /* DebtBalanceRate+CoreDataProperties.swift in Sources */,
 				226D56101CCAF41100B806E6 /* OccursValues+CoreDataProperties.swift in Sources */,
 				226782431CEBD46A00BBF151 /* StandardLookValues.swift in Sources */,
-				22C42B681D0E5A4D00B4E771 /* DayOfMonthChoiceDelegate.swift in Sources */,
 				2253F9521CED7F2500CCEDDB /* FirstLastDatesPickerViewController.swift in Sources */,
 				222A5B1D1CC07C1500B70465 /* DebtServicing+CoreDataProperties.swift in Sources */,
 				22F89D1E1CB4D62E00B4417E /* AccountType.swift in Sources */,
 				22830ACD1CE1601500EFD0A4 /* ItemSendMethodType.swift in Sources */,
 				2267D26A1CEEAC470090A576 /* DayOfWeekPickerViewController.swift in Sources */,
 				22C42B581D0BA23100B4E771 /* OccursContentTypeChoicesProvider.swift in Sources */,
-				226BCB051D0FE18D009B5664 /* UIDatePicker+IsSubControl.swift in Sources */,
 				222A5B301CC07C1500B70465 /* SourceAccount+CoreDataProperties.swift in Sources */,
+				22D6A33D1D34AAA700C61FE6 /* MonthNumberOfYearChooserSubController.swift in Sources */,
+				22D6A3391D34AA7900C61FE6 /* MonthNumberOfQuarterChooserSubController.swift in Sources */,
 				22F89CEE1CB4D18800B4417E /* DebtBalanceRate.swift in Sources */,
 				22830AD21CE1922800EFD0A4 /* PlannedSpendingType.swift in Sources */,
 				2267D2731CEEBB820090A576 /* HPCollectionVC.swift in Sources */,
@@ -1271,6 +1392,7 @@
 				222A5B341CC07C1500B70465 /* Bank+CoreDataProperties.swift in Sources */,
 				221486461CE4307B005DF281 /* SourceAccountMasterListTableViewController.swift in Sources */,
 				22F89D021CB4D18800B4417E /* BudgetedSpendingGenerator.swift in Sources */,
+				22D6A32D1D34A95200C61FE6 /* WeekOfMonthChooserSubController.swift in Sources */,
 				222A5B2C1CC07C1500B70465 /* DebtPayment+CoreDataProperties.swift in Sources */,
 				22C42B701D0E7BAB00B4E771 /* MonthOfYearChoicesProvider.swift in Sources */,
 				22C5F9C81D110BA800993B7E /* DateView.swift in Sources */,
@@ -1278,6 +1400,7 @@
 				22F89CF01CB4D18800B4417E /* DatedBalance.swift in Sources */,
 				22D81D991CD2CDDC0013E44D /* DefaultMerchant.swift in Sources */,
 				22F89D0C1CB4D18800B4417E /* BudgetedSpending.swift in Sources */,
+				22665E601D1B7DBC000C7C25 /* NumberChoiceDelegate.swift in Sources */,
 				22F89CF61CB4D18800B4417E /* BudgetedPayment.swift in Sources */,
 				226782471CEBFAAD00BBF151 /* SourceAccountNameEditorViewController.swift in Sources */,
 				2254FD1B1CB3554400E87A8A /* AppDelegate.swift in Sources */,
@@ -1453,6 +1576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1464,6 +1588,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1475,6 +1600,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DebtCashFlowAnalyzer.app/DebtCashFlowAnalyzer";
 			};
 			name = Debug;
@@ -1487,6 +1613,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DebtCashFlowAnalyzer.app/DebtCashFlowAnalyzer";
 			};
 			name = Release;
@@ -1498,6 +1625,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = DebtCashFlowAnalyzer;
 			};
 			name = Debug;
@@ -1509,6 +1637,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coffey.DebtCashFlowAnalyzerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = DebtCashFlowAnalyzer;
 			};
 			name = Release;
