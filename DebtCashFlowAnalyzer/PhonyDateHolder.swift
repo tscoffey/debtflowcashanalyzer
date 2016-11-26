@@ -10,22 +10,22 @@ import Foundation
 
 class PhonyDateHolder:HasFirstLastDates {
     
-    var fDate:NSDate?
-    var lDate:NSDate?
+    var fDate:Date?
+    var lDate:Date?
     
-    var firstDateIs: NSDate? {
+    var firstDateIs: Date? {
         get {return fDate }
         set (aValue) { fDate=aValue }
         
     }
     
-    var lastDateIs: NSDate? {
+    var lastDateIs: Date? {
         get {return lDate }
         set (aValue) { lDate=aValue }
         
     }
     
-    init (first:NSDate?, last:NSDate? ) {
+    init (first:Date?, last:Date? ) {
         fDate=first
         lDate=last
     }

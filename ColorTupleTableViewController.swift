@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 class ColorTupleTableViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -17,7 +37,7 @@ class ColorTupleTableViewController: UIViewController,UICollectionViewDelegate, 
         super.viewDidLoad()
         
 
-        colorTuples=allColorTuples().sort(){
+        colorTuples=allColorTuples().sorted(){
             if $0.group < $1.group { return true }
             if $0.group == $1.group { return $0.name < $1.name }
             return false
@@ -54,13 +74,13 @@ class ColorTupleTableViewController: UIViewController,UICollectionViewDelegate, 
 
     // MARK: - Table view data source
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         let keys=tuplesByGroup.keys
         let x=keys.count
         return x
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let all=tuplesByGroup[section]
         if all == nil {
             return 0
@@ -73,10 +93,10 @@ class ColorTupleTableViewController: UIViewController,UICollectionViewDelegate, 
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 
-   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-        let cell=collectionView.dequeueReusableCellWithReuseIdentifier("ColorCell", forIndexPath: indexPath) as! ColorTupleCollectionViewCell
-        let tuple=tuplesByGroup[indexPath.section]![indexPath.row]
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorTupleCollectionViewCell
+        let tuple=tuplesByGroup[(indexPath as NSIndexPath).section]![(indexPath as NSIndexPath).row]
 
         cell.bgColor=tuple.color
         cell.label.text=tuple.name

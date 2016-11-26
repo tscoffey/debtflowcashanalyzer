@@ -8,28 +8,40 @@
 
 import UIKit
 
-enum ControlPresentationFormat {
-    case ScrolledHorizontally,
-    ScrolledVertically,
-    PageView
+enum ControlPresentationFormat:IsSubControlBoundsProvider {
+    case scrolledHorizontally,
+    scrolledVertically,
+    pageView
     
     
-    func buildConstraintsFor(control:IsSubControl, relativeTo:OccursSubController?, superView:UIView, style:SubControllerStyle) ->[NSLayoutConstraint] {
+    func buildConstraintsFor(_ control:IsOccursUIControl,
+                             relativeTo:OccursSubController?,
+                             superView:UIView,
+                             style:SubControllerStyle,
+                             boundsProvider:IsSubControlBoundsProvider?=nil) ->[NSLayoutConstraint] {
         
         var constraints=[NSLayoutConstraint]()
         var relativeView:UIView?=nil
+        var bounds:IsSubControlBoundsProvider
         if let relTo=relativeTo {
             relativeView=self.viewToAnchorTo(relTo)
         }
+        if let b=boundsProvider {
+            bounds=b
+        } else {
+            bounds=self
+        }
         switch self {
-        case .ScrolledVertically:
+        case .scrolledVertically:
             if relativeView != nil {
                 constraints.append(
-                    relativeView!.constraintFromBottomToTopOf(control.controlView, offset:self.intergapSize())
+                    relativeView!.constraintFromBottomToTopOf(control.controlView,
+                        offset:bounds.verticalOffsetFor(self, style: style))
                 )
             } else {
                 constraints.append(
-                        superView.constraintFromTopToTopOf(control.controlView, offset:self.intergapSize())
+                        superView.constraintFromTopToTopOf(control.controlView,
+                            offset:bounds.verticalOffsetFor(self, style: style))
                 )
             }
             constraints.append(
@@ -41,14 +53,16 @@ enum ControlPresentationFormat {
             constraints.append(
                     control.controlView.constraintForHeightEqualing(style.defaultHeight())
                 )
-        case .ScrolledHorizontally:
+        case .scrolledHorizontally:
             if relativeView != nil {
                 constraints.append(
-                    relativeView!.constraintFromRightToLeftOf(control.controlView, offset:self.intergapSize())
+                    relativeView!.constraintFromRightToLeftOf(control.controlView,
+                        offset:bounds.horizontalOffsetFor(self, style: style))
                 )
             } else {
                 constraints.append(
-                    superView.constraintFromLeftToLeftOf(control.controlView, offset:self.intergapSize())
+                    superView.constraintFromLeftToLeftOf(control.controlView,
+                        offset:bounds.horizontalOffsetFor(self, style: style))
                 )
             }
             constraints.append(
@@ -67,43 +81,47 @@ enum ControlPresentationFormat {
     }
     
     func intergapSize()->CGFloat { return 8 }
-    func widthPercentage(style:SubControllerStyle)->CGFloat {
+    func widthPercentage(_ style:SubControllerStyle)->CGFloat {
         switch style {
-        case .DateStyle: return 0.9
+        case .dateStyle: return 0.9
         default: return 0.7
         }
     }
-    func heightPercentage(style:SubControllerStyle)->CGFloat {
+    func heightPercentage(_ style:SubControllerStyle)->CGFloat {
         switch style {
-        case .DateStyle: return 1.0
+        case .dateStyle: return 1.0
         default: return 0.6
         }
     }
-    func defaultHeight()->CGFloat { return 80 }
-    func defaultWidth()->CGFloat { return 100 }
+    func defaultHeight()->CGFloat {
+        return 80
+    }
+    func defaultWidth()->CGFloat {
+        return 100
+    }
 
     
-    func controllerStyleFor(type:OccursControlContentType) -> SubControllerStyle {
-        if type.isLabel() { return SubControllerStyle.LabelStyle }
-        if type.isDateChooser() { return SubControllerStyle.DateStyle }
+    func controllerStyleFor(_ type:OccursControlContentType) -> SubControllerStyle {
+        if type.isLabel() { return SubControllerStyle.labelStyle }
+        if type.isDateChooser() { return SubControllerStyle.dateStyle }
         let subType=type.occursControlSubType()
         switch self {
-            case .ScrolledVertically:
+            case .scrolledVertically:
                 switch subType {
-                default:return SubControllerStyle.HorizontalStyle
+                default:return SubControllerStyle.horizontalStyle
                 }
-            case .ScrolledHorizontally:
+            case .scrolledHorizontally:
                 switch subType {
-                default: return SubControllerStyle.VerticalStyle
+                default: return SubControllerStyle.verticalStyle
                 }
-            default: return SubControllerStyle.HorizontalStyle
+            default: return SubControllerStyle.horizontalStyle
         }
     }
     
-    func viewToAnchorTo(subController:OccursSubController) -> UIView? {
+    func viewToAnchorTo(_ subController:OccursSubController) -> UIView? {
         switch self {
-        case .ScrolledHorizontally: return subController.rightMostViewForAnchoring()
-        case .ScrolledVertically: return subController.bottomMostViewForAnchoring()
+        case .scrolledHorizontally: return subController.rightMostViewForAnchoring()
+        case .scrolledVertically: return subController.bottomMostViewForAnchoring()
         default: return nil
         }
     }

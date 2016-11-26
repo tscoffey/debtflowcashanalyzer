@@ -14,11 +14,11 @@ class Bank: NSManagedObject,IsBank {
     
     static var entityName="Bank"
 
-    class func bankNamed(named:String, findInContext context:NSManagedObjectContext) -> Bank? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func bankNamed(_ named:String, findInContext context:NSManagedObjectContext) -> Bank? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [Bank]
+            let fetchData = try context.fetch(fetch) as! [Bank]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
@@ -29,15 +29,15 @@ class Bank: NSManagedObject,IsBank {
         }
     }
 
-    class func bankNamed(named:String, insertIntoContext context:NSManagedObjectContext) -> Bank? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func bankNamed(_ named:String, insertIntoContext context:NSManagedObjectContext) -> Bank? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [Bank]
+            let fetchData = try context.fetch(fetch) as! [Bank]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Bank
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! Bank
                 newOne.name=named
                 return newOne
             }
@@ -45,7 +45,7 @@ class Bank: NSManagedObject,IsBank {
             return nil
         }
     }
-    class func bankNamed(named:String, insertIntoModel model:CashFlowMediator) -> Bank? {
+    class func bankNamed(_ named:String, insertIntoModel model:CashFlowMediator) -> Bank? {
         guard let newOne=self.bankNamed(named, insertIntoContext: model.managedObjectContext!)
             else { return nil }
         
@@ -82,7 +82,7 @@ class Bank: NSManagedObject,IsBank {
     }
     
     var accountsMutableSet:NSMutableSet {
-        get { return (self.managedObjectContext?.mutableSetValueForKey("accounts"))! }
+        get { return (self.managedObjectContext?.mutableSetValue(forKey: "accounts"))! }
         set (aValue) {
             self.accounts=aValue
         }

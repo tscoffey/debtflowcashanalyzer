@@ -20,7 +20,7 @@ class SourceAccountMasterListTableViewController: UITableViewController {
     lazy var accounts:[IsSourceAccount] =  { [unowned self] in
         return self.accountsHolder!.accountsAre.filter()
             {$0.accountType.isSourceAccount()}.map()
-                {$0 as! IsSourceAccount}.sort(){$0.nameIs < $1.nameIs}
+                {$0 as! IsSourceAccount}.sorted(){$0.nameIs < $1.nameIs}
     }()
     
 
@@ -30,11 +30,11 @@ class SourceAccountMasterListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         let lv=appDelegate().lookValues
-        lv.applyBackgroundColor(lv.accountListTableBackgroundColor, toView:self.tableView)
-        lv.applyTintColor(lv.accountListTableTintColor, toView:self.tableView)
+        lv?.applyBackgroundColor(lv?.accountListTableBackgroundColor, toView:self.tableView)
+        lv?.applyTintColor(lv?.accountListTableTintColor, toView:self.tableView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
 
     }
@@ -46,43 +46,43 @@ class SourceAccountMasterListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
        return accounts.count
 
     }
 
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selected=self.accounts[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected=self.accounts[(indexPath as NSIndexPath).row]
         if let del=self.accountSelectedDelegate {
             del.didSelectSourceAccount(selected)
         }
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let del=self.accountSelectedDelegate {
             del.didDeselectSourceAccount()
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
         let lv=appDelegate().lookValues
-        if let c=lv.accountListTableTextColor {
+        if let c=lv?.accountListTableTextColor {
             cell.textLabel?.textColor=c
         }
 
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.reuseCellName, forIndexPath: indexPath)
-        let acct=self.accounts[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseCellName, for: indexPath)
+        let acct=self.accounts[(indexPath as NSIndexPath).row]
         cell.textLabel?.text=acct.nameIs
         return cell
     }

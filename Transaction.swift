@@ -34,17 +34,17 @@ class Transaction: NSManagedObject,IsTransaction {
             return self.tranPlannedAmountIs
         }
     }
-    var tranDueDateIs:NSDate {
-        get { return self.dueDate }
+    var tranDueDateIs:Date {
+        get { return self.dueDate as Date }
         set (aValue) { self.dueDate=aValue}
     }
-    var tranSendDateIs:NSDate {
+    var tranSendDateIs:Date {
         let today = self.tranDueDateIs
-        let next = NSCalendar.currentCalendar().dateByAddingUnit(
-            .Day,
+        let next = (Calendar.current as NSCalendar).date(
+            byAdding: .day,
             value: (0 - self.plannedSpendingIs.leadDaysIs),
-            toDate: today,
-            options: NSCalendarOptions(rawValue: 0))
+            to: today,
+            options: NSCalendar.Options(rawValue: 0))
         return next!
     }
     var sourceAccountIs:IsSourceAccount {

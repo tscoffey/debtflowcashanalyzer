@@ -10,21 +10,21 @@ import Foundation
 
 protocol IsReoccurringDateCalculator {
     
-    func nextDateAfter(date:NSDate)->NSDate?
-    func nextDateOnOrAfter(date:NSDate)->NSDate?
-    func prevDateBefore(date:NSDate)->NSDate?
-    func prevDateOnOrBefore(date:NSDate)->NSDate?
-    func datesAfter(date:NSDate)->[NSDate]
-    func datesOnOrAfter(date:NSDate)->[NSDate]
-    func datesBefore(date:NSDate)->[NSDate]
-    func datesOnOrBefore(date:NSDate)->[NSDate]
-    func nextDateBetween(startDate:NSDate, toDate:NSDate)->NSDate?
-    func nextDatesBetween(startDate:NSDate, toDate:NSDate)->[NSDate]
+    func nextDateAfter(_ date:Date)->Date?
+    func nextDateOnOrAfter(_ date:Date)->Date?
+    func prevDateBefore(_ date:Date)->Date?
+    func prevDateOnOrBefore(_ date:Date)->Date?
+    func datesAfter(_ date:Date)->[Date]
+    func datesOnOrAfter(_ date:Date)->[Date]
+    func datesBefore(_ date:Date)->[Date]
+    func datesOnOrBefore(_ date:Date)->[Date]
+    func nextDateBetween(_ startDate:Date, toDate:Date)->Date?
+    func nextDatesBetween(_ startDate:Date, toDate:Date)->[Date]
     
-    func daysUntilNextDateOnOrAfter(date:NSDate)->Int
-    func daysUntilNextDateAfter(date:NSDate)->Int
-    func daysSincePrevDateOnOrBefore(date:NSDate)->Int
-    func daysSincePrevDateBefore(date:NSDate)->Int
+    func daysUntilNextDateOnOrAfter(_ date:Date)->Int
+    func daysUntilNextDateAfter(_ date:Date)->Int
+    func daysSincePrevDateOnOrBefore(_ date:Date)->Int
+    func daysSincePrevDateBefore(_ date:Date)->Int
 
 
     

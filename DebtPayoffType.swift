@@ -7,5 +7,5 @@
 //
 
 enum DebtPayoffType {
-    case LowestBalanceFirst,HighestBalanceFirst,LowestRateFirst, HighestRateFirst,LowestChargesFirst,HighestChargesFirst,SpecificOrder
+    case lowestBalanceFirst,highestBalanceFirst,lowestRateFirst, highestRateFirst,lowestChargesFirst,highestChargesFirst,specificOrder
 }

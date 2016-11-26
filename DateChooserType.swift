@@ -7,5 +7,5 @@
 //
 
 enum DateChooserType:Int {
-    case FullDate, MonthAndYearOnly, YearOnly
+    case fullDate, monthAndYearOnly, quarterAndYearOnly, yearOnly
 }

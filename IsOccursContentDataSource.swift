@@ -43,8 +43,8 @@ protocol IsOccursContentDataSource {
     
     var year:Int? { get set }
     
-    var firstUsedDate:NSDate? { get set}
-    var lastUsedDate:NSDate? { get set}
+    var firstUsedDate:Date? { get set}
+    var lastUsedDate:Date? { get set}
     
     func hasFirstUsedDate()->Bool
     func hasLastUsedDate()->Bool
@@ -101,8 +101,8 @@ extension IsOccursContentDataSource {
     
     var year:[Int]? { get { return nil} set (aValue) {} }
     
-    var firstUsedDate:NSDate? { get { return nil} set (aValue) {} }
-    var lastUsedDate:NSDate? { get { return nil} set (aValue) {} }
+    var firstUsedDate:Date? { get { return nil} set (aValue) {} }
+    var lastUsedDate:Date? { get { return nil} set (aValue) {} }
     
     func hasFirstUsedDate()->Bool { if self.firstUsedDate == nil { return false } else { return true } }
     func hasLastUsedDate()->Bool { if self.lastUsedDate == nil { return false } else { return true }}

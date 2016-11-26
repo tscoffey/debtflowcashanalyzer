@@ -9,152 +9,152 @@
 import UIKit
 
 extension UIView {
-    func constraintFromTopToTopOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromTopToTopOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Top,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.top,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Top,
+                                  attribute: NSLayoutAttribute.top,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromBottomToTopOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromBottomToTopOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Top,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.top,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Bottom,
+                                  attribute: NSLayoutAttribute.bottom,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromTopToBottomOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromTopToBottomOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Bottom,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.bottom,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Top,
+                                  attribute: NSLayoutAttribute.top,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromBottomToBottomOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromBottomToBottomOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Bottom,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.bottom,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Bottom,
+                                  attribute: NSLayoutAttribute.bottom,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromLeftToLeftOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromLeftToLeftOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Leading,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.leading,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Leading,
+                                  attribute: NSLayoutAttribute.leading,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromLeftToRightOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromLeftToRightOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Trailing,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.trailing,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Leading,
+                                  attribute: NSLayoutAttribute.leading,
                                   multiplier: 1,
                                   constant: offset)
     }
 
-    func constraintFromRightToLeftOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromRightToLeftOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Leading,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.leading,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Trailing,
+                                  attribute: NSLayoutAttribute.trailing,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintFromRightToRightOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintFromRightToRightOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Trailing,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.trailing,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Trailing,
+                                  attribute: NSLayoutAttribute.trailing,
                                   multiplier: 1,
                                   constant: offset)
     }
     
     
-    func constraintForWidthToWidthOf(view:UIView, multiplier:CGFloat=1)->NSLayoutConstraint {
+    func constraintForWidthToWidthOf(_ view:UIView, multiplier:CGFloat=1, constant:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Width,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.width,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Width,
+                                  attribute: NSLayoutAttribute.width,
                                   multiplier: multiplier,
-                                  constant: 0)
+                                  constant: constant)
     }
-    func constraintForHeightToHeightOf(view:UIView, multiplier:CGFloat=1)->NSLayoutConstraint {
+    func constraintForHeightToHeightOf(_ view:UIView, multiplier:CGFloat=1, constant:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.Height,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.height,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.Height,
+                                  attribute: NSLayoutAttribute.height,
                                   multiplier: multiplier,
-                                  constant: 0)
+                                  constant: constant)
     }
     
-    func constraintForCenterXToCenterXOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintForCenterXToCenterXOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.CenterX,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.centerX,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.CenterX,
+                                  attribute: NSLayoutAttribute.centerX,
                                   multiplier: 1,
                                   constant: offset)
     }
-    func constraintForCenterYToCenterYOf(view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
+    func constraintForCenterYToCenterYOf(_ view:UIView, offset:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: view,
-                                  attribute: NSLayoutAttribute.CenterY,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.centerY,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: self,
-                                  attribute: NSLayoutAttribute.CenterY,
+                                  attribute: NSLayoutAttribute.centerY,
                                   multiplier: 1,
                                   constant: offset)
     }
     
-    func constraintForLeftEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForLeftEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Leading,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.leading,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }
-    func constraintForRightEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForRightEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Trailing,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.trailing,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }
-    func constraintForTopEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForTopEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Top,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.top,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }
-    func constraintForBottomEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForBottomEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Bottom,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.bottom,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }
@@ -162,21 +162,21 @@ extension UIView {
 
 
 
-    func constraintForWidthEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForWidthEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Width,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.width,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }
-    func constraintForHeightEqualing(value:CGFloat=0)->NSLayoutConstraint {
+    func constraintForHeightEqualing(_ value:CGFloat=0)->NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
-                                  attribute: NSLayoutAttribute.Height,
-                                  relatedBy: NSLayoutRelation.Equal,
+                                  attribute: NSLayoutAttribute.height,
+                                  relatedBy: NSLayoutRelation.equal,
                                   toItem: nil,
-                                  attribute: NSLayoutAttribute.NotAnAttribute,
+                                  attribute: NSLayoutAttribute.notAnAttribute,
                                   multiplier: 1,
                                   constant: value)
     }

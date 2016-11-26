@@ -14,8 +14,8 @@ protocol IsTransaction:HasModel,HasSourceAccount,HasPlannedSpending,HasCategory 
     var tranActualAmountIs:NSDecimalNumber? { get set }
     var tranAmountIs:NSDecimalNumber { get }
 
-    var tranDueDateIs:NSDate { get set }
-    var tranSendDateIs:NSDate { get }
+    var tranDueDateIs:Date { get set }
+    var tranSendDateIs:Date { get }
     
     var tranMerchantNameIs: String? { get set }
     var tranHasClearedIs: Bool { get set }
@@ -29,12 +29,12 @@ protocol HasTransaction {
 protocol HasManyTransactions {
     var transactionsMutableSet:NSMutableSet { get set }
     var transactionsAre:[IsTransaction] { get }
-    func addTransaction(transaction:IsTransaction)->Void
-    func removeTransaction(transaction:IsTransaction)->Void
-    func findTransactions(dated:NSDate, isDueDate:Bool)->[IsTransaction]
-    func findTransactions(amountOf:NSDecimalNumber)->[IsTransaction]
-    func findTransactions(categoryOf:IsSpendCategory)->[IsTransaction]
-    func findTransactions(onAccount:IsSourceAccount)->[IsTransaction]
+    func addTransaction(_ transaction:IsTransaction)->Void
+    func removeTransaction(_ transaction:IsTransaction)->Void
+    func findTransactions(_ dated:Date, isDueDate:Bool)->[IsTransaction]
+    func findTransactions(_ amountOf:NSDecimalNumber)->[IsTransaction]
+    func findTransactions(_ categoryOf:IsSpendCategory)->[IsTransaction]
+    func findTransactions(_ onAccount:IsSourceAccount)->[IsTransaction]
 }
 
 extension HasManyTransactions {
@@ -43,28 +43,28 @@ extension HasManyTransactions {
         return self.transactionsMutableSet.map(){ $0 as! IsTransaction }
     }
     
-    func addTransaction(transaction:IsTransaction) -> Void {
-        self.transactionsMutableSet.addObject(transaction as! AnyObject)
+    func addTransaction(_ transaction:IsTransaction) -> Void {
+        self.transactionsMutableSet.add(transaction as AnyObject)
     }
     
-    func removeTransaction(transaction:IsTransaction) -> Void {
-        self.transactionsMutableSet.removeObject(transaction as! AnyObject)
+    func removeTransaction(_ transaction:IsTransaction) -> Void {
+        self.transactionsMutableSet.remove(transaction as AnyObject)
     }
-    func findTransactions(dated:NSDate, isDueDate:Bool)->[IsTransaction] {
+    func findTransactions(_ dated:Date, isDueDate:Bool)->[IsTransaction] {
         return self.transactionsAre.filter( )
             {
-                var temp:NSDate
+                var temp:Date
                 if isDueDate { temp = $0.tranDueDateIs } else { temp = $0.tranSendDateIs }
                 return temp == dated
         }
     }
-    func findTransactions(amountOf:NSDecimalNumber)->[IsTransaction] {
+    func findTransactions(_ amountOf:NSDecimalNumber)->[IsTransaction] {
         return self.transactionsAre.filter(){$0.tranAmountIs == amountOf }
     }
-    func findTransactions(categoryOf:IsSpendCategory)->[IsTransaction] {
+    func findTransactions(_ categoryOf:IsSpendCategory)->[IsTransaction] {
         return self.transactionsAre.filter(){$0.categoryIs.nameIs == categoryOf.nameIs }
     }
-    func findTransactions(onAccount:IsSourceAccount)->[IsTransaction] {
+    func findTransactions(_ onAccount:IsSourceAccount)->[IsTransaction] {
         return self.transactionsAre.filter(){$0.sourceAccountIs.nameIs == onAccount.nameIs}
     }    
 }

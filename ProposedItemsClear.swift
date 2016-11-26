@@ -9,13 +9,13 @@
 import Foundation
 
 enum ProposedItemsClearsSource:Int  {
-    case FromPlannedSpending, FromCategory, FromSourceAccount
+    case fromPlannedSpending, fromCategory, fromSourceAccount
     
     func mainEditDescription() -> String {
         switch self {
-        case .FromPlannedSpending: return "Spending Clear/Send Settings"
-        case .FromCategory: return "Category Default Clear/Send Settings"
-        case .FromSourceAccount: return "Source Default Clear/Send Settings"
+        case .fromPlannedSpending: return "Spending Clear/Send Settings"
+        case .fromCategory: return "Category Default Clear/Send Settings"
+        case .fromSourceAccount: return "Source Default Clear/Send Settings"
         }
     }
     
@@ -25,7 +25,7 @@ class ProposedItemsClear:IsProposedChange {
     
     var original:HasItemClearsTypes?
     
-    var source:ProposedItemsClearsSource = .FromPlannedSpending
+    var source:ProposedItemsClearsSource = .fromPlannedSpending
     var whenClears:ClearsDateType
     var amountClears:ClearsAmountType
     var howClears:ClearsMethodType
@@ -34,17 +34,17 @@ class ProposedItemsClear:IsProposedChange {
     
     var editorLabelText:String {
         switch self.source {
-            case .FromCategory: return "Category Clear Settings"
-            case .FromSourceAccount: return "Source Account Clear Settings"
-            case .FromPlannedSpending: return "Spending Clears Items"
+            case .fromCategory: return "Category Clear Settings"
+            case .fromSourceAccount: return "Source Account Clear Settings"
+            case .fromPlannedSpending: return "Spending Clears Items"
         }
     }
     
     var howManyDaysLabelText:String {
         
         switch self.whenClears {
-            case .ClearsDaysAfterSendDate, .ClearsDaysAfterDueDate: return "How many days after?"
-            case .ClearsDaysBeforeDueDate: return "How many days before?"
+            case .clearsDaysAfterSendDate, .clearsDaysAfterDueDate: return "How many days after?"
+            case .clearsDaysBeforeDueDate: return "How many days before?"
             default: return ""
         }
 
@@ -57,7 +57,7 @@ class ProposedItemsClear:IsProposedChange {
         self.amountClears=from.itemAmountClearsIs
         self.sendsMethod=from.itemSendMethodTypeIs
         self.clearedAfterDays=from.clearsAfterDaysIs
-        self.source = .FromSourceAccount
+        self.source = .fromSourceAccount
     }
     init (from:HasItemClearsTypes, source:ProposedItemsClearsSource) {
         original=from
@@ -71,10 +71,10 @@ class ProposedItemsClear:IsProposedChange {
     
     init (source:ProposedItemsClearsSource) {
         original=nil
-        whenClears=ClearsDateType.ClearsOnSendDate
-        amountClears=ClearsAmountType.ClearsForExactAmount
-        howClears=ClearsMethodType.ClearsManually
-        sendsMethod=ItemSendMethodType.SentByMail
+        whenClears=ClearsDateType.clearsOnSendDate
+        amountClears=ClearsAmountType.clearsForExactAmount
+        howClears=ClearsMethodType.clearsManually
+        sendsMethod=ItemSendMethodType.sentByMail
         clearedAfterDays=nil
         self.source=source
     }
@@ -83,7 +83,7 @@ class ProposedItemsClear:IsProposedChange {
         if clearedAfterDays == nil {
             return 0
         } else {
-            return Int((clearedAfterDays!.intValue))
+            return Int((clearedAfterDays!.int32Value))
         }
     }
     

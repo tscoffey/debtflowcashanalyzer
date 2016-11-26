@@ -9,13 +9,13 @@
 import UIKit
 
 enum AccountEditorSubEditorType:Int {
-    case NameEditor, TypeEditor, ClearsSendsEditor
+    case nameEditor, typeEditor, clearsSendsEditor
     
     func editorDescription() -> String {
         switch self {
-        case .NameEditor: return "Account name"
-        case .TypeEditor: return "Type of account"
-        case .ClearsSendsEditor: return "How account clears and sends items"
+        case .nameEditor: return "Account name"
+        case .typeEditor: return "Type of account"
+        case .clearsSendsEditor: return "How account clears and sends items"
         }
     }
 }
@@ -46,7 +46,7 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
     
     var editorSubtype:AccountEditorSubEditorType?
     
-    var how_titled:HowTitled = .OnView
+    var how_titled:HowTitled = .onView
     var title_string="Source Accounts"
 
 
@@ -59,17 +59,17 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 
         
         let lv=appDelegate().lookValues
-        lv.applyBackgroundColor(lv.accountEditorSegmentedOptionsBackgroundColor, toView: self.accountEditChoices)
-        lv.applyTintColor(lv.accountEditorSegmentedOptionsTintColor, toView: self.accountEditChoices)
-        self.accountNameEditorContainer.hidden=true
-        self.accountTypeEditorContainer.hidden=true
-        self.clearSendsEditorContainer.hidden=true
-        self.editorDescription.hidden=true
-        self.accountEditChoices.hidden=true
+        lv?.applyBackgroundColor(lv?.accountEditorSegmentedOptionsBackgroundColor, toView: self.accountEditChoices)
+        lv?.applyTintColor(lv?.accountEditorSegmentedOptionsTintColor, toView: self.accountEditChoices)
+        self.accountNameEditorContainer.isHidden=true
+        self.accountTypeEditorContainer.isHidden=true
+        self.clearSendsEditorContainer.isHidden=true
+        self.editorDescription.isHidden=true
+        self.accountEditChoices.isHidden=true
         self.setTitle()
         
     }
@@ -80,7 +80,7 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
         // Dispose of any resources that can be recreated.
     }
     
-    func presentEditorFor(choice:Int) {
+    func presentEditorFor(_ choice:Int) {
         var newChoiceContainerView:UIView?
         switch choice {
         case 0: newChoiceContainerView=self.accountNameEditorContainer
@@ -91,7 +91,7 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
         }
         if let new=newChoiceContainerView {
             if prevChoiceContainerView != nil && prevChoiceContainerView != new {
-                UIView.animateWithDuration(0.5,
+                UIView.animate(withDuration: 0.5,
                                            animations: {
                                             new.alpha=1
                                             self.prevChoiceContainerView!.alpha=0
@@ -108,7 +108,7 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
 
     }
     
-    @IBAction func editChoicesChanged(sender: AnyObject) {
+    @IBAction func editChoicesChanged(_ sender: AnyObject) {
         self.presentEditorFor(accountEditChoices.selectedSegmentIndex)
     }
 
@@ -116,26 +116,26 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if let id=segue.identifier {
             switch id {
                 case "toAccountsListTable":
-                    self.accountsListController=(segue.destinationViewController as! SourceAccountMasterListTableViewController)
+                    self.accountsListController=(segue.destination as! SourceAccountMasterListTableViewController)
                     self.accountsListController?.accountsHolder=self.accountsHolder
                     self.accountsListController?.accountSelectedDelegate=self
                 case "toAccountNameEditor":
-                    self.accountNameEditorController=(segue.destinationViewController as! SourceAccountNameEditorViewController)
+                    self.accountNameEditorController=(segue.destination as! SourceAccountNameEditorViewController)
                 case "toAccountTypeEditor":
-                    self.accountTypeEditorController=(segue.destinationViewController as! SourceAccountTypeEditorViewController)
+                    self.accountTypeEditorController=(segue.destination as! SourceAccountTypeEditorViewController)
                 case "toClearsSendsEditor":
-                    self.clearsSendsEditorController=(segue.destinationViewController as! ItemsClearEditorViewController)
+                    self.clearsSendsEditorController=(segue.destination as! ItemsClearEditorViewController)
                     if let c=self.clearsSendsEditorController {
-                        c.howTitled = .Untitled
+                        c.howTitled = .untitled
                         c.titleString="Account Clear+Send Settings"
-                        c.itemsClear=ProposedItemsClear(source:.FromSourceAccount)
+                        c.itemsClear=ProposedItemsClear(source:.fromSourceAccount)
                 }
                 default: break
             }
@@ -150,16 +150,16 @@ class NormalSourceAccountListAndEditViewController: UIViewController,SourceAccou
             self.accountNameEditorController?.account=p
             self.accountTypeEditorController?.account=p
             self.clearsSendsEditorController?.itemsClear=ct
-            self.accountNameEditorContainer.hidden=false
-            self.accountTypeEditorContainer.hidden=false
-            self.clearSendsEditorContainer.hidden=false
-            self.editorDescription.hidden=false
-            self.accountEditChoices.hidden=false
+            self.accountNameEditorContainer.isHidden=false
+            self.accountTypeEditorContainer.isHidden=false
+            self.clearSendsEditorContainer.isHidden=false
+            self.editorDescription.isHidden=false
+            self.accountEditChoices.isHidden=false
             self.presentEditorFor(accountEditChoices.selectedSegmentIndex)
         }
         
     }
-    func didSelectSourceAccount(account:IsSourceAccount) {
+    func didSelectSourceAccount(_ account:IsSourceAccount) {
         self.selected=account
         self.loadAccount()
     }

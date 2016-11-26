@@ -26,8 +26,8 @@ class SourceAccountTypeEditorViewController: UIViewController,UIPickerViewDelega
         if self.account != nil {
             var row=0
             switch self.account!.type {
-            case .Checking: row=0
-            case .Savings: row=1
+            case .checking: row=0
+            case .savings: row=1
             default:row=1
             }
             self.choicesView.selectRow(row, inComponent: 0, animated: true)
@@ -44,22 +44,22 @@ class SourceAccountTypeEditorViewController: UIViewController,UIPickerViewDelega
         // Dispose of any resources that can be recreated.
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choices[row]
         
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
-        case 0:self.account?.type=AccountType.Checking
-        case 1:self.account?.type=AccountType.Savings
+        case 0:self.account?.type=AccountType.checking
+        case 1:self.account?.type=AccountType.savings
         default:break
         }
 

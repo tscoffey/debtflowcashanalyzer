@@ -9,18 +9,18 @@
 import UIKit
 
 enum ItemsEditorSubEditorType:Int {
-    case MethodEditor, AmountEditor, WhenEditor, SendEditor
+    case methodEditor, amountEditor, whenEditor, sendEditor
     
-    func editorDescriptionFor(source:ProposedItemsClearsSource) -> String {
+    func editorDescriptionFor(_ source:ProposedItemsClearsSource) -> String {
         var desc:[String]
         switch self {
-            case .AmountEditor:
+            case .amountEditor:
                 desc=["How does the amount clear?", "How do amounts clear?", "How do amounts clear?"]
-            case .MethodEditor:
+            case .methodEditor:
                 desc=["How does this clear?", "How do items clear?", "How do items clear?"]
-            case .WhenEditor:
+            case .whenEditor:
                 desc=["When does this clear?", "When do these items clear?", "When do these items clear?"]
-            case .SendEditor:
+            case .sendEditor:
                 desc=["How is this paid?", "How are items paid?", "How are items paid?"]
         }
         return desc[source.rawValue]
@@ -64,7 +64,7 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
     
     var clearsEditorSegmentedView: UIView? { return self.clearsSegmentedChoices }
         
-    var how_titled:HowTitled = .OnView
+    var how_titled:HowTitled = .onView
     var title_string="Clear+Send Settings"
 
 
@@ -76,7 +76,7 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
     }
    
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         self.clearsSegmentedChoices.selectedSegmentIndex=0
         self.methodClearsContainerView.alpha=0
@@ -98,7 +98,7 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
             if let vc=self.sendMethodController { vc.itemsClear=self.itemsClear }
         }
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 
 
         self.presentEditorFor(0)
@@ -109,7 +109,7 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
         // Dispose of any resources that can be recreated.
     }
     
-    func presentEditorFor(choice:Int) {
+    func presentEditorFor(_ choice:Int) {
         var newChoiceContainerView:UIView?
         switch choice {
             case 0:
@@ -124,7 +124,7 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
         }
         if let new=newChoiceContainerView {
             if prevChoiceContainerView != nil {
-                UIView.animateWithDuration(0.5,
+                UIView.animate(withDuration: 0.5,
                     animations: {
                         new.alpha=1
                         self.prevChoiceContainerView!.alpha=0
@@ -140,24 +140,24 @@ class ItemsClearEditorViewController: UIViewController, IsNavigable, HasUIThemeC
 
         
     }
-    @IBAction func clearsChoicesChanged(sender: AnyObject) {
+    @IBAction func clearsChoicesChanged(_ sender: AnyObject) {
         self.presentEditorFor(clearsSegmentedChoices.selectedSegmentIndex)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id=segue.identifier {
             switch id {
                 case "toAmountClearsEditor":
-                    self.amountClearsController=segue.destinationViewController as! ItemAmountClearsEditorViewController
+                    self.amountClearsController=segue.destination as! ItemAmountClearsEditorViewController
                     self.amountClearsController!.itemsClear=self.itemsClear
                 case "toMethodClearsEditor":
-                    self.methodClearsController=segue.destinationViewController as! ItemMethodClearsEditorViewController
+                    self.methodClearsController=segue.destination as! ItemMethodClearsEditorViewController
                     self.methodClearsController!.itemsClear=self.itemsClear
                 case "toWhenClearsEditor":
-                    self.whenClearsController=segue.destinationViewController as! ItemWhenClearsEditorViewController
+                    self.whenClearsController=segue.destination as! ItemWhenClearsEditorViewController
                     self.whenClearsController!.itemsClear=self.itemsClear
                 case "toSendMethodEditor":
-                    self.sendMethodController=segue.destinationViewController as! ItemSendMethodEditorViewController
+                    self.sendMethodController=segue.destination as! ItemSendMethodEditorViewController
                     self.sendMethodController!.itemsClear=self.itemsClear
             default:
                 let x=1

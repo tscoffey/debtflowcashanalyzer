@@ -19,27 +19,27 @@ struct HorizontalPickerViewConstants {
 }
 
 public protocol HorizontalPickerViewDataSource {
-    func numberOfRowsInHorizontalPickerView (pickerView: HorizontalPickerView) -> Int
+    func numberOfRowsInHorizontalPickerView (_ pickerView: HorizontalPickerView) -> Int
 }
 
 @objc public protocol HorizontalPickerViewDelegate {
-    func horizontalPickerView (pickerView: HorizontalPickerView, titleForRow: Int) -> String
-    func horizontalPickerView (pickerView: HorizontalPickerView, didSelectRow: Int)
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, titleForRow: Int) -> String
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, didSelectRow: Int)
     
-    optional func textFontForHorizontalPickerView (pickerView: HorizontalPickerView) -> UIFont
-    optional func textColorForHorizontalPickerView (pickerView: HorizontalPickerView) -> UIColor
-    optional func useTwoLineModeForHorizontalPickerView (pickerView: HorizontalPickerView) -> Bool
-    optional func pickerViewShouldMask (pickerView: HorizontalPickerView) -> Bool
+    @objc optional func textFontForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> UIFont
+    @objc optional func textColorForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> UIColor
+    @objc optional func useTwoLineModeForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> Bool
+    @objc optional func pickerViewShouldMask (_ pickerView: HorizontalPickerView) -> Bool
 }
 
 /** A similar to UIPicker but horizontal picker view.
  */
-public class HorizontalPickerView: UIView {
+open class HorizontalPickerView: UIView {
     
     // MARK: - Public API
     
-    public var dataSource: HorizontalPickerViewDataSource?
-    public var delegate: HorizontalPickerViewDelegate?
+    open var dataSource: HorizontalPickerViewDataSource?
+    open var delegate: HorizontalPickerViewDelegate?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +51,7 @@ public class HorizontalPickerView: UIView {
         setUp()
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         if dataSource != nil && delegate != nil {
@@ -64,13 +64,13 @@ public class HorizontalPickerView: UIView {
             }
             
             if let view = collectionController.collectionView, let layout = collectionController.collectionViewLayout as? HPCollectionViewFlowlayout {
-                layout.activeDistance   = floor(CGRectGetWidth(view.bounds) / 2.0)
-                layout.midX             = ceil(CGRectGetMidX(view.bounds))
+                layout.activeDistance   = floor(view.bounds.width / 2.0)
+                layout.midX             = ceil(view.bounds.midX)
                 if let numberOfElements = self.dataSource?.numberOfRowsInHorizontalPickerView(self) {
                     layout.lastElementIndex = numberOfElements - 1
                 }
                 
-                collectionController.maxElementWidth = CGRectGetWidth(self.bounds) * HorizontalPickerViewConstants.maxLabelWidthFactor
+                collectionController.maxElementWidth = self.bounds.width * HorizontalPickerViewConstants.maxLabelWidthFactor
                 
                 if let firstElement = delegate?.horizontalPickerView(self, titleForRow: 0), let lastElement = delegate?.horizontalPickerView(self, titleForRow: layout.lastElementIndex) {
                     layout.sectionInset.left  = layout.midX - collectionController.sizeForText(firstElement, maxSize: view.bounds.size).width / CGFloat(2)
@@ -78,83 +78,83 @@ public class HorizontalPickerView: UIView {
                 }
                 
                 HorizontalPickerView.delay(0.1, completion: { () -> () in
-                    view.selectItemAtIndexPath(self.collectionController.selectedCellIndexPath, animated: false, scrollPosition: .CenteredHorizontally)
+                    view.selectItem(at: self.collectionController.selectedCellIndexPath, animated: false, scrollPosition: .centeredHorizontally)
                 })
             }
             if delegate?.pickerViewShouldMask?(self) ?? false {
                 layer.mask = shapeLayer
-                shapeLayer.path = shapePathForFrame(bounds).CGPath
+                shapeLayer.path = shapePathForFrame(bounds).cgPath
             }
         }
     }
     
     // MARK:
     
-    public func selectedRow () -> Int {
-        return collectionController.selectedCellIndexPath.row
+    open func selectedRow () -> Int {
+        return (collectionController.selectedCellIndexPath as NSIndexPath).row
     }
     
-    public func selectRow (rowIndex: Int, animated: Bool) {
+    open func selectRow (_ rowIndex: Int, animated: Bool) {
         collectionController.selectRowAtIndex(rowIndex, animated: animated)
     }
     
-    public func reloadAll () {
+    open func reloadAll () {
         collectionController.collectionView?.reloadData()
     }
     
     // MARK: - Helper
     
-    static func delay (duration: NSTimeInterval, completion:()->() ) {
-        dispatch_after( dispatch_time( DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), completion)
+    static func delay (_ duration: TimeInterval, completion:@escaping ()->() ) {
+        DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + Double(Int64(duration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: completion)
     }
     
     // MARK: - Private Interface
     
-    private var isInitialized = false
+    fileprivate var isInitialized = false
     
-    private lazy var shapeLayer: CAShapeLayer = {
+    fileprivate lazy var shapeLayer: CAShapeLayer = {
         let shapeLayer           = CAShapeLayer()
         shapeLayer.frame         = self.bounds
-        shapeLayer.contentsScale = UIScreen.mainScreen().scale
+        shapeLayer.contentsScale = UIScreen.main.scale
         
         return shapeLayer
     }()
     
-    private lazy var collectionController: HPCollectionVC = {
+    fileprivate lazy var collectionController: HPCollectionVC = {
         let layout = HPCollectionViewFlowlayout()
         let collectionController = HPCollectionVC(collectionViewLayout: layout)
         collectionController.provider               = self
-        collectionController.maxElementWidth        = CGRectGetWidth(self.bounds) * HorizontalPickerViewConstants.maxLabelWidthFactor
-        collectionController.font                   = self.delegate?.textFontForHorizontalPickerView?(self) ?? UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        collectionController.textColor              = self.delegate?.textColorForHorizontalPickerView?(self) ?? UIColor.lightGrayColor()
+        collectionController.maxElementWidth        = self.bounds.width * HorizontalPickerViewConstants.maxLabelWidthFactor
+        collectionController.font                   = self.delegate?.textFontForHorizontalPickerView?(self) ?? UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        collectionController.textColor              = self.delegate?.textColorForHorizontalPickerView?(self) ?? UIColor.lightGray
         collectionController.useTwoLineMode         = self.delegate?.useTwoLineModeForHorizontalPickerView?(self) ?? false
-        collectionController.collectionView?.registerClass(HPCollectionViewCell.self, forCellWithReuseIdentifier: HPCollectionViewCellConstants.reuseIdentifier)
-        collectionController.collectionView?.backgroundColor = UIColor.clearColor()
+        collectionController.collectionView?.register(HPCollectionViewCell.self, forCellWithReuseIdentifier: HPCollectionViewCellConstants.reuseIdentifier)
+        collectionController.collectionView?.backgroundColor = UIColor.clear
         collectionController.collectionView?.showsHorizontalScrollIndicator = false
         collectionController.clearsSelectionOnViewWillAppear = false
         
         return collectionController
     }()
     
-    private func setUp () {
-        autoresizingMask = [.FlexibleWidth, .FlexibleLeftMargin, .FlexibleRightMargin]
+    fileprivate func setUp () {
+        autoresizingMask = [.flexibleWidth, .flexibleLeftMargin, .flexibleRightMargin]
     }
     
-    private func shapePathForFrame(frame: CGRect) -> UIBezierPath {
-        return UIBezierPath(roundedRect: frame, byRoundingCorners: .AllCorners, cornerRadii: HorizontalPickerViewConstants.pathCornerRadii)
+    fileprivate func shapePathForFrame(_ frame: CGRect) -> UIBezierPath {
+        return UIBezierPath(roundedRect: frame, byRoundingCorners: .allCorners, cornerRadii: HorizontalPickerViewConstants.pathCornerRadii)
     }
 }
 
 extension HorizontalPickerView: HPCollectionVCProvider {
-    func numberOfRowsInCollectionViewController(controller: HPCollectionVC) -> Int {
+    func numberOfRowsInCollectionViewController(_ controller: HPCollectionVC) -> Int {
         return self.dataSource?.numberOfRowsInHorizontalPickerView(self) ?? 0
     }
     
-    func collectionViewController(controller: HPCollectionVC, didSelectRow row: Int) {
+    func collectionViewController(_ controller: HPCollectionVC, didSelectRow row: Int) {
         self.delegate?.horizontalPickerView(self, didSelectRow: row)
     }
     
-    func collectionViewController(controller: HPCollectionVC, titleForRow row: Int) -> String {
+    func collectionViewController(_ controller: HPCollectionVC, titleForRow row: Int) -> String {
         return self.delegate?.horizontalPickerView(self, titleForRow: row) ?? ""
     }
 }

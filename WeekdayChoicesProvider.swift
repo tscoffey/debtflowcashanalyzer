@@ -10,43 +10,26 @@ import Foundation
 import UIKit
 class WeekdayChoicesProvider:OccursChoicesProvider {
     
-    private var _contentType:OccursControlContentType?
-    
-    var contentType:OccursControlContentType {
-        get { return _contentType! }
-        set (aValue) { _contentType=aValue }
-    }
-    
-    deinit {
-        _contentType = nil
-    }
-    init(contentType:OccursControlContentType,choice:Int?) {
-        _contentType=contentType
-        super.init(choices:[choice])
-        
-    }
-    
-    lazy var subChoices:[Int] =
-        self.buildSubChoices()
-    
-    func buildSubChoices()->[Int] {
-        return (0...6).map(){$0}
-    }
-    
-    lazy var stringChoices:[String] =
-        self.buildStringChoices()
-    
-    func buildStringChoices()->[String] {
-        return self.subChoices.map(){ String.nameOfDayOfWeekIndex($0) }
+
+
+    override init(contentType:OccursControlContentType,choice:Int?, delegate:IsSubControlChoiceDelegate?) {
+        super.init(contentType:contentType, choice:choice, delegate:delegate)
     }
     
     init (contentType:OccursControlContentType) {
-        _contentType=contentType
-        super.init(choices:[])
+        super.init(contentType:contentType,choice:nil, delegate:nil)
     }
+
     
-    override func choices(component:Int)->[String] {
-        return self.stringChoices
+    
+    override func buildNumberSubChoices()->[Int] {
+        return (0...6).map(){$0}
     }
+        
+    override func buildStringChoices()->[String] {
+        return self.numberSubChoices!.map(){ String.nameOfDayOfWeekIndex($0) }
+    }
+
+
 }
 

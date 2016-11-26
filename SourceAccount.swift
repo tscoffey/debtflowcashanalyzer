@@ -15,15 +15,15 @@ class SourceAccount: Account,IsSourceAccount {
     static var entityName="SourceAccount"
     
     
-    class func accountNamed(named:String, insertIntoContext context:NSManagedObjectContext) -> SourceAccount? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func accountNamed(_ named:String, insertIntoContext context:NSManagedObjectContext) -> SourceAccount? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [SourceAccount]
+            let fetchData = try context.fetch(fetch) as! [SourceAccount]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! SourceAccount
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! SourceAccount
                 newOne.name=named
                 return newOne
             }
@@ -31,11 +31,11 @@ class SourceAccount: Account,IsSourceAccount {
             return nil
         }
     }
-    class func accountNamed(named:String, findInContext context:NSManagedObjectContext) -> SourceAccount? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func accountNamed(_ named:String, findInContext context:NSManagedObjectContext) -> SourceAccount? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [SourceAccount]
+            let fetchData = try context.fetch(fetch) as! [SourceAccount]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
@@ -47,7 +47,7 @@ class SourceAccount: Account,IsSourceAccount {
     }
     
     
-    class func accountNamed(named:String, inBank:Bank, type:AccountType, initialBalance:NSDecimalNumber, dated:NSDate, insertIntoModel model:CashFlowMediator) -> SourceAccount? {
+    class func accountNamed(_ named:String, inBank:Bank, type:AccountType, initialBalance:NSDecimalNumber, dated:Date, insertIntoModel model:CashFlowMediator) -> SourceAccount? {
         guard let newOne=self.accountNamed(named, insertIntoContext: model.managedObjectContext!)
             else { return nil }
         
@@ -59,19 +59,19 @@ class SourceAccount: Account,IsSourceAccount {
     }
 
     var accountDatedBalancesMutableSet:NSMutableSet {
-        get { return self.mutableSetValueForKey("balances") }
+        get { return self.mutableSetValue(forKey: "balances") }
         set (aValue) { self.balances = aValue }
     }
 
-    func accountCurrentBalanceOnDateIs(date:NSDate) -> NSDecimalNumber {
+    func accountCurrentBalanceOnDateIs(_ date:Date) -> NSDecimalNumber {
         return 0
     }
     func accountCurrentBalanceIs() -> NSDecimalNumber {
         return 0
     }
-    func setInitialBalanceTo(initialBalance:NSDecimalNumber, dated:NSDate) {
+    func setInitialBalanceTo(_ initialBalance:NSDecimalNumber, dated:Date) {
         for datedBalance in self.balances! {
-            self.modelContext.deleteObject(datedBalance as! NSManagedObject)
+            self.modelContext.delete(datedBalance as! NSManagedObject)
         }
         
         _ = DatedBalance.datedBalanceOf(initialBalance, dated: dated, addToAccount: self)
@@ -94,8 +94,8 @@ class SourceAccount: Account,IsSourceAccount {
     }
     
     var clearsAfterDaysIs:NSNumber? {
-        get { return Int(self.itemsClearedAfterDays) }
-        set (aValue) { self.itemsClearedAfterDays = (aValue?.intValue)! }
+        get { return Int(self.itemsClearedAfterDays) as NSNumber? }
+        set (aValue) { self.itemsClearedAfterDays = (aValue?.int32Value)! }
     }
     
     

@@ -6,15 +6,15 @@
 //  Copyright © 2016 Coffey. All rights reserved.
 //
 
-extension NSDate
+extension Date
 {
-    convenience
+    
     init(dateString:String) {
-        let dateStringFormatter = NSDateFormatter()
+        let dateStringFormatter = DateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let d = dateStringFormatter.dateFromString(dateString)!
-        self.init(timeInterval:0, sinceDate:d)
+        dateStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let d = dateStringFormatter.date(from: dateString)!
+        (self as NSDate).init(timeInterval:0, since:d)
     }
 }
 
@@ -36,16 +36,16 @@ class MonthlyDateCalculatorTests: XCTestCase {
         super.tearDown()
     }
 
-    func checkDaysUntil1(dayOfMonth:Int, fromDate:String, expected:Int) -> Bool {
-        let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(dayOfMonth),0)], firstDate: nil, lastDate: nil,dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: fromDate)
+    func checkDaysUntil1(_ dayOfMonth:Int, fromDate:String, expected:Int) -> Bool {
+        let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(dayOfMonth),0)], firstDate: nil, lastDate: nil,dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: fromDate)
         var num=calc.daysUntilNextDateAfter(baseDate)
         return num == expected
     }
-    func checkDaysUntil2(daysOfMonth:(Int,Int), fromDate:String, expected:Int) -> Bool {
+    func checkDaysUntil2(_ daysOfMonth:(Int,Int), fromDate:String, expected:Int) -> Bool {
         let calc=DaysOfMonthDateCalculator.dateCalculatorInstance([(Int32(daysOfMonth.0),0),(Int32(daysOfMonth.1),1)],
-                    firstDate: nil, lastDate: nil,dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: fromDate)
+                    firstDate: nil, lastDate: nil,dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: fromDate)
         var num=calc.daysUntilNextDateAfter(baseDate)
         return num == expected
     }
@@ -77,40 +77,40 @@ class MonthlyDateCalculatorTests: XCTestCase {
     
     func testMany01() {
         let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(1),0)],
-                                                            firstDate: NSDate(dateString: "2016-01-01"),
-                                                            lastDate: NSDate(dateString: "2016-12-31"),dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: "2015-12-31")
+                                                            firstDate: Date(dateString: "2016-01-01"),
+                                                            lastDate: Date(dateString: "2016-12-31"),dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: "2015-12-31")
         let all=calc.datesAfter(baseDate)
         if all.count != 12 { XCTFail("count wrong, is \(all.count)") }
     }
     func testMany29() {
         let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(29),0)],
-                                                              firstDate: NSDate(dateString: "2016-01-01"),
-                                                              lastDate: NSDate(dateString: "2016-12-31"),dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: "2015-12-31")
+                                                              firstDate: Date(dateString: "2016-01-01"),
+                                                              lastDate: Date(dateString: "2016-12-31"),dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: "2015-12-31")
         let all=calc.datesAfter(baseDate)
         if all.count != 12 { XCTFail("count wrong, is \(all.count)") }
     }
     func testMany30() {
         let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(30),0)],
-                                                              firstDate: NSDate(dateString: "2016-01-01"),
-                                                              lastDate: NSDate(dateString: "2016-12-31"),dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: "2015-12-31")
+                                                              firstDate: Date(dateString: "2016-01-01"),
+                                                              lastDate: Date(dateString: "2016-12-31"),dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: "2015-12-31")
         let all=calc.datesAfter(baseDate)
         if all.count != 12 { XCTFail("count wrong, is \(all.count)") }
     }
     func testMany31() {
         let calc=MonthlyDateCalculator.dateCalculatorInstance([(Int32(31),0)],
-                                                              firstDate: NSDate(dateString: "2016-01-01"),
-                                                              lastDate: NSDate(dateString: "2016-12-31"),dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: "2015-12-31")
+                                                              firstDate: Date(dateString: "2016-01-01"),
+                                                              lastDate: Date(dateString: "2016-12-31"),dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: "2015-12-31")
         let all=calc.datesAfter(baseDate)
         if all.count != 12 { XCTFail("count wrong, is \(all.count)") }
     }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

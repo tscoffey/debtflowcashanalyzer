@@ -7,5 +7,5 @@
 //
 
 enum DebtBalanceType:Int32 {
-    case Purchases, CashAdvance, Transfer
+    case purchases, cashAdvance, transfer
 }

@@ -7,10 +7,10 @@
 //
 
 public enum AccountType:Int32 {
-    case Unknown, Checking, Savings, RevolvingCredit,
-    CreditCard, Mortgage, SecondMtg, Medical, Auto, Student, Lease, HELOC, CreditLine
+    case unknown, checking, savings, revolvingCredit,
+    creditCard, mortgage, secondMtg, medical, auto, student, lease, heloc, creditLine
     
     func isSourceAccount() -> Bool {
-        return [.Checking, .Savings, .RevolvingCredit].contains(self)
+        return [.checking, .savings, .revolvingCredit].contains(self)
     }
 }

@@ -16,15 +16,15 @@ class SpendingOptions: NSManagedObject,IsSpendingOptions {
 
     class func defaultOptions(insertIntoContext context:NSManagedObjectContext) -> SpendingOptions {
 
-        let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! SpendingOptions
-        newOne.debtPaymentGranularity = NSDecimalNumber(double:0.01)
+        let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! SpendingOptions
+        newOne.debtPaymentGranularity = NSDecimalNumber(value: 0.01 as Double)
         newOne.dipIntoGoalSavings = false
         newOne.optimizeTransfers = true
-        newOne.weekendsAndHolidayMitigationIs = .DoNotShift
+        newOne.weekendsAndHolidayMitigationIs = .doNotShift
         return newOne
     }
     
-    class func defaultOptions(named:String, insertIntoModel model:CashFlowMediator) -> SpendingOptions {
+    class func defaultOptions(_ named:String, insertIntoModel model:CashFlowMediator) -> SpendingOptions {
         let newOne=self.defaultOptions(insertIntoContext: model.modelContext)
         model.spendingOptionsIs=newOne as IsSpendingOptions
         return newOne
@@ -35,7 +35,7 @@ class SpendingOptions: NSManagedObject,IsSpendingOptions {
         set (aValue) { self.model=(aValue as! CashFlowMediator) }
     }
     
-    var spendingMitigation:SpendingDateMitigation = .DoNotShift
+    var spendingMitigation:SpendingDateMitigation = .doNotShift
     
     var weekendsAndHolidayMitigationIs:SpendingDateMitigation {
         get {

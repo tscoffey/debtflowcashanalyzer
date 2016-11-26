@@ -14,8 +14,8 @@ import CoreData
 
 extension PlannedSpending {
 
-    @NSManaged var firstDate: NSDate?
-    @NSManaged var lastDate: NSDate?
+    @NSManaged var firstDate: Date?
+    @NSManaged var lastDate: Date?
     @NSManaged var leadDays: Int32
     @NSManaged var name: String?
     @NSManaged var amountClearsTypeIndex: Int32

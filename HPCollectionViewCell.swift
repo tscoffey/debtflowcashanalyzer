@@ -13,14 +13,14 @@ struct HPCollectionViewCellConstants {
 }
 
 protocol HPCollectionViewCellDelegate {
-    func fontForCollectionViewCell (cvCell: HPCollectionViewCell) -> UIFont
-    func textColorForCollectionViewCell (cvCell: HPCollectionViewCell) -> UIColor
-    func useTwolineModeForCollectionViewCell (cvCell: HPCollectionViewCell) -> Bool
+    func fontForCollectionViewCell (_ cvCell: HPCollectionViewCell) -> UIFont
+    func textColorForCollectionViewCell (_ cvCell: HPCollectionViewCell) -> UIColor
+    func useTwolineModeForCollectionViewCell (_ cvCell: HPCollectionViewCell) -> Bool
 }
 
 class HPCollectionViewCell: UICollectionViewCell {
     
-    private var textColor: UIColor = UIColor.lightGrayColor()
+    fileprivate var textColor: UIColor = UIColor.lightGray
     
     var text: String? {
         didSet {
@@ -28,9 +28,9 @@ class HPCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
-            label.textColor = selected ? tintColor : textColor
+            label.textColor = isSelected ? tintColor : textColor
         }
     }
     
@@ -44,24 +44,24 @@ class HPCollectionViewCell: UICollectionViewCell {
             textColor           = delegate.textColorForCollectionViewCell(self)
             label.textColor     = textColor
             
-            let useTwoLineMode  = delegate.useTwolineModeForCollectionViewCell(self)
+            let useTwoLineMode  = false // delegate.useTwolineModeForCollectionViewCell(self)
             label.numberOfLines = useTwoLineMode ? 2 : 1
-            label.lineBreakMode = useTwoLineMode ? .ByWordWrapping : .ByTruncatingTail
+            label.lineBreakMode = useTwoLineMode ? .byWordWrapping : .byTruncatingTail
         }
     }
     
     lazy var label: UILabel = {
         let label = UILabel(frame: self.bounds)
-        label.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        label.backgroundColor  = UIColor.clearColor()
-        label.textAlignment    = .Center
+        label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        label.backgroundColor  = UIColor.clear
+        label.textAlignment    = .center
         
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor         = UIColor.clearColor()
+        backgroundColor         = UIColor.clear
         
         var perspective         = CATransform3DIdentity
         perspective.m34         = -1.0 / 750.0

@@ -14,8 +14,8 @@ import CoreData
 
 extension SpendingGenerator {
 
-    @NSManaged var firstDate: NSDate
-    @NSManaged var lastDate: NSDate
+    @NSManaged var firstDate: Date
+    @NSManaged var lastDate: Date
     @NSManaged var ledgers: NSSet?
     @NSManaged var model: CashFlowMediator?
 

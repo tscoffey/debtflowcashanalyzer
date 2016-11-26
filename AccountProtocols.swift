@@ -27,9 +27,9 @@ protocol HasManyAccounts {
     var accountsMutableSet:NSMutableSet { get set }
     var accountsAre:[IsAccount] { get }
     var accountNamesAre:[String] { get }
-    func addAccount(account:IsAccount)->Void
-    func removeAccount(account:IsAccount)->Void
-    func findAccount(named:String)->IsAccount?
+    func addAccount(_ account:IsAccount)->Void
+    func removeAccount(_ account:IsAccount)->Void
+    func findAccount(_ named:String)->IsAccount?
 }
 
 extension HasManyAccounts {
@@ -42,15 +42,15 @@ extension HasManyAccounts {
         return self.accountsAre.map(){ $0.nameIs }
     }
     
-    func addAccount(account:IsAccount) -> Void {
-        self.accountsMutableSet.addObject(account as! AnyObject)
+    func addAccount(_ account:IsAccount) -> Void {
+        self.accountsMutableSet.add(account as AnyObject)
     }
     
-    func removeAccount(account:IsAccount) -> Void {
-        self.accountsMutableSet.removeObject(account as! AnyObject)
+    func removeAccount(_ account:IsAccount) -> Void {
+        self.accountsMutableSet.remove(account as AnyObject)
     }
     
-    func findAccount(named:String) -> IsAccount? {
+    func findAccount(_ named:String) -> IsAccount? {
         for aAccount in self.accountsAre {
             if aAccount.nameIs == named { return aAccount }
         }
@@ -61,9 +61,9 @@ extension HasManyAccounts {
 protocol HasAccountBalances {
     var accountDatedBalancesMutableSet:NSMutableSet { get set }
     var accountDatedBalancesAre:[IsAccountDatedBalance] { get }
-    func accountCurrentBalanceOnDateIs(date:NSDate) -> NSDecimalNumber
+    func accountCurrentBalanceOnDateIs(_ date:Date) -> NSDecimalNumber
     func accountCurrentBalanceIs() -> NSDecimalNumber
-    func setInitialBalanceTo(initialBalance:NSDecimalNumber, dated:NSDate)
+    func setInitialBalanceTo(_ initialBalance:NSDecimalNumber, dated:Date)
 }
 
 extension HasAccountBalances {
@@ -77,7 +77,7 @@ extension HasAccountBalances {
 
 protocol IsAccountDatedBalance:HasAccount {
     var acctDatedBalanceIs:NSDecimalNumber { get set }
-    var acctDatedBalanceDateIs:NSDate { get set }
+    var acctDatedBalanceDateIs:Date { get set }
 }
 
 protocol HasManySourceTransactions {

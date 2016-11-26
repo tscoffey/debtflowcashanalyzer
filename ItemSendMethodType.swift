@@ -8,11 +8,11 @@
 
 enum ItemSendMethodType:Int32 {
     
-    case SentByMail, SentByBillPay, PulledFromAccount, PaidInPerson, CategoryDetermines, AccountDetermines
+    case sentByMail, sentByBillPay, pulledFromAccount, paidInPerson, categoryDetermines, accountDetermines
     
-    func buttonChoicesFor(source:ProposedItemsClearsSource) -> [String] {
+    func buttonChoicesFor(_ source:ProposedItemsClearsSource) -> [String] {
         switch source {
-            case .FromPlannedSpending: return ["Mail", "Bill Pay", "Pulled By Payee","In Person", "Use Category", "Use Account"]
+            case .fromPlannedSpending: return ["Mail", "Bill Pay", "Pulled By Payee","In Person", "Use Category", "Use Account"]
             default: return ["Mail", "Bill Pay", "Pulled By Payee","In Person"]
         }
     }

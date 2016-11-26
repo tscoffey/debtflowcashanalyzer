@@ -14,14 +14,14 @@ class Reoccurrance: NSManagedObject,IsReoccurrance {
     
     static var entityName="Reoccurrance"
     
-    class func ofType(type:ReoccurranceType, insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
-        let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Reoccurrance
+    class func ofType(_ type:ReoccurranceType, insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
+        let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! Reoccurrance
         newOne.reoccursTypeIndex=type.rawValue
         
         return newOne
     }
     
-    class func ofType(type:ReoccurranceType, values:[(Int,Int,Int)], insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
+    class func ofType(_ type:ReoccurranceType, values:[(Int,Int,Int)], insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
         
         let newOne=self.ofType(type, insertIntoContext: context)
         for each:(Int,Int,Int) in values {
@@ -30,24 +30,24 @@ class Reoccurrance: NSManagedObject,IsReoccurrance {
         return newOne
     }
     
-    class func monthlyOn(day:Int, insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
-        return self.ofType(.Monthly, values: [(day,0,0)], insertIntoContext: context)
+    class func monthlyOn(_ day:Int, insertIntoContext context:NSManagedObjectContext) -> Reoccurrance? {
+        return self.ofType(.monthly, values: [(day,0,0)], insertIntoContext: context)
     }
     
-    class func weeklyOn(weekday:Int, insertIntoContext context:NSManagedObjectContext)  -> Reoccurrance? {
-        return self.ofType(.Weekly,  values: [(weekday,0,0)], insertIntoContext: context)
+    class func weeklyOn(_ weekday:Int, insertIntoContext context:NSManagedObjectContext)  -> Reoccurrance? {
+        return self.ofType(.weekly,  values: [(weekday,0,0)], insertIntoContext: context)
     }
 
     lazy var calculator: IsReoccurringDateCalculator = {
         [unowned self] in
-        return AbstractDateCalculator(firstDate:nil, lastDate:nil, dateMitigation:SpendingDateMitigation.DoNotShift)
+        return AbstractDateCalculator(firstDate:nil, lastDate:nil, dateMitigation:SpendingDateMitigation.doNotShift)
 //        return self.reoccuranceTypeIs.dateCalculator(self.occursDataIs,
 //            firstDate: self.plannedSpendingIs.firstDateIs,
 //            lastDate: self.plannedSpendingIs.lastDateIs,
 //            dateMitigation:self.plannedSpendingIs.modelIs.spendingOptionsIs.weekendsAndHolidayMitigationIs)
     }()
     
-    var recursType:ReoccurranceType = .Monthly
+    var recursType:ReoccurranceType = .monthly
     
     var reoccuranceTypeIs: ReoccurranceType {
         get { recursType = ReoccurranceType(rawValue: self.reoccursTypeIndex)!
@@ -64,7 +64,7 @@ class Reoccurrance: NSManagedObject,IsReoccurrance {
     }
     
     var occursValuesMutableSet: NSMutableSet {
-        get { return self.mutableSetValueForKey("occursValues") }
+        get { return self.mutableSetValue(forKey: "occursValues") }
         set (aValue) {self.occursValues = aValue }
     }
     
@@ -78,53 +78,53 @@ class Reoccurrance: NSManagedObject,IsReoccurrance {
     }
     
     
-    func nextDateAfter(date:NSDate)->NSDate? {
+    func nextDateAfter(_ date:Date)->Date? {
         return self.calculator.nextDateAfter(date)
     }
-    func nextDateOnOrAfter(date:NSDate)->NSDate? {
+    func nextDateOnOrAfter(_ date:Date)->Date? {
         return self.calculator.nextDateOnOrAfter(date)
     }
 
-    func prevDateBefore(date:NSDate)->NSDate? {
+    func prevDateBefore(_ date:Date)->Date? {
         return self.calculator.prevDateBefore(date)
     }
 
-    func prevDateOnOrBefore(date:NSDate)->NSDate? {
+    func prevDateOnOrBefore(_ date:Date)->Date? {
         return self.calculator.prevDateOnOrBefore(date)
     }
 
-    func datesAfter(date:NSDate)->[NSDate] {
+    func datesAfter(_ date:Date)->[Date] {
         return self.calculator.datesAfter(date)
     }
 
-    func datesOnOrAfter(date:NSDate)->[NSDate] {
+    func datesOnOrAfter(_ date:Date)->[Date] {
         return self.calculator.datesOnOrAfter(date)
     }
-    func datesBefore(date:NSDate)->[NSDate] {
+    func datesBefore(_ date:Date)->[Date] {
         return self.calculator.datesBefore(date)
     }
-    func datesOnOrBefore(date:NSDate)->[NSDate] {
+    func datesOnOrBefore(_ date:Date)->[Date] {
         return self.calculator.datesOnOrBefore(date)
     }
     
-    func daysUntilNextDateOnOrAfter(date:NSDate)->Int {
+    func daysUntilNextDateOnOrAfter(_ date:Date)->Int {
         return self.calculator.daysUntilNextDateOnOrAfter(date)
     }
-    func daysUntilNextDateAfter(date:NSDate)->Int {
+    func daysUntilNextDateAfter(_ date:Date)->Int {
         return self.calculator.daysUntilNextDateAfter(date)
     }
-    func daysSincePrevDateOnOrBefore(date:NSDate)->Int {
+    func daysSincePrevDateOnOrBefore(_ date:Date)->Int {
         return self.calculator.daysSincePrevDateOnOrBefore(date)
     }
-    func daysSincePrevDateBefore(date:NSDate)->Int {
+    func daysSincePrevDateBefore(_ date:Date)->Int {
         return self.calculator.daysSincePrevDateBefore(date)
     }
 
-    func nextDateBetween(startDate:NSDate, toDate:NSDate)->NSDate? {
+    func nextDateBetween(_ startDate:Date, toDate:Date)->Date? {
         return self.calculator.nextDateBetween(startDate, toDate: toDate)
     }
     
-    func nextDatesBetween(startDate:NSDate, toDate:NSDate)->[NSDate] {
+    func nextDatesBetween(_ startDate:Date, toDate:Date)->[Date] {
         return self.calculator.nextDatesBetween(startDate, toDate: toDate)
     }
 

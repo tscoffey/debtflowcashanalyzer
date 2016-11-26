@@ -9,11 +9,11 @@
 import Foundation
 
 enum OccursValueUsageType:Equatable {
-    case Unused,
-        DayOfWeek, DayOfMonth, DayOfQuarter, DayOfHalfYear, DayOfYear,
-        WeekOfMonth, WeekOfQuarter, WeekOfHalfYear,WeekOfYear,
-        MonthOfQuarter, MonthOfHalfYear, MonthOfYear,
-        QuarterOfYear
+    case unused,
+        dayOfWeek, dayOfMonth, dayOfQuarter, dayOfHalfYear, dayOfYear,
+        weekOfMonth, weekOfQuarter, weekOfHalfYear,weekOfYear,
+        monthOfQuarter, monthOfHalfYear, monthOfYear,
+        quarterOfYear
     
 }
 

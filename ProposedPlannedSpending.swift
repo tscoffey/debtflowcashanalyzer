@@ -13,10 +13,10 @@ class ProposedPlannedSpending {
     var originalType:PlannedSpendingType
     
     var name:String=""
-    var amount:NSDecimalNumber=NSDecimalNumber(double: 0.00)
+    var amount:NSDecimalNumber=NSDecimalNumber(value: 0.00 as Double)
     var payFrom:IsSourceAccount?=nil
-    var firstDate:NSDate?
-    var lastDate:NSDate?
+    var firstDate:Date?
+    var lastDate:Date?
     var leadDays:Int=0
     var spendCategory:IsSpendCategory?
     var clearsTypes:ProposedItemsClear?
@@ -28,12 +28,12 @@ class ProposedPlannedSpending {
         originalType=from.spendingTypeIs
         self.name=from.nameIs
         self.payFrom=from.sourceAccountIs
-        self.firstDate=from.firstDateIs
-        self.lastDate=from.lastDateIs
+        self.firstDate=from.firstDateIs as Date?
+        self.lastDate=from.lastDateIs as Date?
         self.leadDays=Int(from.leadDaysIs)
         self.amount=from.amountIs
         self.spendCategory=from.categoryIs
-        self.clearsTypes=ProposedItemsClear(from:from,source:.FromPlannedSpending)
+        self.clearsTypes=ProposedItemsClear(from:from,source:.fromPlannedSpending)
         if let defName=from.defaultMerchantIs?.nameIs {
             self.defaultMerchantName=defName
         }

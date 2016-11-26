@@ -25,7 +25,7 @@ class MerchantTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        mediator!.managedObjectContext?.deleteObject(mediator!)
+        mediator!.managedObjectContext?.delete(mediator!)
     }
 
     func testMerchantInitialCount() {
@@ -34,7 +34,7 @@ class MerchantTests: XCTestCase {
     }
     
     func testMerchantNames() {
-        let sorted=(mediator as! IsMediator).merchantNamesAre.sort(){$0 < $1}
+        let sorted=(mediator as! IsMediator).merchantNamesAre.sorted(){$0 < $1}
         for i in (1...sorted.count) {
             if sorted[i-1] != self.merchantNames[i-1] { XCTFail("Merchant name mismatch") }
         }
@@ -50,7 +50,7 @@ class MerchantTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

@@ -49,13 +49,13 @@ private class PhonyAccount:NSObject,IsSourceAccount {
     }
     
     var accountDatedBalancesAre:[IsAccountDatedBalance] { return [IsAccountDatedBalance]()}
-    func accountCurrentBalanceOnDateIs(date:NSDate) -> NSDecimalNumber {
+    func accountCurrentBalanceOnDateIs(_ date:Date) -> NSDecimalNumber {
         return 0
     }
     func accountCurrentBalanceIs() -> NSDecimalNumber {
         return 0
     }
-    func setInitialBalanceTo(initialBalance:NSDecimalNumber, dated:NSDate)
+    func setInitialBalanceTo(_ initialBalance:NSDecimalNumber, dated:Date)
     {
         
     }
@@ -66,12 +66,12 @@ private class PhonyAccount:NSObject,IsSourceAccount {
     }
     
     var itemAmountClearsIs:ClearsAmountType {
-        get { return ClearsAmountType.ClearsForExactAmount }
+        get { return ClearsAmountType.clearsForExactAmount }
         set (aValue) {}
     }
     
     var itemWhenClearsIs:ClearsDateType {
-        get { return ClearsDateType.ClearsOnSendDate}
+        get { return ClearsDateType.clearsOnSendDate}
         set (aValue) {}
     }
     var clearsAfterDaysIs:NSNumber? {
@@ -80,7 +80,7 @@ private class PhonyAccount:NSObject,IsSourceAccount {
     }
 
     var itemSendMethodTypeIs:ItemSendMethodType {
-        get { return ItemSendMethodType.SentByBillPay }
+        get { return ItemSendMethodType.sentByBillPay }
         set (aValue) {}
     }
     
@@ -95,8 +95,8 @@ class PhonyAccountHolder: HasManyAccounts {
     
     init() {
         testAccounts=[IsAccount]()
-        testAccounts?.append((PhonyAccount(name:"Account1",type:.Checking,how:ClearsMethodType.ClearsAutomatically)))
-        testAccounts?.append((PhonyAccount(name:"Account2",type:.Savings,how:ClearsMethodType.ClearsManually)))
+        testAccounts?.append((PhonyAccount(name:"Account1",type:.checking,how:ClearsMethodType.clearsAutomatically)))
+        testAccounts?.append((PhonyAccount(name:"Account2",type:.savings,how:ClearsMethodType.clearsManually)))
 
     }
     
@@ -113,15 +113,15 @@ class PhonyAccountHolder: HasManyAccounts {
         return self.accountsAre.map(){ $0.nameIs }
     }
     
-    func addAccount(account:IsAccount) -> Void {
+    func addAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func removeAccount(account:IsAccount) -> Void {
+    func removeAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func findAccount(named:String) -> IsAccount? {
+    func findAccount(_ named:String) -> IsAccount? {
         return nil
     }
 

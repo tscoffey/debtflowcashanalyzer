@@ -10,42 +10,43 @@ import Foundation
 import UIKit
 class OccursContentTypeChoicesProvider:OccursChoicesProvider {
     
-    private var _contentType:OccursControlContentType?
-    
-    var contentType:OccursControlContentType {
-        get { return _contentType! }
-        set (aValue) { _contentType=aValue }
-    }
-    
-    deinit {
-        _contentType = nil
-    }
-    init(contentType:OccursControlContentType,choice:Int?) {
-        _contentType=contentType
-        super.init(choices:[choice])
-
-    }
-    
-    lazy var subChoices:OccursSingleControlArray =
-        self.buildSubChoices()
-    
-    func buildSubChoices()->OccursSingleControlArray {
-        return contentType.nextOccursControls().first!
-    }
-    
-    lazy var stringChoices:[String] =
-        self.buildStringChoices()
-    
-    func buildStringChoices()->[String] {
-        return self.subChoices.map(){ $0.textLabel() }
+    override init(contentType:OccursControlContentType,choice:Int?, delegate:IsSubControlChoiceDelegate?) {
+        super.init(contentType:contentType, choice:choice, delegate:delegate)
     }
     
     init (contentType:OccursControlContentType) {
-        _contentType=contentType
-        super.init(choices:[])
+        super.init(contentType:contentType,choice:nil, delegate:nil)
+    }
+    override func buildContentTypeSubChoices()->OccursSingleControlArray {
+        if contentType.isCategoryItem() {
+            return contentType.nextOccursControls().first!
+        } else {
+            return []
+        }
     }
     
-    override func choices(component:Int)->[String] {
-        return self.stringChoices
+    override func buildStringChoices()->[String] {
+        return self.contentTypeSubChoices!.map(){ $0.textLabel() }
     }
+    
+    override func applyChoiceIndexToDataSource(_ index:Int,data:IsOccursContentDataSource?) {
+        self.contentType.applyContentType(self.contentTypeSubChoices![index], into: data)
+    }
+    override func applyChoiceToDataSource(_ data:IsOccursContentDataSource?) {
+        self.contentType.applyContentType(self.contentTypeSubChoices![self.choiceIndex!], into: data)
+    }
+    override func eraseChoiceInDataSource(_ data: IsOccursContentDataSource?) {
+        self.contentType.applyContentType(nil, into: data)
+    }
+
+    
+    override func setContentTypeChoice(_ value:OccursControlContentType, component:OccursSubController) {
+        var index = value.indexIn(self.contentTypeSubChoices!)
+        if index >= 0 {
+            self.setChoiceIndex(index, component: component, fromUI: false)
+        }
+    }
+
+    
+
 }

@@ -13,14 +13,14 @@ class DaysOfWeekDateCalculator:AbstractDateCalculator {
     var daysOfWeek:[Int]
     
     
-    init(firstDate fDate: NSDate?, lastDate lDate: NSDate?, dateMitigation:SpendingDateMitigation, daysOfWeek:[Int32]) {
-        self.daysOfWeek=daysOfWeek.map(){ Int($0)}.sort(){ $0 < $1 }
+    init(firstDate fDate: Date?, lastDate lDate: Date?, dateMitigation:SpendingDateMitigation, daysOfWeek:[Int32]) {
+        self.daysOfWeek=daysOfWeek.map(){ Int($0)}.sorted(){ $0 < $1 }
         super.init(firstDate: fDate, lastDate: lDate, dateMitigation:dateMitigation)
         
     }
     
-    override func daysUntilNextDateAfter(date: NSDate) -> Int {
-        let weekday=weekdayFor(date)
+    override func daysUntilNextDateAfter(_ date: Date) -> Int {
+        let weekday=date.weekdayFor()
         var x=0
         let max=daysOfWeek.count
         while (x < max) && (weekday >= daysOfWeek[x]) {
@@ -38,7 +38,7 @@ class DaysOfWeekDateCalculator:AbstractDateCalculator {
 
 class DailyDateCalculator:DaysOfWeekDateCalculator {
     
-    class func dateCalculatorInstance(values:[(Int32,Int32)], firstDate:NSDate?, lastDate:NSDate?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
+    class func dateCalculatorInstance(_ values:[(Int32,Int32)], firstDate:Date?, lastDate:Date?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
         
         let daysOfWeek=values.map(){$0.0}
         let newOne=DailyDateCalculator(firstDate: firstDate, lastDate: lastDate, dateMitigation:dateMitigation, daysOfWeek:daysOfWeek)
@@ -51,7 +51,7 @@ class DailyDateCalculator:DaysOfWeekDateCalculator {
 
 class WeeklyDateCalculator:DaysOfWeekDateCalculator {
     
-    class func dateCalculatorInstance(values:[(Int32,Int32)], firstDate:NSDate?, lastDate:NSDate?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
+    class func dateCalculatorInstance(_ values:[(Int32,Int32)], firstDate:Date?, lastDate:Date?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
         
         let daysOfWeek=values.map(){$0.0}
         let newOne=WeeklyDateCalculator(firstDate: firstDate, lastDate: lastDate, dateMitigation:dateMitigation, daysOfWeek:daysOfWeek)
@@ -64,7 +64,7 @@ class WeeklyDateCalculator:DaysOfWeekDateCalculator {
 
 class SpecificWeekdaysDateCalculator:DaysOfWeekDateCalculator {
     
-    class func dateCalculatorInstance(values:[(Int32,Int32)], firstDate:NSDate?, lastDate:NSDate?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
+    class func dateCalculatorInstance(_ values:[(Int32,Int32)], firstDate:Date?, lastDate:Date?, dateMitigation:SpendingDateMitigation) ->IsReoccurringDateCalculator {
         
         let daysOfWeek=values.map(){$0.0}
         let newOne=SpecificWeekdaysDateCalculator(firstDate: firstDate, lastDate: lastDate, dateMitigation:dateMitigation, daysOfWeek:daysOfWeek)

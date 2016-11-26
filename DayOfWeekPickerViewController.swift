@@ -26,7 +26,7 @@ class DayOfWeekPickerViewController: UIViewController,HasUIThemeComponents {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         appDelegate().lookTheme.applyTo(self)
     }
 
@@ -47,12 +47,12 @@ class DayOfWeekPickerViewController: UIViewController,HasUIThemeComponents {
         }
     }
 
-    @IBAction func dayOfWeekCompactChanged(sender: AnyObject) {
+    @IBAction func dayOfWeekCompactChanged(_ sender: AnyObject) {
         if let c=self.whichDayOfWeekControl() {
             self.day_of_week=c.selectedSegmentIndex
         }
     }
-    @IBAction func dayOfWeekNormalChanged(sender: AnyObject) {
+    @IBAction func dayOfWeekNormalChanged(_ sender: AnyObject) {
         if let c=self.whichDayOfWeekControl() {
             self.day_of_week=c.selectedSegmentIndex
         }

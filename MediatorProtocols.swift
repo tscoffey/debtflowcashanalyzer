@@ -101,15 +101,15 @@ extension IsStubbedMediator {
         return [String]()
     }
     
-    func addBank(bank:IsBank) -> Void {
+    func addBank(_ bank:IsBank) -> Void {
         
     }
     
-    func removeBank(bank:IsBank) -> Void {
+    func removeBank(_ bank:IsBank) -> Void {
         
     }
     
-    func findBank(named:String) -> IsBank? {
+    func findBank(_ named:String) -> IsBank? {
 
         return nil
     }
@@ -122,15 +122,15 @@ extension IsStubbedMediator {
         return [String]()
     }
     
-    func addAccount(account:IsAccount) -> Void {
+    func addAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func removeAccount(account:IsAccount) -> Void {
+    func removeAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func findAccount(named:String) -> IsAccount? {
+    func findAccount(_ named:String) -> IsAccount? {
         return nil
     }
     
@@ -142,15 +142,15 @@ extension IsStubbedMediator {
         return [String]()
     }
     
-    func addCategory(category:IsSpendCategory) -> Void {
+    func addCategory(_ category:IsSpendCategory) -> Void {
        
     }
     
-    func removeCategory(category:IsSpendCategory) -> Void {
+    func removeCategory(_ category:IsSpendCategory) -> Void {
         
     }
     
-    func findCategory(named:String) -> IsSpendCategory? {
+    func findCategory(_ named:String) -> IsSpendCategory? {
         return nil
     }
     
@@ -162,15 +162,15 @@ extension IsStubbedMediator {
         return [String]()
     }
     
-    func addMerchant(merchant:IsMerchant) -> Void {
+    func addMerchant(_ merchant:IsMerchant) -> Void {
         
     }
     
-    func removeMerchant(merchant:IsMerchant) -> Void {
+    func removeMerchant(_ merchant:IsMerchant) -> Void {
         
     }
     
-    func findMerchant(named:String) -> IsMerchant? {
+    func findMerchant(_ named:String) -> IsMerchant? {
         return nil
     }
 
@@ -182,15 +182,15 @@ extension IsStubbedMediator {
         return [String]()
     }
     
-    func addPlannedSpending(plannedSpending:IsPlannedSpending) -> Void {
+    func addPlannedSpending(_ plannedSpending:IsPlannedSpending) -> Void {
         
     }
     
-    func removePlannedSpending(plannedSpending:IsPlannedSpending) -> Void {
+    func removePlannedSpending(_ plannedSpending:IsPlannedSpending) -> Void {
         
     }
     
-    func findPlannedSpending(named:String) -> IsPlannedSpending? {
+    func findPlannedSpending(_ named:String) -> IsPlannedSpending? {
 
         return nil
     }
@@ -199,33 +199,33 @@ extension IsStubbedMediator {
         return [IsSpendingGenerator]()
     }
     
-    func addSpendingGenerator(spendingGenerator:IsSpendingGenerator) -> Void {
+    func addSpendingGenerator(_ spendingGenerator:IsSpendingGenerator) -> Void {
     }
     
-    func removeSpendingGenerator(spendingGenerator:IsSpendingGenerator) -> Void {
+    func removeSpendingGenerator(_ spendingGenerator:IsSpendingGenerator) -> Void {
     }
     
     var transactionsAre:[IsTransaction] {
         return [IsTransaction]()
     }
     
-    func addTransaction(transaction:IsTransaction) -> Void {
+    func addTransaction(_ transaction:IsTransaction) -> Void {
 
     }
     
-    func removeTransaction(transaction:IsTransaction) -> Void {
+    func removeTransaction(_ transaction:IsTransaction) -> Void {
 
     }
-    func findTransactions(dated:NSDate, isDueDate:Bool)->[IsTransaction] {
+    func findTransactions(_ dated:Date, isDueDate:Bool)->[IsTransaction] {
         return [IsTransaction]()
     }
-    func findTransactions(amountOf:NSDecimalNumber)->[IsTransaction] {
+    func findTransactions(_ amountOf:NSDecimalNumber)->[IsTransaction] {
         return [IsTransaction]()
     }
-    func findTransactions(categoryOf:IsSpendCategory)->[IsTransaction] {
+    func findTransactions(_ categoryOf:IsSpendCategory)->[IsTransaction] {
         return [IsTransaction]()
     }
-    func findTransactions(onAccount:IsSourceAccount)->[IsTransaction] {
+    func findTransactions(_ onAccount:IsSourceAccount)->[IsTransaction] {
         return [IsTransaction]()
     }
 

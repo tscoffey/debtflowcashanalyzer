@@ -9,46 +9,34 @@
 import Foundation
 import UIKit
 
-class MonthOfYearChoicesProvider:OccursChoicesProvider {
+class MonthNumberOfYearChoicesProvider:OccursChoicesProvider {
     
-    private var _contentType:OccursControlContentType?
-    
-    var contentType:OccursControlContentType {
-        get { return _contentType! }
-        set (aValue) { _contentType=aValue }
-    }
-    
-    deinit {
-        _contentType = nil
-    }
-    init(contentType:OccursControlContentType,choice:Int?) {
-        _contentType=contentType
-        super.init(choices:[choice])
-        
-    }
-    
-    lazy var subChoices:[Int] =
-        self.buildSubChoices()
-    
-    func buildSubChoices()->[Int] {
-        return (1...12).map(){$0}
-    }
-    
-    lazy var stringChoices:[String] =
-        self.buildStringChoices()
-    
-    func buildStringChoices()->[String] {
-        return self.subChoices.map(){ String.nameOfMonthOfYear($0) }
+
+    override init(contentType:OccursControlContentType,choice:Int?, delegate:IsSubControlChoiceDelegate?) {
+        super.init(contentType:contentType, choice:choice, delegate:delegate)
     }
     
     init (contentType:OccursControlContentType) {
-        _contentType=contentType
-        super.init(choices:[])
+        super.init(contentType:contentType,choice:nil, delegate:nil)
+    }
+
+    
+    override func buildNumberSubChoices()->[Int] {
+        return (1...12).map(){$0}
     }
     
-    override func choices(component:Int)->[String] {
-        return self.stringChoices
+    
+    override func buildStringChoices()->[String] {
+        return self.numberSubChoices!.map(){ String.nameOfMonthOfYear($0) }
     }
+    
+    func setMonthChoice(_ value:Int, component:OccursSubController) {
+        self.setChoiceIndex(value, component: component, fromUI: false)
+    }
+
+    
+
+
 
 }
 

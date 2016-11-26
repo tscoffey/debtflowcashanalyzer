@@ -9,7 +9,7 @@
 import Foundation
 
 class ProposedReoccurrance {
-    var original:IsOccursContentDataSource
+    var original:IsOccursContentDataSource?
     
     var _reoccurranceType:ReoccurranceType?
     var _dayOfMonth:Int?
@@ -47,8 +47,8 @@ class ProposedReoccurrance {
     var _monthsOfYear:[Int]?
     var _quartersOfYear:[Int]?
     
-    var _firstUsedDate:NSDate?
-    var _lastUsedDate:NSDate?
+    var _firstUsedDate:Date?
+    var _lastUsedDate:Date?
 
 
     
@@ -83,8 +83,12 @@ class ProposedReoccurrance {
         self.monthsOfHalfYear=from.monthsOfHalfYear
         self.monthsOfYear=from.monthsOfYear
         
-        self.firstUsedDate=from.firstUsedDate
-        self.lastUsedDate=from.lastUsedDate
+        self.firstUsedDate=from.firstUsedDate as Date?
+        self.lastUsedDate=from.lastUsedDate as Date?
+    }
+    
+    init() {
+        
     }
     
     
@@ -100,7 +104,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_dayOfMonth {
                 value=v
             } else {
-                value=self.original.dayOfMonth
+                value=self.original?.dayOfMonth
             }
             return value
         }
@@ -112,7 +116,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_dayOfQuarter {
                 value=v
             } else {
-                value=self.original.dayOfQuarter
+                value=self.original?.dayOfQuarter
             }
             return value
         } set (aValue) {_dayOfQuarter=aValue} }
@@ -123,7 +127,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_dayOfHalfYear {
                 value=v
             } else {
-                value=self.original.dayOfHalfYear
+                value=self.original?.dayOfHalfYear
             }
             return value
         } set (aValue) {_dayOfHalfYear=aValue} }
@@ -134,7 +138,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_dayOfYear {
                 value=v
             } else {
-                value=self.original.dayOfYear
+                value=self.original?.dayOfYear
             }
             return value
         } set (aValue) {_dayOfYear=aValue} }
@@ -145,7 +149,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_firstDayOfMonth {
                 value=v
             } else {
-                value=self.original.firstDayOfMonth
+                value=self.original?.firstDayOfMonth
             }
             return value
         } set (aValue) {_firstDayOfMonth=aValue} }
@@ -156,7 +160,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_secondDayOfMonth {
                 value=v
             } else {
-                value=self.original.secondDayOfMonth
+                value=self.original?.secondDayOfMonth
             }
             return value
         }
@@ -168,7 +172,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_weekday {
                 value=v
             } else {
-                value=self.original.weekday
+                value=self.original?.weekday
             }
             return value
         }
@@ -181,7 +185,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_weekOfMonth {
                 value=v
             } else {
-                value=self.original.weekOfMonth
+                value=self.original?.weekOfMonth
             }
             return value
         }
@@ -194,7 +198,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_weekOfQuarter {
                 value=v
             } else {
-                value=self.original.weekOfQuarter
+                value=self.original?.weekOfQuarter
             }
             return value
         }
@@ -207,7 +211,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_weekOfHalfYear {
                 value=v
             } else {
-                value=self.original.weekOfHalfYear
+                value=self.original?.weekOfHalfYear
             }
             return value
         }
@@ -220,7 +224,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_weekOfYear {
                 value=v
             } else {
-                value=self.original.weekOfYear
+                value=self.original?.weekOfYear
             }
             return value
         }
@@ -234,7 +238,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_monthOfQuarter {
                 value=v
             } else {
-                value=self.original.monthOfQuarter
+                value=self.original?.monthOfQuarter
             }
             return value
         }
@@ -248,7 +252,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_monthOfHalfYear {
                 value=v
             } else {
-                value=self.original.monthOfHalfYear
+                value=self.original?.monthOfHalfYear
             }
             return value
         }
@@ -262,7 +266,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_monthOfYear {
                 value=v
             } else {
-                value=self.original.monthOfYear
+                value=self.original?.monthOfYear
             }
             return value
         }
@@ -276,7 +280,7 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_quarterOfYear {
                 value=v
             } else {
-                value=self.original.quarterOfYear
+                value=self.original?.quarterOfYear
             }
             return value
         }
@@ -292,13 +296,13 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
             if let v=_year {
                 value=v
             } else {
-                value=self.original.year
+                value=self.original?.year
             }
             return value
         }
         
         
-        set (aValue) {_quarterOfYear=aValue} }
+        set (aValue) {_year=aValue} }
     
     var daysOfMonth:[Int]? { get { return _daysOfMonth} set (aValue) {_daysOfMonth=aValue} }
     
@@ -322,8 +326,8 @@ extension ProposedReoccurrance:IsOccursContentDataSource {
     
     var quartersOfYear:[Int]? { get { return _quartersOfYear} set (aValue) {_quartersOfYear=aValue} }
     
-    var firstUsedDate:NSDate? { get { return _firstUsedDate} set (aValue) {_firstUsedDate=aValue} }
+    var firstUsedDate:Date? { get { return _firstUsedDate} set (aValue) {_firstUsedDate=aValue} }
     
-    var lastUsedDate:NSDate? { get { return _lastUsedDate} set (aValue) {_lastUsedDate=aValue} }
+    var lastUsedDate:Date? { get { return _lastUsedDate} set (aValue) {_lastUsedDate=aValue} }
     
 }

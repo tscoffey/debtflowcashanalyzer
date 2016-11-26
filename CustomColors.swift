@@ -60,7 +60,7 @@ func bisqueColour() -> UIColor { return UIColor(red:1.0000 ,green:0.8941 ,blue:0
 func bisqueGroup()->Int { return 0}
 func bisqueName()->String { return "Bisque"}
 func bisqueTuple()->ColorTuple { return (bisqueName(),bisqueColour(),bisqueGroup()) }
-func blackColour() -> UIColor { return UIColor.blackColor()}
+func blackColour() -> UIColor { return UIColor.black}
 func blackGroup()->Int { return 1}
 func blackName()->String { return "Black"}
 func blackTuple()->ColorTuple { return (blackName(),blackColour(),blackGroup()) }
@@ -68,7 +68,7 @@ func blanchedAlmondColour() -> UIColor { return UIColor(red:1.0000 ,green:0.9216
 func blanchedAlmondGroup()->Int { return 0}
 func blanchedAlmondName()->String { return "Blanched Almond"}
 func blanchedAlmondTuple()->ColorTuple { return (blanchedAlmondName(),blanchedAlmondColour(),blanchedAlmondGroup()) }
-func blueColour() -> UIColor { return UIColor.blueColor()}
+func blueColour() -> UIColor { return UIColor.blue}
 func blueGroup()->Int { return 2}
 func blueName()->String { return "Blue"}
 func blueTuple()->ColorTuple { return (blueName(),blueColour(),blueGroup()) }
@@ -80,7 +80,7 @@ func brassColour() -> UIColor { return UIColor(red:0.71,green:0.651 ,blue:0.259 
 func brassGroup()->Int { return 4}
 func brassName()->String { return "Brass"}
 func brassTuple()->ColorTuple { return (brassName(),brassColour(),brassGroup()) }
-func brownColour() -> UIColor { return UIColor.brownColor()}
+func brownColour() -> UIColor { return UIColor.brown}
 func brownGroup()->Int { return 5}
 func brownName()->String { return "Brown"}
 func brownTuple()->ColorTuple { return (brownName(),brownColour(),brownGroup()) }
@@ -128,7 +128,7 @@ func cornsilkColour() -> UIColor { return UIColor(red:1.0000 ,green:0.9725 ,blue
 func cornsilkGroup()->Int { return 0}
 func cornsilkName()->String { return "Cornsilk"}
 func cornsilkTuple()->ColorTuple { return (cornsilkName(),cornsilkColour(),cornsilkGroup()) }
-func cyanColour() -> UIColor { return UIColor.cyanColor()}
+func cyanColour() -> UIColor { return UIColor.cyan}
 func cyanGroup()->Int { return 2}
 func cyanName()->String { return "Cyan"}
 func cyanTuple()->ColorTuple { return (cyanName(),cyanColour(),cyanGroup()) }
@@ -224,7 +224,7 @@ func goldenrodTuple()->ColorTuple { return (goldenrodName(),goldenrodColour(),go
 func goldGroup()->Int { return 4}
 func goldName()->String { return "Gold"}
 func goldTuple()->ColorTuple { return (goldName(),goldColour(),goldGroup()) }
-func grayColour() -> UIColor { return UIColor.grayColor()}
+func grayColour() -> UIColor { return UIColor.gray}
 func grayGroup()->Int { return 1}
 func grayName()->String { return "Gray"}
 func grayTuple()->ColorTuple { return (grayName(),grayColour(),grayGroup()) }
@@ -312,7 +312,7 @@ func lightGoldenrodYellowColour() -> UIColor { return UIColor(red:0.9804 ,green:
 func lightGoldenrodYellowGroup()->Int { return 4}
 func lightGoldenrodYellowName()->String { return "Light Goldenrod Yellow"}
 func lightGoldenrodYellowTuple()->ColorTuple { return (lightGoldenrodYellowName(),lightGoldenrodYellowColour(),lightGoldenrodYellowGroup()) }
-func lightGrayColour() -> UIColor { return UIColor.lightGrayColor()}
+func lightGrayColour() -> UIColor { return UIColor.lightGray}
 func lightGrayGroup()->Int { return 1}
 func lightGrayName()->String { return "Light Gray"}
 func lightGrayTuple()->ColorTuple { return (lightGrayName(),lightGrayColour(),lightGrayGroup()) }
@@ -428,7 +428,7 @@ func oliveDrabColour() -> UIColor { return UIColor(red:0.4196 ,green:0.5569 ,blu
 func oliveDrabGroup()->Int { return 3}
 func oliveDrabName()->String { return "Olive Drab"}
 func oliveDrabTuple()->ColorTuple { return (oliveDrabName(),oliveDrabColour(),oliveDrabGroup()) }
-func orangeColour() -> UIColor { return UIColor.orangeColor()}
+func orangeColour() -> UIColor { return UIColor.orange}
 func orangeGroup()->Int { return 6}
 func orangeName()->String { return "Orange"}
 func orangeRedColour() -> UIColor { return UIColor(red:1.0000 ,green:0.2706 ,blue:0.0000 ,alpha:1)}
@@ -496,11 +496,11 @@ func powderBlueColour() -> UIColor { return UIColor(red:0.6902 ,green:0.8784 ,bl
 func powderBlueGroup()->Int { return 2}
 func powderBlueName()->String { return "Powder Blue"}
 func powderBlueTuple()->ColorTuple { return (powderBlueName(),powderBlueColour(),powderBlueGroup()) }
-func purpleColour() -> UIColor { return UIColor.purpleColor()}
+func purpleColour() -> UIColor { return UIColor.purple}
 func purpleGroup()->Int { return 7}
 func purpleName()->String { return "Purple"}
 func purpleTuple()->ColorTuple { return (purpleName(),purpleColour(),purpleGroup()) }
-func redColour() -> UIColor { return UIColor.redColor()}
+func redColour() -> UIColor { return UIColor.red}
 func redGroup()->Int { return 6}
 func redName()->String { return "Red"}
 func redTuple()->ColorTuple { return (redName(),redColour(),redGroup()) }
@@ -616,7 +616,7 @@ func wheatColour() -> UIColor { return UIColor(red:0.9608 ,green:0.8706 ,blue:0.
 func wheatGroup()->Int { return 5}
 func wheatName()->String { return "Wheat"}
 func wheatTuple()->ColorTuple { return (wheatName(),wheatColour(),wheatGroup()) }
-func whiteColour() -> UIColor { return UIColor.whiteColor()}
+func whiteColour() -> UIColor { return UIColor.white}
 func whiteGroup()->Int { return 0}
 func whiteName()->String { return "White"}
 func whiteSmokeColour() -> UIColor { return UIColor(red:0.9608 ,green:0.9608 ,blue:0.9608 ,alpha:1)}
@@ -624,7 +624,7 @@ func whiteSmokeGroup()->Int { return 0}
 func whiteSmokeName()->String { return "White Smoke"}
 func whiteSmokeTuple()->ColorTuple { return (whiteSmokeName(),whiteSmokeColour(),whiteSmokeGroup()) }
 func whiteTuple()->ColorTuple { return (whiteName(),whiteColour(),whiteGroup()) }
-func yellowColour() -> UIColor { return UIColor.yellowColor()}
+func yellowColour() -> UIColor { return UIColor.yellow}
 func yellowGreenColour() -> UIColor { return UIColor(red:0.6039 ,green:0.8039 ,blue:0.1961 ,alpha:1)}
 func yellowGreenGroup()->Int { return 3}
 func yellowGreenName()->String { return "Yellow Green"}

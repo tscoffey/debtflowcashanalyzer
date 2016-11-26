@@ -9,26 +9,26 @@
 import Foundation
 
 enum SpendingDateMitigation:Int32 {
-    case ShiftForward, ShiftBackward, DoNotShift
+    case shiftForward, shiftBackward, doNotShift
     
-    func mitigatedDate(date:NSDate) -> NSDate {
-        if self == .DoNotShift { return date }
+    func mitigatedDate(_ date:Date) -> Date {
+        if self == .doNotShift { return date }
         
-        let comps=NSDateComponents()
-        let cal=NSCalendar.currentCalendar()
+        var comps=DateComponents()
+        let cal=Calendar.current
         
         var nextDate=date
         
-        while isWeekendDate(nextDate) ||  isHolidayDate(nextDate) {
+        while nextDate.isWeekendDate() ||  nextDate.isHolidayDate() {
             var byDays=0
             switch self {
-                case .ShiftForward: byDays = 1
-                case .ShiftBackward: byDays = -1
-                case .DoNotShift: byDays = 0
+                case .shiftForward: byDays = 1
+                case .shiftBackward: byDays = -1
+                case .doNotShift: byDays = 0
             }
 
             comps.day=byDays
-            nextDate = cal.dateByAddingComponents(comps, toDate: nextDate, options:NSCalendarOptions())!
+            nextDate = (cal as NSCalendar).date(byAdding: comps, to: nextDate, options:NSCalendar.Options())!
         }
         return nextDate
     }

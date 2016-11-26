@@ -18,15 +18,15 @@ class CashFlowMediator: NSManagedObject,IsMediator {
 //        super.init(entity: entity, insertIntoManagedObjectContext: context)
 //    }
 
-    class func modelNamed(named:String, insertIntoContext context:NSManagedObjectContext) -> CashFlowMediator? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func modelNamed(_ named:String, insertIntoContext context:NSManagedObjectContext) -> CashFlowMediator? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [CashFlowMediator]
+            let fetchData = try context.fetch(fetch) as! [CashFlowMediator]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! CashFlowMediator
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! CashFlowMediator
                 newOne.name=named
                 return newOne
             }
@@ -45,14 +45,14 @@ class CashFlowMediator: NSManagedObject,IsMediator {
     }
     
     var banksMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("banks")) }
+        get { return (self.mutableSetValue(forKey: "banks")) }
         set (aValue) {
             self.banks=aValue
         }
     }
     
     var accountsMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("accounts")) }
+        get { return (self.mutableSetValue(forKey: "accounts")) }
         set (aValue) {
             self.accounts=aValue
         }
@@ -60,7 +60,7 @@ class CashFlowMediator: NSManagedObject,IsMediator {
     
     var categoriesMutableSet:NSMutableSet {
         get {
-            return (self.mutableSetValueForKey("categories"))
+            return (self.mutableSetValue(forKey: "categories"))
         }
         set (aValue) {
             self.categories=aValue
@@ -68,28 +68,28 @@ class CashFlowMediator: NSManagedObject,IsMediator {
     }
     
     var merchantsMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("merchants")) }
+        get { return (self.mutableSetValue(forKey: "merchants")) }
         set (aValue) {
             self.merchants=aValue
         }
     }
     
     var plannedSpendingsMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("plannedSpending")) }
+        get { return (self.mutableSetValue(forKey: "plannedSpending")) }
         set (aValue) {
             self.plannedSpending=aValue
         }
     }
     
     var spendingGeneratorsMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("spendingGenerators")) }
+        get { return (self.mutableSetValue(forKey: "spendingGenerators")) }
         set (aValue) {
             self.spendingGenerators = aValue
         }
     }
     
     var transactionsMutableSet:NSMutableSet {
-        get { return (self.mutableSetValueForKey("transactions")) }
+        get { return (self.mutableSetValue(forKey: "transactions")) }
         set (aValue) {
             self.transactions = aValue
         }
@@ -99,7 +99,7 @@ class CashFlowMediator: NSManagedObject,IsMediator {
         get { return self.spendingOptions as! IsSpendingOptions }
         set (aValue) {
             if self.spendingOptions != nil {
-                self.modelContext.deleteObject(self.spendingOptions!)
+                self.modelContext.delete(self.spendingOptions!)
             }
             self.spendingOptions = (aValue as! SpendingOptions)
         }

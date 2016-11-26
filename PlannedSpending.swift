@@ -16,15 +16,18 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     
     static var entityName="PlannedSpending"
     
-    class func spendingNamed(named:String, insertIntoContext context:NSManagedObjectContext) -> PlannedSpending? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func spendingNamed(_ named:String, insertIntoContext context:NSManagedObjectContext) -> PlannedSpending? {
+
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName:self.entityName)
+        
+        
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [PlannedSpending]
+            let fetchData = try context.fetch(fetch) as! [PlannedSpending]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! PlannedSpending
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! PlannedSpending
                 newOne.name=named
                 return newOne
             }
@@ -32,11 +35,11 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
             return nil
         }
     }
-    class func spendingNamed(named:String, findInContext context:NSManagedObjectContext) -> PlannedSpending? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func spendingNamed(_ named:String, findInContext context:NSManagedObjectContext) -> PlannedSpending? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [PlannedSpending]
+            let fetchData = try context.fetch(fetch) as! [PlannedSpending]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
@@ -48,7 +51,7 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     }
 
     
-    class func spendingNamed(named:String, category:SpendCategory, sourceAccount:IsSourceAccount, insertIntoModel model:CashFlowMediator) -> PlannedSpending? {
+    class func spendingNamed(_ named:String, category:SpendCategory, sourceAccount:IsSourceAccount, insertIntoModel model:CashFlowMediator) -> PlannedSpending? {
         guard let newOne=self.spendingNamed(named, findInContext: model.managedObjectContext!)
             else { return nil }
         
@@ -81,12 +84,12 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
         get { return self.leadDays }
         set (aValue) { self.leadDays = aValue }
     }
-    var firstDateIs: NSDate? {
-        get { return self.firstDate }
+    var firstDateIs: Date? {
+        get { return self.firstDate as Date? }
         set (aValue) { self.firstDate = aValue }
     }
-    var lastDateIs: NSDate? {
-        get { return self.lastDate }
+    var lastDateIs: Date? {
+        get { return self.lastDate as Date? }
         set (aValue) { self.lastDate = aValue }
     }
     var defaultMerchantIs:IsMerchant? {
@@ -98,14 +101,14 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
         set (aValue) {
             let oldReoccurrance=self.reoccurrance
             if oldReoccurrance != nil {
-                self.modelContext.deleteObject(oldReoccurrance!)
+                self.modelContext.delete(oldReoccurrance!)
             }
             self.reoccurrance = aValue
         }
     }
 
     var transactionsMutableSet: NSMutableSet {
-        get { return (self.managedObjectContext?.mutableSetValueForKey("transactions"))! }
+        get { return (self.managedObjectContext?.mutableSetValue(forKey: "transactions"))! }
         set (aValue) {
             self.transactions = aValue
         }
@@ -114,9 +117,9 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     var itemHowClearsIs:ClearsMethodType {
         get {
             var clears:ClearsMethodType=ClearsMethodType(rawValue:self.howClearsTypeIndex)!
-            if clears == .AccountDetermines {
+            if clears == .accountDetermines {
                 clears=self.sourceAccountIs.itemHowClearsIs
-            } else if clears == .CategoryDetermines {
+            } else if clears == .categoryDetermines {
                 return self.categoryIs.itemHowClearsIs
             }
             return clears
@@ -127,9 +130,9 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     var itemAmountClearsIs:ClearsAmountType{
         get {
             var clears:ClearsAmountType=ClearsAmountType(rawValue:self.amountClearsTypeIndex)!
-            if clears == .AccountDetermines {
+            if clears == .accountDetermines {
                 clears=self.sourceAccountIs.itemAmountClearsIs
-            }  else if clears == .CategoryDetermines {
+            }  else if clears == .categoryDetermines {
                 return self.categoryIs.itemAmountClearsIs
             }
             return clears
@@ -140,9 +143,9 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     var itemWhenClearsIs:ClearsDateType {
         get {
             var clears:ClearsDateType=ClearsDateType(rawValue:self.whenClearsTypeIndex)!
-            if clears == .AccountDetermines {
+            if clears == .accountDetermines {
                 clears=self.sourceAccountIs.itemWhenClearsIs
-            }  else if clears == .CategoryDetermines {
+            }  else if clears == .categoryDetermines {
                 return self.categoryIs.itemWhenClearsIs
             }
             return clears
@@ -155,9 +158,9 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
             let days=self.clearedAfterDays
             var val:NSNumber?
             if days == nil {
-                if self.itemWhenClearsIs == .AccountDetermines {
+                if self.itemWhenClearsIs == .accountDetermines {
                     val = self.sourceAccountIs.clearsAfterDaysIs
-                } else if self.itemWhenClearsIs == .CategoryDetermines {
+                } else if self.itemWhenClearsIs == .categoryDetermines {
                     val = self.categoryIs.clearsAfterDaysIs
                 }
             }
@@ -172,9 +175,9 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     var itemSendMethodTypeIs:ItemSendMethodType{
         get {
             var send:ItemSendMethodType=ItemSendMethodType(rawValue:self.itemSendTypeIndex)!
-            if send == .AccountDetermines {
+            if send == .accountDetermines {
                 send=self.sourceAccountIs.itemSendMethodTypeIs
-            }  else if send == .CategoryDetermines {
+            }  else if send == .categoryDetermines {
                 return self.categoryIs.itemSendMethodTypeIs
             }
             return send
@@ -183,12 +186,12 @@ class PlannedSpending: NSManagedObject,IsPlannedSpending {
     }
     
     var amountIs:NSDecimalNumber {
-        get { return NSDecimalNumber(double: 0.00) }
+        get { return NSDecimalNumber(value: 0.00 as Double) }
         set (aValue) {}
     }
     
     var spendingTypeIs:PlannedSpendingType {
-        get { return .BudgetedSpending }
+        get { return .budgetedSpending }
     }
 
 

@@ -30,7 +30,7 @@ class DayOfMonthPickerViewController: UIViewController,HorizontalPickerViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if let c=self.pickerContainer {
             dayPicker=HorizontalPickerView(frame:c.frame)
             if let p=self.dayPicker {
@@ -43,13 +43,13 @@ class DayOfMonthPickerViewController: UIViewController,HorizontalPickerViewDeleg
         }
     }
     
-    func numberOfRowsInHorizontalPickerView(pickerView: HorizontalPickerView) -> Int {
+    func numberOfRowsInHorizontalPickerView(_ pickerView: HorizontalPickerView) -> Int {
         return 31
     }
-    func horizontalPickerView (pickerView: HorizontalPickerView, titleForRow: Int) -> String {
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, titleForRow: Int) -> String {
         return String(titleForRow+1)
     }
-    func horizontalPickerView (pickerView: HorizontalPickerView, didSelectRow: Int) {
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, didSelectRow: Int) {
         day=didSelectRow+1            
     }
 

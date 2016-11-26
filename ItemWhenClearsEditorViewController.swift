@@ -22,7 +22,7 @@ class ItemWhenClearsEditorViewController: UIViewController,UIPickerViewDelegate,
     @IBOutlet weak var howManyDaysTextLabel: UILabel!
     @IBOutlet weak var daysTextLabel: UILabel!
     
-    var editorSubtype:ItemsEditorSubEditorType { return .WhenEditor }
+    var editorSubtype:ItemsEditorSubEditorType { return .whenEditor }
 
     var choices:[String]=[String]()
     
@@ -48,45 +48,45 @@ class ItemWhenClearsEditorViewController: UIViewController,UIPickerViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func daysChanged(sender: AnyObject) {
+    @IBAction func daysChanged(_ sender: AnyObject) {
         let v=Int(numberOfDaysSlider.value)
         daysTextLabel.text=String(v)
-        itemsClear?.clearedAfterDays=v
+        itemsClear?.clearedAfterDays=v as NSNumber?
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choices[row]
         
     }
     
-    func setSliderTo(value:Int) {
+    func setSliderTo(_ value:Int) {
         numberOfDaysSlider.value = Float(value)
         daysTextLabel.text=String(value)
-        itemsClear?.clearedAfterDays=value
+        itemsClear?.clearedAfterDays=value as NSNumber?
     }
     
     func hideUnhideDaysWidgets() {
         if itemsClear!.whenClears.needsDays() {
-            self.numberOfDaysSlider.hidden=false
-            self.howManyDaysTextLabel.hidden=false
+            self.numberOfDaysSlider.isHidden=false
+            self.howManyDaysTextLabel.isHidden=false
             self.howManyDaysTextLabel.text=self.itemsClear?.howManyDaysLabelText
-            self.daysTextLabel.hidden=false
+            self.daysTextLabel.isHidden=false
             self.setSliderTo((itemsClear?.clearedAfterDaysOrZero())!)
         } else {
-            self.numberOfDaysSlider.hidden=true
-            self.howManyDaysTextLabel.hidden=true
-            self.daysTextLabel.hidden=true
+            self.numberOfDaysSlider.isHidden=true
+            self.howManyDaysTextLabel.isHidden=true
+            self.daysTextLabel.isHidden=true
         }
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let c=choicesView.selectedRowInComponent(0)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let c=choicesView.selectedRow(inComponent: 0)
         itemsClear?.whenClears=ClearsDateType(rawValue:Int32(c))!
         self.hideUnhideDaysWidgets()
         

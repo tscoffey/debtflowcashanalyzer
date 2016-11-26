@@ -12,8 +12,8 @@ import XCTest
 class SourceAccountTests: XCTestCase {
     
     var accounts:[(String, String, AccountType,Double)]=[
-        ("Acc1","Bank1",.Checking,100)
-       ,("Acc2","Bank1",.Savings,1000)
+        ("Acc1","Bank1",.checking,100)
+       ,("Acc2","Bank1",.savings,1000)
     ]
     
 
@@ -32,7 +32,7 @@ class SourceAccountTests: XCTestCase {
 
     func testAccountNames() {
         let names=mediator!.accountNamesAre
-        XCTAssert((names.sort(){$0 < $1}) == ["Acc1","Acc2"])
+        XCTAssert((names.sorted(){$0 < $1}) == ["Acc1","Acc2"])
     }
     
     func testAcc1() {
@@ -43,8 +43,8 @@ class SourceAccountTests: XCTestCase {
         XCTAssert(acc.accountDatedBalancesAre.count == 1)
         let bal=acc.accountDatedBalancesAre[0].acctDatedBalanceIs
         let date=acc.accountDatedBalancesAre[0].acctDatedBalanceDateIs
-        XCTAssert(bal == NSDecimalNumber(double:100))
-        XCTAssert(acc.accountType == .Checking)
+        XCTAssert(bal == NSDecimalNumber(value: 100 as Double))
+        XCTAssert(acc.accountType == .checking)
         
     }
     
@@ -56,8 +56,8 @@ class SourceAccountTests: XCTestCase {
         XCTAssert(acc.accountDatedBalancesAre.count == 1)
         let bal=acc.accountDatedBalancesAre[0].acctDatedBalanceIs
         let date=acc.accountDatedBalancesAre[0].acctDatedBalanceDateIs
-        XCTAssert(bal == NSDecimalNumber(double:1000))
-        XCTAssert(acc.accountType == .Savings)
+        XCTAssert(bal == NSDecimalNumber(value: 1000 as Double))
+        XCTAssert(acc.accountType == .savings)
 
         
     }
@@ -65,7 +65,7 @@ class SourceAccountTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

@@ -23,7 +23,7 @@ protocol IsStubbedSpendingOptions:IsSpendingOptions {
 
 extension IsStubbedSpendingOptions {
     var weekendsAndHolidayMitigationIs:SpendingDateMitigation {
-        get { return SpendingDateMitigation.DoNotShift }
+        get { return SpendingDateMitigation.doNotShift }
         set (aValue) {}
     }
     

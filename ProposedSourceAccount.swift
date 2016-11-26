@@ -16,8 +16,8 @@ class ProposedSourceAccount:IsProposedChange {
     
     var name:String=""
     var bankName:String=""
-    var initialBalance:NSDecimalNumber = NSDecimalNumber(double:0.00)
-    var type:AccountType = .Checking
+    var initialBalance:NSDecimalNumber = NSDecimalNumber(value: 0.00 as Double)
+    var type:AccountType = .checking
     var clearsTypes:ProposedItemsClear?
 
     init(from:IsSourceAccount) {
@@ -27,7 +27,7 @@ class ProposedSourceAccount:IsProposedChange {
         name=from.nameIs
         bankName=""
         type=from.accountType
-        self.clearsTypes=ProposedItemsClear(from:from,source:.FromSourceAccount)
+        self.clearsTypes=ProposedItemsClear(from:from,source:.fromSourceAccount)
         initialBalance=from.accountCurrentBalanceIs()
     }
 
@@ -35,14 +35,14 @@ class ProposedSourceAccount:IsProposedChange {
         self.original=nil
         self.accountsLookup=model
         self.banksLookup=model
-        clearsTypes=ProposedItemsClear(source:.FromSourceAccount)
+        clearsTypes=ProposedItemsClear(source:.fromSourceAccount)
     }
     
     init (accountsLookup:HasManyAccounts, banksLookup:HasManyBanks) {
         self.original=nil
         self.accountsLookup=accountsLookup
         self.banksLookup=banksLookup
-        clearsTypes=ProposedItemsClear(source:.FromSourceAccount)
+        clearsTypes=ProposedItemsClear(source:.fromSourceAccount)
     }
     
     func isEditingNew() -> Bool {
@@ -77,6 +77,6 @@ class ProposedSourceAccount:IsProposedChange {
                 &&
                 (self.bankIsValid())
                 &&
-               (self.clearsTypes!.howClears != .ClearsAutomatically || self.clearsTypes!.clearedAfterDaysOrZero() > 0)
+               (self.clearsTypes!.howClears != .clearsAutomatically || self.clearsTypes!.clearedAfterDaysOrZero() > 0)
     }
 }

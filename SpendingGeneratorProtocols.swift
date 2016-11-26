@@ -20,8 +20,8 @@ protocol HasSpendingGenerator {
 protocol HasManySpendingGenerators {
     var spendingGeneratorsMutableSet:NSMutableSet { get set }
     var spendingGeneratorsAre:[IsSpendingGenerator] { get }
-    func addSpendingGenerator(spending:IsSpendingGenerator)->Void
-    func removeSpendingGenerator(spending:IsSpendingGenerator)->Void
+    func addSpendingGenerator(_ spending:IsSpendingGenerator)->Void
+    func removeSpendingGenerator(_ spending:IsSpendingGenerator)->Void
 }
 
 extension HasManySpendingGenerators {
@@ -30,12 +30,12 @@ extension HasManySpendingGenerators {
         return self.spendingGeneratorsMutableSet.map(){ $0 as! IsSpendingGenerator }
     }
     
-    func addSpendingGenerator(spendingGenerator:IsSpendingGenerator) -> Void {
-        self.spendingGeneratorsMutableSet.addObject(spendingGenerator as! AnyObject)
+    func addSpendingGenerator(_ spendingGenerator:IsSpendingGenerator) -> Void {
+        self.spendingGeneratorsMutableSet.add(spendingGenerator as AnyObject)
     }
     
-    func removeSpendingGenerator(spendingGenerator:IsSpendingGenerator) -> Void {
-        self.spendingGeneratorsMutableSet.removeObject(spendingGenerator as! AnyObject)
+    func removeSpendingGenerator(_ spendingGenerator:IsSpendingGenerator) -> Void {
+        self.spendingGeneratorsMutableSet.remove(spendingGenerator as AnyObject)
     }
     
 }

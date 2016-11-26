@@ -39,7 +39,7 @@ class SourceAccountNameEditorViewController: UIViewController,UITextFieldDelegat
     }
     
         
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let t=self.nameLabel.text {
             if t.characters.count  > 0 {
                 self.account?.name=t

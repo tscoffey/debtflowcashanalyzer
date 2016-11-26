@@ -9,6 +9,15 @@
 import Foundation
 
 protocol IsSubControlChoiceDelegate {
-    func didSelectIndex(index:Int, component:Int)
-    func didUnselectIndex(index:Int, component:Int)
+    func didSelectIndex(_ index:Int, component:OccursSubController, fromUI:Bool)
+    func didChangeChoices(_ choices:[Int], component:OccursSubController, fromUI:Bool)
+    func didSelectDate(_ date:Date, component:OccursSubController, fromUI:Bool)
+}
+
+extension IsSubControlChoiceDelegate {
+    func didSelectIndex(_ index:Int, component:OccursSubController, fromUI:Bool) {}
+    func didChangeChoices(_ choices:[Int], component:OccursSubController, fromUI:Bool) {}
+    func didSelectDate(_ date:Date, component:OccursSubController, fromUI:Bool) {}
+
+    
 }

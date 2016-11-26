@@ -11,7 +11,7 @@ import UIKit
 
 
 enum HowTitled {
-    case OnTabBar, OnView, Untitled
+    case onTabBar, onView, untitled
 }
 
 protocol IsNavigable {
@@ -31,7 +31,7 @@ protocol IsNavigable {
 extension IsNavigable {
     
     var howTitled:HowTitled? {
-        get { return .Untitled }
+        get { return .untitled }
         set (aValue) {}
     }
     
@@ -46,15 +46,15 @@ extension IsNavigable {
         if let title=self.titleString {
             if let how=self.howTitled {
                 switch how {
-                case .OnTabBar:
+                case .onTabBar:
                     if let ctrl=self.controllerToTitle {
                         ctrl.title=title
                     }
-                case .OnView:
+                case .onView:
                     if let label=self.labelToTitle {
                         label.text=title
                     }
-                case .Untitled:
+                case .untitled:
                     if let ctrl=self.controllerToTitle {
                         ctrl.title=""
                     }

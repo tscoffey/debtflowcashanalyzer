@@ -21,7 +21,7 @@ class ItemAmountClearsEditorViewController: UIViewController,UIPickerViewDelegat
         }
     }
     var choices:[String]=[String]()
-    var editorSubtype:ItemsEditorSubEditorType { return .MethodEditor }
+    var editorSubtype:ItemsEditorSubEditorType { return .methodEditor }
     
     
     override func viewDidLoad() {
@@ -43,20 +43,20 @@ class ItemAmountClearsEditorViewController: UIViewController,UIPickerViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choices[row]
         
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let c=choicesView.selectedRowInComponent(0)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let c=choicesView.selectedRow(inComponent: 0)
         itemsClear?.amountClears=ClearsAmountType(rawValue:Int32(c))!
         
     }

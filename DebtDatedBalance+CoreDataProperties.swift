@@ -14,7 +14,7 @@ import CoreData
 
 extension DebtDatedBalance {
 
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var balanceRates: NSSet?
     @NSManaged var debtAccount: DebtAccount?
 

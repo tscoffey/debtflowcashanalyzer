@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OccursSubController:UIViewController {
+class OccursSubController:UIViewController,HasUIThemeComponents {
     
     var purpose:OccursControlSubType!
     var style:SubControllerStyle!
@@ -17,12 +17,19 @@ class OccursSubController:UIViewController {
     weak var relativeTo:OccursSubController?
     var format:ControlPresentationFormat!
     var choicesProvider:IsChoiceProvider?
-    var choiceDelegate:IsSubControlChoiceDelegate?
-    var delegate:ReoccurranceBuilderViewController?
-    lazy var control:IsSubControl? = self.buildControl()
     
-    func buildControl()->IsSubControl {
-        var c = style.buildControl()
+    var contentType:OccursControlContentType {
+        if let t=choicesProvider?.contentType {
+            return t
+        } else {
+            return .anyLabel(label:"")
+        }
+    }
+
+    lazy var control:IsOccursUIControl? = self.buildControl()
+    
+    func buildControl()->IsOccursUIControl {
+        var c = style.buildControl(self)
         c.setControlDataSource(self)
         c.setControlDelegate(self)
         return c
@@ -36,8 +43,7 @@ class OccursSubController:UIViewController {
         relativeTo=nil
         format=nil
         choicesProvider=nil
-        choiceDelegate=nil
-        delegate=nil
+
         control=nil
     }
     
@@ -47,10 +53,8 @@ class OccursSubController:UIViewController {
          withinView:UIView,
          relativeTo:OccursSubController?,
          format:ControlPresentationFormat,
-         occursData:IsOccursContentDataSource,
-         choicesProvider:IsChoiceProvider?,
-         choiceDelegate:IsSubControlChoiceDelegate?,
-         delegate:ReoccurranceBuilderViewController?
+         choicesProvider:IsChoiceProvider?
+
         ) {
         self.style=style
         self.purpose=purpose
@@ -59,8 +63,6 @@ class OccursSubController:UIViewController {
         self.relativeTo=relativeTo
         self.format=format
         self.choicesProvider=choicesProvider
-        self.choiceDelegate=choiceDelegate
-        self.delegate=delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,14 +76,19 @@ class OccursSubController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate().lookTheme.applyTo(self)
+        let v = (view as! IsOccursUIControl)
+        v.setControlChoices(self.choicesProvider?.choices)
+        style.addTarget(self, control: control)
+        
 
 //        inView.addConstraints(
 //            format.buildConstraintsFor(control!, relativeTo: relativeTo, superView: inView)
 //        )
     }
     
-    override func viewWillAppear(animated:Bool) {
-        if let i = self.choicesProvider?.choiceIndex(0) {
+    override func viewDidAppear(_ animated:Bool) {
+        if let i = self.choicesProvider?.choiceIndex {
             control!.controlSelectionIndex=i
         }
     }
@@ -94,16 +101,104 @@ class OccursSubController:UIViewController {
         
     }
     
-
+    func pickerViewTextAlignment()->NSTextAlignment {
+        return NSTextAlignment.center
+    }
+    
+    var occursCategoryChooserView:UIView? {
+        if self.purpose.isContentTypePicker() {
+            return self.view
+        } else {
+            return nil
+        }
+    }
+    
+    var occursDateView:UIView? {
+        if self.purpose.isDatePicker() {
+            return view
+        } else {
+            return nil
+        }
+    }
+    var occursLabelView:UILabel? {
+        if self.purpose.isLabel() {
+            return (self.view as! UILabel)
+        } else {
+            return nil
+        }
+    }
+    
+    func selectionIndexChanged(_ index:Int, component:OccursSubController, fromUI:Bool) {
+        
+    }
+    
+    func choicesChanged(_ choices:[Int], component:OccursSubController, fromUI:Bool) {
+        
+    }
+    
+    
+    func dayOfMonthChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func firstDayOfMonthChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func secondDayOfMonthChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func weekdayChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func weekNumberOfMonthChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func weekNumberOfQuarterChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func weekNumberOfHalfYearhanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func weekNumberOfYearChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func monthNumberOfQuarterChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func monthNumberOfHalfYearChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    func monthNumberOfYearChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func quarterOfYearChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func yearChanged(_ to:Int, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func firstDateChanged(_ to:Date, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
+    func lastDateChanged(_ to:Date, sub:OccursSubController, fromUI:Bool, in:ReoccurranceBuilderViewController) {
+    }
+    
 }
 
+
 //
 //
-// Constraints 
+// UI look
 //
 //
 extension OccursSubController {
-    
+
+    var backgroundColor:UIColor? {
+        if let f=self.format {
+            switch f {
+            case .scrolledVertically:
+                if order % 2 == 0 {
+                    return nil
+                } else {
+                    return UIColor.antiqueWhiteColor()
+                }
+            default: return nil
+            }
+        } else {
+            return nil
+        }
+    }
 
     
 }
@@ -121,39 +216,62 @@ extension OccursSubController {
 }
 
 //
+//
+// UISegmentedControl {
+extension OccursSubController {
+    func segmentChanged(_ sender:UISegmentedControl?) {
+        if let s=sender {
+            let row=s.selectedSegmentIndex
+            self.choicesProvider?.setChoiceIndex(row, component: self, fromUI: true)
+
+        }
+        
+    }
+}
+
+//
 // UIPickerView datasource and delegate
 //
 extension OccursSubController:UIPickerViewDataSource {
-    func numberOfComponentsInPickerView(pickerView:UIPickerView)->Int {
+    func numberOfComponents(in pickerView:UIPickerView)->Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView,
+    func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        return self.choicesProvider!.choices(component).count
+        return self.choicesProvider!.choices.count
     }
 }
 extension OccursSubController:UIPickerViewDelegate {
-    func pickerView(pickerView: UIPickerView,
+    
+    
+    func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        return self.choicesProvider!.choices(component)[row]
+        return self.choicesProvider!.choices[row]
     }
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let s=self.choicesProvider!.choices(component)[row]
-        var ns=NSMutableAttributedString(string:s)
-        var range = NSRange()
-        range.location=0
-        range.length=s.characters.count
-        ns.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(13),
-                        range: range
-        )
-        return ns
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label:UILabel
+        if view == nil {
+            label=UILabel()
+        } else {
+            label = view as! UILabel
+        }
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.text = self.choicesProvider!.choices[row]
+        label.textColor=self.view.tintColor
+        label.textAlignment=self.pickerViewTextAlignment()
+        return label
     }
-    func pickerView(pickerView: UIPickerView,
+    func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                                  inComponent component: Int) {
-        self.choiceDelegate?.didSelectIndex(row, component:component)
-        delegate?.subControllerChoiceSelected(self, index: row)
+        self.choicesProvider?.setChoiceIndex(row, component: self, fromUI: true)
+
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 14
     }
 }
 
@@ -161,23 +279,23 @@ extension OccursSubController:UIPickerViewDelegate {
 // HorizontalPickerView datasource and delegate
 //
 extension OccursSubController:HorizontalPickerViewDataSource {
-    func numberOfRowsInHorizontalPickerView (pickerView: HorizontalPickerView) -> Int {
-        return self.choicesProvider!.choices(0).count
+    func numberOfRowsInHorizontalPickerView (_ pickerView: HorizontalPickerView) -> Int {
+        return self.choicesProvider!.choices.count
     }
     
 }
 extension OccursSubController:HorizontalPickerViewDelegate {
     
-    func textFontForHorizontalPickerView (pickerView: HorizontalPickerView) -> UIFont {
-        return UIFont.systemFontOfSize(13)
+    func textFontForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> UIFont {
+        return UIFont.systemFont(ofSize: 13)
     }
-    func textColorForHorizontalPickerView (pickerView: HorizontalPickerView) -> UIColor {
-        return UIView().tintColor
+    func textColorForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> UIColor {
+        return appDelegate().lookTheme.lookValues.occursCategoryChooserTintColor!
     }
     
-    func horizontalPickerView (pickerView: HorizontalPickerView, titleForRow: Int) -> String {
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, titleForRow: Int) -> String {
         if titleForRow >= 0 {
-        let c=self.choicesProvider!.choices(0)
+        let c=self.choicesProvider!.choices
         if c.count > titleForRow {
             return c[titleForRow]
         } else {
@@ -186,11 +304,74 @@ extension OccursSubController:HorizontalPickerViewDelegate {
         } else { return "" }
 
     }
-    func horizontalPickerView (pickerView: HorizontalPickerView, didSelectRow: Int) {
-        self.choiceDelegate?.didSelectIndex(didSelectRow, component:0)
-        delegate?.subControllerChoiceSelected(self, index: didSelectRow)
+    func horizontalPickerView (_ pickerView: HorizontalPickerView, didSelectRow: Int) {
+        self.choicesProvider?.setChoiceIndex(didSelectRow, component: self, fromUI: true)
+
 
         
+    }
+    func useTwoLineModeForHorizontalPickerView (_ pickerView: HorizontalPickerView) -> Bool {
+        return false
+    }
+    
+}
+
+//
+//
+// DKDropMenuDelegate
+//
+//
+extension OccursSubController:DKDropMenuDelegate {
+    func itemSelectedWithIndex(_ index: Int, name:String) {
+        self.choicesProvider?.setChoiceIndex(index, component: self, fromUI: true)
+
+
+        
+    }
+    
+}
+
+//
+//
+// UIDropDownDelegate
+//
+//
+extension OccursSubController:UIDropDownDelegate {
+    func dropDown(_ dropDown: UIDropDown, didSelectOption option: String, atIndex row: Int) {
+        self.choicesProvider?.setChoiceIndex(row, component: self, fromUI: true)
+
+    }
+    
+}
+
+//
+//
+// UITableViewDataSource, Delegate
+//
+//
+extension OccursSubController:UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.choicesProvider?.choices.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell=tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        cell.textLabel!.text=self.choicesProvider!.choices[(indexPath as NSIndexPath).row]
+        cell.textLabel!.font=UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.textAlignment=NSTextAlignment.center
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+}
+
+extension OccursSubController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.choicesProvider?.setChoiceIndex((indexPath as NSIndexPath).row, component: self, fromUI: true)
+
     }
     
 }

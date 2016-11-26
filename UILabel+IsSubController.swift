@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
-extension UILabel:IsSubControl {
+extension UILabel:IsOccursUIControl {
     var controlView:UIView  { return self }
     var controlSelectionIndex:Int? {
         get { return nil }
         set (aValue) {}
     }
-    func setControlDataSource(source:AnyObject) {}
-    func setControlDelegate(delegate:AnyObject) {}    
+    func setControlDataSource(_ source:AnyObject) {}
+    func setControlDelegate(_ delegate:AnyObject) {}
+    
+    func setControlChoices(_ choices:[String]?) {}
 }

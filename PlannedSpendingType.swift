@@ -7,5 +7,5 @@
 //
 
 enum PlannedSpendingType {
-    case BudgetedSpending, GoalSaving, DebtServicing
+    case budgetedSpending, goalSaving, debtServicing
 }

@@ -13,7 +13,7 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
     @IBOutlet weak var firstLastChooser:UISegmentedControl?
     @IBOutlet weak var dateChooser:UIDatePicker?
     
-    var how_titled:HowTitled = .OnView
+    var how_titled:HowTitled = .onView
     var title_string="First+Last Dates"
     
     var dates_holder:HasFirstLastDates?
@@ -36,7 +36,7 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         appDelegate().lookTheme.applyTo(self)
         self.loadDate()
@@ -49,12 +49,12 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func firstLastChosen(sender: AnyObject) {
+    @IBAction func firstLastChosen(_ sender: AnyObject) {
         self.whichDate=firstLastChooser!.selectedSegmentIndex
         self.loadDate()
     }
     
-    @IBAction func dateChanged(sender: AnyObject) {
+    @IBAction func dateChanged(_ sender: AnyObject) {
         if var holder=self.datesHolder {
             switch whichDate {
                 case 0: holder.firstDateIs=dateChooser!.date
@@ -65,16 +65,16 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
     }
     
     func setMinimumMaximumDates() {
-        var minDate:NSDate
-        var maxDate:NSDate
-        var defaultMinimum=buildDate(2000, month: 1, day: 1)
-        var defaultMaximum=buildDate(2100, month:12, day:31)
+        var minDate:Date
+        var maxDate:Date
+        var defaultMinimum=Date.buildDate(2000, month: 1, day: 1)
+        var defaultMaximum=Date.buildDate(2100, month:12, day:31)
         switch whichDate {
             case 0: minDate=defaultMinimum
             case 1:
                 if let holder=self.datesHolder {
                     if let first=holder.firstDateIs {
-                        minDate=addDaysToDate(1, date: first)
+                        minDate=first.addDaysToDate(1)
                     } else {
                         minDate=defaultMinimum
                     }
@@ -89,7 +89,7 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
             case 0:
                 if let holder=self.datesHolder {
                     if let last=holder.lastDateIs {
-                        maxDate=subtractDaysFromDate(1, date: last)
+                        maxDate=last.subtractDaysFromDate(1)
                     } else {
                         maxDate=defaultMaximum
                     }
@@ -107,11 +107,11 @@ class FirstLastDatesPickerViewController: UIViewController,HasUIThemeComponents,
             chooser.maximumDate=maxDate
         }
     }
-    func getNeededDate()-> NSDate? {
-        if var holder=self.datesHolder {
+    func getNeededDate()-> Date? {
+        if let holder=self.datesHolder {
             switch whichDate {
-            case 0: return holder.firstDateIs
-            case 1: return holder.lastDateIs
+            case 0: return holder.firstDateIs as Date?
+            case 1: return holder.lastDateIs as Date?
             default: return nil
             }
         } else {

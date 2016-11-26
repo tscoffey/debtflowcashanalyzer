@@ -15,15 +15,15 @@ class Merchant: NSManagedObject, IsMerchant {
     
     static var entityName="Merchant"
     
-    class func merchantNamed(named:String, insertIntoContext context:NSManagedObjectContext) -> Merchant? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func merchantNamed(_ named:String, insertIntoContext context:NSManagedObjectContext) -> Merchant? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [Merchant]
+            let fetchData = try context.fetch(fetch) as! [Merchant]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Merchant
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! Merchant
                 newOne.name=named
                 return newOne
             }
@@ -31,11 +31,11 @@ class Merchant: NSManagedObject, IsMerchant {
             return nil
         }
     }
-    class func merchantNamed(named:String, findInContext context:NSManagedObjectContext) -> Merchant? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func merchantNamed(_ named:String, findInContext context:NSManagedObjectContext) -> Merchant? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [Merchant]
+            let fetchData = try context.fetch(fetch) as! [Merchant]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
@@ -45,7 +45,7 @@ class Merchant: NSManagedObject, IsMerchant {
             return nil
         }
     }
-    class func merchantNamed(named:String, insertIntoModel model:CashFlowMediator) -> Merchant? {
+    class func merchantNamed(_ named:String, insertIntoModel model:CashFlowMediator) -> Merchant? {
         guard let newOne=self.merchantNamed(named, insertIntoContext: model.managedObjectContext!)
             else { return nil }
         

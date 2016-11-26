@@ -9,17 +9,22 @@
 import Foundation
 import UIKit
 
-extension HorizontalPickerView:IsSubControl {
+extension HorizontalPickerView:IsOccursUIControl {
     var controlView:UIView  { return self }
     var controlSelectionIndex:Int? {
         get { return self.selectedRow()}
         set (aValue) { self.selectRow(aValue!, animated: true) }
     }
-    func setControlDataSource(source:AnyObject) {
+    func setControlDataSource(_ source:AnyObject) {
         self.dataSource = (source as! HorizontalPickerViewDataSource)
     }
-    func setControlDelegate(delegate:AnyObject) {
+    func setControlDelegate(_ delegate:AnyObject) {
         self.delegate = (delegate as! HorizontalPickerViewDelegate)
     }
+    func needsDisplay() {
+        self.reloadAll()
+    }
+    
+
     
 }

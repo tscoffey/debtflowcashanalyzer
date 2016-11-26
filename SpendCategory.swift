@@ -14,15 +14,15 @@ class SpendCategory: NSManagedObject,IsSpendCategory {
     
     static var entityName="SpendCategory"
 
-    class func categoryNamed(named:String, parentCategory parent:SpendCategory?, insertIntoContext context:NSManagedObjectContext) -> SpendCategory? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func categoryNamed(_ named:String, parentCategory parent:SpendCategory?, insertIntoContext context:NSManagedObjectContext) -> SpendCategory? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [SpendCategory]
+            let fetchData = try context.fetch(fetch) as! [SpendCategory]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
-                let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! SpendCategory
+                let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! SpendCategory
                 newOne.name=named
                 newOne.parent=parent
                 return newOne
@@ -31,11 +31,11 @@ class SpendCategory: NSManagedObject,IsSpendCategory {
             return nil
         }
     }
-    class func categoryNamed(named:String,  findInContext context:NSManagedObjectContext) -> SpendCategory? {
-        let fetch=NSFetchRequest(entityName: self.entityName)
+    class func categoryNamed(_ named:String,  findInContext context:NSManagedObjectContext) -> SpendCategory? {
+        let fetch=NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         fetch.predicate=NSPredicate(format: "name == %@", named)
         do {
-            let fetchData = try context.executeFetchRequest(fetch) as! [SpendCategory]
+            let fetchData = try context.fetch(fetch) as! [SpendCategory]
             if fetchData.count > 0 {
                 return fetchData.first
             } else {
@@ -46,7 +46,7 @@ class SpendCategory: NSManagedObject,IsSpendCategory {
         }
     }
 
-    class func categoryNamed(named:String, parentCategory parent:SpendCategory?, insertIntoModel model:CashFlowMediator) -> SpendCategory? {
+    class func categoryNamed(_ named:String, parentCategory parent:SpendCategory?, insertIntoModel model:CashFlowMediator) -> SpendCategory? {
         guard let newOne=self.categoryNamed(named, parentCategory: parent, insertIntoContext: model.managedObjectContext!)
             else { return nil }
         
@@ -71,7 +71,7 @@ class SpendCategory: NSManagedObject,IsSpendCategory {
 
     var subCategoriesMutableSet:NSMutableSet {
         get {
-            return (self.mutableSetValueForKey("subCategories"))
+            return (self.mutableSetValue(forKey: "subCategories"))
         }
         set (aValue) {
             self.subCategories=aValue

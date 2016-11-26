@@ -15,7 +15,7 @@ class DebtServicing: PlannedSpending {
 // Insert code here to add functionality to your managed object subclass
     
     override var spendingTypeIs:PlannedSpendingType {
-        get { return .DebtServicing }
+        get { return .debtServicing }
     }
 
 }

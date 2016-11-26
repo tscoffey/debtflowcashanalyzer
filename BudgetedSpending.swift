@@ -18,7 +18,7 @@ class BudgetedSpending: PlannedSpending {
     }
     
     override var spendingTypeIs:PlannedSpendingType {
-        get { return .BudgetedSpending }
+        get { return .budgetedSpending }
     }
 
 

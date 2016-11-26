@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let del=UIApplication.sharedApplication().delegate as! AppDelegate
+        let del=UIApplication.shared.delegate as! AppDelegate
         del.currentMediator=StubbedMediator()
         
         self.title="Testing Launcher"
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 
     }
 
@@ -35,27 +35,26 @@ class ViewController: UIViewController {
     
 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id=segue.identifier {
             switch id {
                 
             case "toClearSettings":
-                let vc=segue.destinationViewController as! ItemsClearEditorViewController
-                vc.itemsClear=ProposedItemsClear(source:.FromSourceAccount)
-                vc.itemsClear?.sendsMethod=ItemSendMethodType.PulledFromAccount
-                vc.itemsClear?.whenClears=ClearsDateType.ClearsDaysAfterDueDate
-                vc.itemsClear?.amountClears=ClearsAmountType.ClearsForVariableAmount
-                vc.itemsClear?.howClears=ClearsMethodType.AccountDetermines
+                let vc=segue.destination as! ItemsClearEditorViewController
+                vc.itemsClear=ProposedItemsClear(source:.fromSourceAccount)
+                vc.itemsClear?.sendsMethod=ItemSendMethodType.pulledFromAccount
+                vc.itemsClear?.whenClears=ClearsDateType.clearsDaysAfterDueDate
+                vc.itemsClear?.amountClears=ClearsAmountType.clearsForVariableAmount
+                vc.itemsClear?.howClears=ClearsMethodType.accountDetermines
             case "toAccountListEditor":
-                let vc=segue.destinationViewController as! NormalSourceAccountListAndEditViewController
+                let vc=segue.destination as! NormalSourceAccountListAndEditViewController
                 vc.accountsHolder=PhonyAccountHolder()
             case "toDatePicker":
                 
-                let vc=segue.destinationViewController as! FirstLastDatesPickerViewController
-                vc.datesHolder=PhonyDateHolder( first: buildDate(2016, month: 3, day: 20), last: buildDate(2018, month: 12, day: 31))
+                let vc=segue.destination as! FirstLastDatesPickerViewController
+                vc.datesHolder=PhonyDateHolder( first: Date.buildDate(2016, month: 3, day: 20), last: Date.buildDate(2018, month: 12, day: 31))
             case "toOccursBuilder":
-                let vc=segue.destinationViewController as! OccursVerticalViewController
-                vc.occursData=OccursData.monthlyOn(10)
+                let vc=segue.destination as! OccursVerticalViewController
             default: break
             }
         }

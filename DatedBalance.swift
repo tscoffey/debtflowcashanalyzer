@@ -14,18 +14,18 @@ class DatedBalance: NSManagedObject, IsAccountDatedBalance {
 
     static var entityName="DatedBalance"
     
-    private var acctType:AccountType = .Unknown
+    fileprivate var acctType:AccountType = .unknown
     
-    class func datedBalanceOf(balance:NSDecimalNumber, dated:NSDate, insertIntoContext context:NSManagedObjectContext) -> DatedBalance {
+    class func datedBalanceOf(_ balance:NSDecimalNumber, dated:Date, insertIntoContext context:NSManagedObjectContext) -> DatedBalance {
  
-        let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! DatedBalance
+        let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! DatedBalance
         newOne.balance=balance
         newOne.date=dated
         return newOne
   
     }
     
-    class func datedBalanceOf(balance:NSDecimalNumber, dated:NSDate, addToAccount account:SourceAccount) -> DatedBalance {
+    class func datedBalanceOf(_ balance:NSDecimalNumber, dated:Date, addToAccount account:SourceAccount) -> DatedBalance {
         let newOne=self.datedBalanceOf(balance, dated: dated, insertIntoContext:account.modelContext )
         newOne.account=account
         return newOne
@@ -36,8 +36,8 @@ class DatedBalance: NSManagedObject, IsAccountDatedBalance {
         get {return self.balance! }
         set (aValue) { self.balance=aValue }
     }
-    var acctDatedBalanceDateIs:NSDate {
-        get {return self.date}
+    var acctDatedBalanceDateIs:Date {
+        get {return self.date as Date}
         set (aValue) {self.date=aValue }
     }
     

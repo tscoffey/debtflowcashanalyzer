@@ -37,9 +37,9 @@ protocol HasManySpendCategories {
     var categoriesMutableSet:NSMutableSet { get set }
     var categoriesAre:[IsSpendCategory] { get }
     var categoryNamesAre:[String] { get }
-    func addCategory(category:IsSpendCategory)->Void
-    func removeCategory(category:IsSpendCategory)->Void
-    func findCategory(named:String)->IsSpendCategory?
+    func addCategory(_ category:IsSpendCategory)->Void
+    func removeCategory(_ category:IsSpendCategory)->Void
+    func findCategory(_ named:String)->IsSpendCategory?
 }
 
 extension HasManySpendCategories {
@@ -52,15 +52,15 @@ extension HasManySpendCategories {
         return self.categoriesAre.map(){ $0.nameIs }
     }
     
-    func addCategory(category:IsSpendCategory) -> Void {
-        self.categoriesMutableSet.addObject(category as! AnyObject)
+    func addCategory(_ category:IsSpendCategory) -> Void {
+        self.categoriesMutableSet.add(category as AnyObject)
     }
     
-    func removeCategory(category:IsSpendCategory) -> Void {
-        self.categoriesMutableSet.removeObject(category as! AnyObject)
+    func removeCategory(_ category:IsSpendCategory) -> Void {
+        self.categoriesMutableSet.remove(category as AnyObject)
     }
     
-    func findCategory(named:String) -> IsSpendCategory? {
+    func findCategory(_ named:String) -> IsSpendCategory? {
         print("find cat in \(self)")
         for aCategory in self.categoriesAre {
             let name=aCategory.nameIs

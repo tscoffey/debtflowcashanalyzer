@@ -15,19 +15,19 @@ class OccursValues: NSManagedObject {
     
     static var entityName="OccursValues"
     
-    class func values(value1:Int, value2:Int, value3:Int, insertIntoContext context:NSManagedObjectContext) -> OccursValues {
-        let newOne=NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! OccursValues
+    class func values(_ value1:Int, value2:Int, value3:Int, insertIntoContext context:NSManagedObjectContext) -> OccursValues {
+        let newOne=NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! OccursValues
         newOne.dataValue1=Int32(value1)
         newOne.dataValue2=Int32(value2)
         newOne.dataValue3=Int32(value3)
         return newOne
         
     }
-    class func values(value1:Int, value2:Int, value3:Int,insertIntoReoccurrance reoccurs:Reoccurrance) -> OccursValues {
+    class func values(_ value1:Int, value2:Int, value3:Int,insertIntoReoccurrance reoccurs:Reoccurrance) -> OccursValues {
         return self.values(value1, value2: value2, value3:value3, insertIntoContext: reoccurs.managedObjectContext!)
         
     }
-    class func values(values:OccursDataTriple, insertIntoReoccurrance reoccurs:Reoccurrance) -> OccursValues {
+    class func values(_ values:OccursDataTriple, insertIntoReoccurrance reoccurs:Reoccurrance) -> OccursValues {
         return self.values(values.0, value2: values.1, value3:values.2, insertIntoContext: reoccurs.managedObjectContext!)
 
     }

@@ -9,57 +9,47 @@
 import Foundation
 class YearChoicesProvider:OccursChoicesProvider {
     
-    private lazy var _years:[Int] = self.buildYears()
+    fileprivate lazy var _years:[Int] = self.buildYears()
     
     func buildYears()->[Int] {
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.Year, fromDate: date)
+        let date = Date()
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components(.year, from: date)
         let year =  components.year
-        return [year,year+1,year+2]
+        return [year!,year!+1,year!+2]
         
     }
     var yearsToChooseFrom:[Int] {
         get { return self._years }
         set (aValue) { self._years=aValue}
     }
-    private var _contentType:OccursControlContentType?
+
     
-    var contentType:OccursControlContentType {
-        get { return _contentType! }
-        set (aValue) { _contentType=aValue }
-    }
-    
-    deinit {
-        _contentType = nil
-    }
-    init(contentType:OccursControlContentType,choice:Int?) {
-        _contentType=contentType
-        super.init(choices:[choice])
-        
-    }
-    
-    lazy var subChoices:[Int] =
-        self.buildSubChoices()
-    
-    func buildSubChoices()->[Int] {
-        return self.yearsToChooseFrom
-    }
-    
-    lazy var stringChoices:[String] =
-        self.buildStringChoices()
-    
-    func buildStringChoices()->[String] {
-        return self.subChoices.map(){ String($0) }
+
+    override init(contentType:OccursControlContentType,choice:Int?, delegate:IsSubControlChoiceDelegate?) {
+        super.init(contentType:contentType, choice:choice, delegate:delegate)
     }
     
     init (contentType:OccursControlContentType) {
-        _contentType=contentType
-        super.init(choices:[])
+        super.init(contentType:contentType,choice:nil, delegate:nil)
+    }
+
+    
+    
+    override func buildNumberSubChoices()->[Int] {
+        return self.yearsToChooseFrom
+    }
+
+    
+    override func buildStringChoices()->[String] {
+        return self.numberSubChoices!.map(){ String($0) }
     }
     
-    override func choices(component:Int)->[String] {
-        return self.stringChoices
+    func setYearChoice(_ value:Int, component:OccursSubController) {
+        self.setChoiceIndex(value, component: component, fromUI: false)
     }
+
+
+
 }
 

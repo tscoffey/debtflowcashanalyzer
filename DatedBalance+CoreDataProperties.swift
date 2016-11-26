@@ -15,7 +15,7 @@ import CoreData
 extension DatedBalance {
 
     @NSManaged var balance: NSDecimalNumber?
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var account: SourceAccount?
 
 }

@@ -22,9 +22,9 @@ protocol HasManyMerchants {
     var merchantsMutableSet:NSMutableSet { get set }
     var merchantsAre:[IsMerchant] { get }
     var merchantNamesAre:[String] { get }
-    func addMerchant(merchant:IsMerchant)->Void
-    func removeMerchant(merchant:IsMerchant)->Void
-    func findMerchant(named:String)->IsMerchant?
+    func addMerchant(_ merchant:IsMerchant)->Void
+    func removeMerchant(_ merchant:IsMerchant)->Void
+    func findMerchant(_ named:String)->IsMerchant?
 }
 
 extension HasManyMerchants {
@@ -37,15 +37,15 @@ extension HasManyMerchants {
         return self.merchantsAre.map(){ $0.nameIs }
     }
     
-    func addMerchant(merchant:IsMerchant) -> Void {
-        self.merchantsMutableSet.addObject(merchant as! AnyObject)
+    func addMerchant(_ merchant:IsMerchant) -> Void {
+        self.merchantsMutableSet.add(merchant as AnyObject)
     }
     
-    func removeMerchant(merchant:IsMerchant) -> Void {
-        self.merchantsMutableSet.removeObject(merchant as! AnyObject)
+    func removeMerchant(_ merchant:IsMerchant) -> Void {
+        self.merchantsMutableSet.remove(merchant as AnyObject)
     }
     
-    func findMerchant(named:String) -> IsMerchant? {
+    func findMerchant(_ named:String) -> IsMerchant? {
         for aMerchant in self.merchantsAre {
             if aMerchant.nameIs == named { return aMerchant }
         }

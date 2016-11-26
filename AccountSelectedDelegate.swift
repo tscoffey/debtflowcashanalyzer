@@ -8,7 +8,7 @@
 
 import Foundation
 protocol SourceAccountSelectedDelegate {
-    func didSelectSourceAccount(account:IsSourceAccount)
+    func didSelectSourceAccount(_ account:IsSourceAccount)
     func didDeselectSourceAccount()
     
 }

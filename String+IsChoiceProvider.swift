@@ -7,12 +7,22 @@
 //
 
 import Foundation
-extension String:IsChoiceProvider {
+extension String:IsChoiceProvider  {
     
-    func choices(component:Int)->[String] { return [self] }
-    func choiceIndex(component:Int)->Int? { return nil }
-    func setChoiceIndex(component:Int, index:Int?) {}
-
-
     
+    var choice:String? { return self}
+    var choiceIndex:Int? {
+        get { return nil }
+    }
+    var choices:[String] { return [self] }
+    
+    var contentType:OccursControlContentType {
+        get {return .anyLabel(label:self) }
+        set (aValue) {}
+    }
+    var numberSubChoices:[Int]? {
+        get {return nil }
+    }
+    var contentTypeSubChoices:[OccursControlContentType]? { return nil }
+
 }

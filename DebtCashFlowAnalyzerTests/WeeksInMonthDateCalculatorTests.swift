@@ -23,8 +23,8 @@ class WeeksInMonthDateCalculatorTests: XCTestCase {
     
     func checkDaysUntil1( occursWeek weekInMonth:Int, dayOfWeek:Int, fromDate:String, expected:Int) -> Bool {
         let calc=WeeksInMonthDateCalculator.dateCalculatorInstance([(Int32(weekInMonth), Int32(dayOfWeek))],
-                                                             firstDate: nil, lastDate: nil,dateMitigation: .DoNotShift)
-        var baseDate=NSDate(dateString: fromDate)
+                                                             firstDate: nil, lastDate: nil,dateMitigation: .doNotShift)
+        var baseDate=Date(dateString: fromDate)
         var num=calc.daysUntilNextDateAfter(baseDate)
         return num == expected
     }
@@ -42,7 +42,7 @@ class WeeksInMonthDateCalculatorTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

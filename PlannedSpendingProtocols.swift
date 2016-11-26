@@ -25,14 +25,14 @@ protocol HasManyPlannedSpendings {
     var plannedSpendingsMutableSet:NSMutableSet { get set }
     var plannedSpendingsAre:[IsPlannedSpending] { get }
     var plannedSpendingNamesAre:[String] { get }
-    func addPlannedSpending(plannedSpending:IsPlannedSpending)->Void
-    func removePlannedSpending(plannedSpending:IsPlannedSpending)->Void
-    func findPlannedSpending(named:String)->IsPlannedSpending?
+    func addPlannedSpending(_ plannedSpending:IsPlannedSpending)->Void
+    func removePlannedSpending(_ plannedSpending:IsPlannedSpending)->Void
+    func findPlannedSpending(_ named:String)->IsPlannedSpending?
 }
 
 protocol HasFirstLastDates {
-    var firstDateIs:NSDate? { get set }
-    var lastDateIs:NSDate? { get set }
+    var firstDateIs:Date? { get set }
+    var lastDateIs:Date? { get set }
     
 }
 extension HasManyPlannedSpendings {
@@ -45,15 +45,15 @@ extension HasManyPlannedSpendings {
         return self.plannedSpendingsAre.map(){ $0.nameIs }
     }
     
-    func addPlannedSpending(plannedSpending:IsPlannedSpending) -> Void {
-        self.plannedSpendingsMutableSet.addObject(plannedSpending as! AnyObject)
+    func addPlannedSpending(_ plannedSpending:IsPlannedSpending) -> Void {
+        self.plannedSpendingsMutableSet.add(plannedSpending as AnyObject)
     }
     
-    func removePlannedSpending(plannedSpending:IsPlannedSpending) -> Void {
-        self.plannedSpendingsMutableSet.removeObject(plannedSpending as! AnyObject)
+    func removePlannedSpending(_ plannedSpending:IsPlannedSpending) -> Void {
+        self.plannedSpendingsMutableSet.remove(plannedSpending as AnyObject)
     }
     
-    func findPlannedSpending(named:String) -> IsPlannedSpending? {
+    func findPlannedSpending(_ named:String) -> IsPlannedSpending? {
         for aPlannedSpending in self.plannedSpendingsAre {
             if aPlannedSpending.nameIs == named { return aPlannedSpending }
         }

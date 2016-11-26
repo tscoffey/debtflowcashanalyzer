@@ -15,10 +15,10 @@ import CoreData
 extension Transaction {
 
     @NSManaged var plannedAmount: NSDecimalNumber
-    @NSManaged var dueDate: NSDate
+    @NSManaged var dueDate: Date
     @NSManaged var merchantName: String?
     @NSManaged var actualAmount: NSDecimalNumber?
-    @NSManaged var sendDate: NSDate
+    @NSManaged var sendDate: Date
     @NSManaged var hasCleared: Bool
     @NSManaged var category: SpendCategory?
     @NSManaged var fundsSource: SourceAccount?

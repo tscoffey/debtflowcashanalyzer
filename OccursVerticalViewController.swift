@@ -20,42 +20,22 @@ class OccursVerticalViewController: ReoccurranceBuilderViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let sub=self.addControllers(0,
-                                contentType: .GeneralCategories,
+                                contentType: .generalCategories,
                                 relativeTo: nil)
         self.addSubviews(0)
         self.buildSubConstraints()
     }
-
     
-    override  func subControllerChoiceSelected(sub:OccursSubController, index:Int) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        if sub.order == subControllers.count - 1 {
-            if let p=sub.purpose {
-                switch p {
-                case OccursControlSubType.ContentTypePicker:
-                    let c=(sub.choicesProvider as! OccursContentTypeChoicesProvider).subChoices
-                    let next=c[index]
-                    var last=sub.order+1
-                    self.addControllers(subControllers.count, contentType: next,relativeTo: sub)
-                    self.addSubviews(last)
-                    self.buildSubConstraints()
-                default: break
-                }
-            }
-        } else {
-            if sub.purpose.isContentTypePicker() {
-                var i = sub.order
-                while subControllers.count > i + 1 {
-                    let last=subControllers.last!.view
-                    subControllers.removeLast()
-                    last.removeFromSuperview()
-                }
-                self.subControllerChoiceSelected(sub, index:index)
-            }
+        
+        if let sub=subControllers.first {
+//            sub.choicesProvider?.setContentTypeChoice(.TwiceA, component: sub)
         }
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

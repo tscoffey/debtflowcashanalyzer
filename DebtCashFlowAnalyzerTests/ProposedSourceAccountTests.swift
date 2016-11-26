@@ -79,15 +79,15 @@ class ProposedSourceAccountTests: XCTestCase,HasManyAccounts,HasManyBanks {
     }
     
     
-    func addAccount(account:IsAccount) -> Void {
+    func addAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func removeAccount(account:IsAccount) -> Void {
+    func removeAccount(_ account:IsAccount) -> Void {
         
     }
     
-    func findAccount(named:String) -> IsAccount? {
+    func findAccount(_ named:String) -> IsAccount? {
         return nil
     }
     
@@ -104,15 +104,15 @@ class ProposedSourceAccountTests: XCTestCase,HasManyAccounts,HasManyBanks {
         return ["Bank1","Bank2","Bank3"]
     }
     
-    func addBank(bank:IsBank) -> Void {
+    func addBank(_ bank:IsBank) -> Void {
         
     }
     
-    func removeBank(bank:IsBank) -> Void {
+    func removeBank(_ bank:IsBank) -> Void {
         
     }
     
-    func findBank(named:String) -> IsBank? {
+    func findBank(_ named:String) -> IsBank? {
         return nil
     }
 
@@ -120,7 +120,7 @@ class ProposedSourceAccountTests: XCTestCase,HasManyAccounts,HasManyBanks {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

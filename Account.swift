@@ -14,7 +14,7 @@ class Account: NSManagedObject,IsAccount {
     
 //    static var entityName="Account"
     
-    private var acctType:AccountType = .Unknown
+    fileprivate var acctType:AccountType = .unknown
     
     
     var accountType:AccountType {

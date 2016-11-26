@@ -19,7 +19,7 @@ class GoalSaving: PlannedSpending {
         set (aValue) { self.saveAmount = aValue }
     }
     override var spendingTypeIs:PlannedSpendingType {
-        get { return .GoalSaving }
+        get { return .goalSaving }
     }
 
 }

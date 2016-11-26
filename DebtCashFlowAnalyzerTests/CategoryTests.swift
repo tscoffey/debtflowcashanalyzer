@@ -29,7 +29,7 @@ class CategoryTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        mediator!.managedObjectContext?.deleteObject(mediator!)
+        mediator!.managedObjectContext?.delete(mediator!)
     }
     func testCategoryCount() {
         let c=mediator!.categoriesAre.count
@@ -70,22 +70,22 @@ class CategoryTests: XCTestCase {
     }
 
     func testP1SubcategoryNames() {
-        let names=mediator!.findCategory("p1")?.subCategoryNamesAre.sort(){$0 < $1}
+        let names=mediator!.findCategory("p1")?.subCategoryNamesAre.sorted(){$0 < $1}
         XCTAssert(names! == ["c1.1","c1.2"])
     }
     
     func testP2SubcategoryNames() {
-        let names=mediator!.findCategory("p2")?.subCategoryNamesAre.sort(){$0 < $1}
+        let names=mediator!.findCategory("p2")?.subCategoryNamesAre.sorted(){$0 < $1}
         XCTAssert(names! == ["c2.1"])
     }
     func testP3SubcategoryNames() {
-        let names=mediator!.findCategory("p3")?.subCategoryNamesAre.sort(){$0 < $1}
+        let names=mediator!.findCategory("p3")?.subCategoryNamesAre.sorted(){$0 < $1}
         XCTAssert(names! == ["c3.1","c3.2","c3.3"])
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
