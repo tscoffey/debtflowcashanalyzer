@@ -102,14 +102,6 @@
 		226970351CF7C8EF00B33C6A /* OccursData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970341CF7C8EF00B33C6A /* OccursData.swift */; };
 		226970371CF7C9EE00B33C6A /* OccursDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970361CF7C9EE00B33C6A /* OccursDataTests.swift */; };
 		2269704A1CFA0C5500B33C6A /* DropMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970491CFA0C5500B33C6A /* DropMenu.swift */; };
-		226970541CFA39BC00B33C6A /* ASBubbleDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970531CFA39BC00B33C6A /* ASBubbleDrag.swift */; };
-		226970561CFA39C500B33C6A /* BubbleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970551CFA39C500B33C6A /* BubbleCollectionCell.swift */; };
-		226970581CFA39DB00B33C6A /* BubbleDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970571CFA39DB00B33C6A /* BubbleDragView.swift */; };
-		2269705A1CFA39E200B33C6A /* roundCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226970591CFA39E200B33C6A /* roundCornerView.swift */; };
-		2269705C1CFA39E700B33C6A /* roundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269705B1CFA39E700B33C6A /* roundImageView.swift */; };
-		2269705E1CFA3A5200B33C6A /* BubbleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2269705D1CFA3A5200B33C6A /* BubbleCollectionCell.xib */; };
-		226970601CFA3A5900B33C6A /* BubbleDragView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2269705F1CFA3A5900B33C6A /* BubbleDragView.xib */; };
-		226970621CFA3A6000B33C6A /* MenuBubbleV.png in Resources */ = {isa = PBXBuildFile; fileRef = 226970611CFA3A6000B33C6A /* MenuBubbleV.png */; };
 		226BCAFD1D0F936D009B5664 /* UILabel+IsSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */; };
 		226BCAFF1D0F94FE009B5664 /* String+IsChoiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */; };
 		226BCB011D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BCB001D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift */; };
@@ -357,14 +349,6 @@
 		226970341CF7C8EF00B33C6A /* OccursData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccursData.swift; sourceTree = "<group>"; };
 		226970361CF7C9EE00B33C6A /* OccursDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccursDataTests.swift; sourceTree = "<group>"; };
 		226970491CFA0C5500B33C6A /* DropMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropMenu.swift; sourceTree = "<group>"; };
-		226970531CFA39BC00B33C6A /* ASBubbleDrag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASBubbleDrag.swift; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/ASBubbleDrag.swift"; sourceTree = "<group>"; };
-		226970551CFA39C500B33C6A /* BubbleCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BubbleCollectionCell.swift; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/BubbleCollectionCell.swift"; sourceTree = "<group>"; };
-		226970571CFA39DB00B33C6A /* BubbleDragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BubbleDragView.swift; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/BubbleDragView.swift"; sourceTree = "<group>"; };
-		226970591CFA39E200B33C6A /* roundCornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = roundCornerView.swift; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/roundCornerView.swift"; sourceTree = "<group>"; };
-		2269705B1CFA39E700B33C6A /* roundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = roundImageView.swift; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/roundImageView.swift"; sourceTree = "<group>"; };
-		2269705D1CFA3A5200B33C6A /* BubbleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BubbleCollectionCell.xib; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/BubbleCollectionCell.xib"; sourceTree = "<group>"; };
-		2269705F1CFA3A5900B33C6A /* BubbleDragView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BubbleDragView.xib; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/BubbleDragView.xib"; sourceTree = "<group>"; };
-		226970611CFA3A6000B33C6A /* MenuBubbleV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuBubbleV.png; path = "../../../Downloads/ASBubbleDrag-master/UIConcept/ASBubbleDrag/MenuBubbleV.png"; sourceTree = "<group>"; };
 		226BCAFC1D0F936D009B5664 /* UILabel+IsSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+IsSubController.swift"; sourceTree = "<group>"; };
 		226BCAFE1D0F94FE009B5664 /* String+IsChoiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsChoiceProvider.swift"; sourceTree = "<group>"; };
 		226BCB001D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOfQuarterChoicesProvider.swift; sourceTree = "<group>"; };
@@ -811,7 +795,6 @@
 			children = (
 				22F801511D07D51900E5A046 /* DropDown */,
 				22AF74D21D06921000EC5F7F /* HorizontalPicker */,
-				226970521CFA398C00B33C6A /* BubbleDrag */,
 				226970511CFA397700B33C6A /* DropMenu */,
 			);
 			name = Controls;
@@ -823,21 +806,6 @@
 				226970491CFA0C5500B33C6A /* DropMenu.swift */,
 			);
 			name = DropMenu;
-			sourceTree = "<group>";
-		};
-		226970521CFA398C00B33C6A /* BubbleDrag */ = {
-			isa = PBXGroup;
-			children = (
-				226970611CFA3A6000B33C6A /* MenuBubbleV.png */,
-				2269705F1CFA3A5900B33C6A /* BubbleDragView.xib */,
-				2269705D1CFA3A5200B33C6A /* BubbleCollectionCell.xib */,
-				2269705B1CFA39E700B33C6A /* roundImageView.swift */,
-				226970591CFA39E200B33C6A /* roundCornerView.swift */,
-				226970571CFA39DB00B33C6A /* BubbleDragView.swift */,
-				226970551CFA39C500B33C6A /* BubbleCollectionCell.swift */,
-				226970531CFA39BC00B33C6A /* ASBubbleDrag.swift */,
-			);
-			name = BubbleDrag;
 			sourceTree = "<group>";
 		};
 		22830ACE1CE16D1300EFD0A4 /* Classes */ = {
@@ -1134,7 +1102,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Coffey;
 				TargetAttributes = {
 					2254FD161CB3554400E87A8A = {
@@ -1180,17 +1148,14 @@
 			files = (
 				22C42B621D0BAE3C00B4E771 /* ReoccurranceBuilder.storyboard in Resources */,
 				22F801591D09003300E5A046 /* SwiftIconFont in Resources */,
-				226970601CFA3A5900B33C6A /* BubbleDragView.xib in Resources */,
 				2254FD281CB3554400E87A8A /* LaunchScreen.storyboard in Resources */,
 				2253F9501CED7ED800CCEDDB /* FirstLastDatesPicker.storyboard in Resources */,
 				2254FD251CB3554400E87A8A /* Assets.xcassets in Resources */,
-				2269705E1CFA3A5200B33C6A /* BubbleCollectionCell.xib in Resources */,
 				223CACC91CE56C6C00A44176 /* NormalSourceAccountList.storyboard in Resources */,
 				2244C2271CE98943009F049C /* ItemsClearEditor.storyboard in Resources */,
 				2254FD201CB3554400E87A8A /* Main.storyboard in Resources */,
 				2267D2681CEEAC2A0090A576 /* DayOfWeekPicker.storyboard in Resources */,
 				2267D26D1CEEB7210090A576 /* DayOfMonthPicker.storyboard in Resources */,
-				226970621CFA3A6000B33C6A /* MenuBubbleV.png in Resources */,
 				2253F9491CED4D2100CCEDDB /* CoorTupleDisplay.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1219,7 +1184,6 @@
 				22D6A3311D34A99100C61FE6 /* WeekOfHalfYearChooserSubController.swift in Sources */,
 				2253F94B1CED4D6D00CCEDDB /* ColorTupleTableViewController.swift in Sources */,
 				222A5B241CC07C1500B70465 /* DebtAccount+CoreDataProperties.swift in Sources */,
-				226970541CFA39BC00B33C6A /* ASBubbleDrag.swift in Sources */,
 				22D6A3261D2CC2AF00C61FE6 /* DayOfMonthChooserSubController.swift in Sources */,
 				222A5B291CC07C1500B70465 /* Reoccurrance+CoreDataProperties.swift in Sources */,
 				22C42B4A1D0B9F5200B4E771 /* IsOccursUIControl.swift in Sources */,
@@ -1247,7 +1211,6 @@
 				222A5B3F1CC07C1500B70465 /* FixedDebtPaymentCalculator+CoreDataProperties.swift in Sources */,
 				226D561F1CCED6D000B806E6 /* WeeksInMonthDateCalculator.swift in Sources */,
 				222A5B351CC07C1500B70465 /* VariableDebtPaymentCalculator+CoreDataProperties.swift in Sources */,
-				2269705C1CFA39E700B33C6A /* roundImageView.swift in Sources */,
 				22F89D231CB4DA2000B4417E /* DebtBalanceType.swift in Sources */,
 				22D1C71A1D1D003A00D15FC9 /* DateChoiceProvider.swift in Sources */,
 				22C42B661D0E582C00B4E771 /* DayOfMonthChoicesProvider.swift in Sources */,
@@ -1305,14 +1268,12 @@
 				226970351CF7C8EF00B33C6A /* OccursData.swift in Sources */,
 				22D6A3331D34A9B100C61FE6 /* WeekOfYearChooserSubController.swift in Sources */,
 				2253F9541CED82EC00CCEDDB /* PhonyDateHolder.swift in Sources */,
-				226970581CFA39DB00B33C6A /* BubbleDragView.swift in Sources */,
 				22D6A3351D34AA1500C61FE6 /* FirstDayOfMonthChooserSubController.swift in Sources */,
 				222A5B1F1CC07C1500B70465 /* TransferPayment+CoreDataProperties.swift in Sources */,
 				222A5B391CC07C1500B70465 /* BudgetedPayment+CoreDataProperties.swift in Sources */,
 				2211C9D01CD961830032CB88 /* SpendingDateMitigation.swift in Sources */,
 				22D6A33B1D34AA8C00C61FE6 /* MonthNumberOfHalfYearChooserSubController.swift in Sources */,
 				226BCB011D0FCCA1009B5664 /* MonthOfQuarterChoicesProvider.swift in Sources */,
-				2269705A1CFA39E200B33C6A /* roundCornerView.swift in Sources */,
 				2254FD1D1CB3554400E87A8A /* PhonyAccountsHolder.swift in Sources */,
 				22D6A34B1D34B4A200C61FE6 /* WeekNumberOfMonthChoicesProvider.swift in Sources */,
 				222A5B2E1CC07C1500B70465 /* FundsTransfer+CoreDataProperties.swift in Sources */,
@@ -1345,7 +1306,6 @@
 				225485621CE2E8530011093B /* StubbedSpendingOptions.swift in Sources */,
 				222A5B2D1CC07C1500B70465 /* Merchant+CoreDataProperties.swift in Sources */,
 				22D6A3291D2F426400C61FE6 /* NSDate+Functions.swift in Sources */,
-				226970561CFA39C500B33C6A /* BubbleCollectionCell.swift in Sources */,
 				22665E521D12804C000C7C25 /* UISegmentedControl+IsSubControl.swift in Sources */,
 				222A5B451CC07E1400B70465 /* SpendingGeneratorProtocols.swift in Sources */,
 				22C42B501D0BA03B00B4E771 /* SubControllerStyle.swift in Sources */,
@@ -1497,8 +1457,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1543,8 +1505,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1563,6 +1527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
