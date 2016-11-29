@@ -6,25 +6,19 @@
 //  Copyright © 2016 Coffey. All rights reserved.
 //
 
-class OccursContentTypeChoiceDelegate:IsSubControlChoiceDelegate {
+class OccursContentTypeChoiceDelegate:SubControlChoiceDelegate {
     
-    var choicesHolder:OccursContentTypeChoicesProvider?
-    var dataSource:IsOccursContentDataSource?
-    
-    deinit {
-        choicesHolder = nil
-        dataSource = nil
-    }
-    init(holder:OccursContentTypeChoicesProvider, data:IsOccursContentDataSource) {
-        choicesHolder=holder
-        dataSource=data
+
+    override init(holder:IsChoiceProvider, data:IsOccursContentDataSource, parentDelegate:IsSubControlChoiceDelegate?) {
+        super.init(holder:holder, data:data, parentDelegate:parentDelegate)
     }
     
-    func didSelectIndex(index:Int, component:Int) {
-        let c=choicesHolder!.subChoices
-        choicesHolder!.contentType.applyContentType(c[index], into: dataSource!)
+    override func didSelectIndex(_ index:Int, component:OccursSubController) {
+        let c=choicesHolder!.contentTypeSubChoices
+        choicesHolder!.contentType.applyContentType(c![index], into: dataSource!)
+        super.didSelectIndex(index, component: component)
     }
-    func didUnselectIndex(index:Int, component:Int) {
+    override func didUnselectIndex(_ index:Int, component:OccursSubController) {
         
     }
 }
